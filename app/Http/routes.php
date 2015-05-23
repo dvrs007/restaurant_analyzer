@@ -19,3 +19,12 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+
+
+Route::get('test', 'WelcomeController@test');
+
+Route::get('test2', function(){
+    $name = "Hey";
+    return("Hello World " . $name);
+});
