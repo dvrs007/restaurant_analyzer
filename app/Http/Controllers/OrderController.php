@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 //use Illuminate\Routing\Controller;
 
-use App\Recipe;
+use App\Order;
 use Illuminate\Http\Request;  //changed it after adding validation
 //use Request; //object capture request
 
@@ -15,7 +15,7 @@ use Illuminate\Http\Request;  //changed it after adding validation
  *
  * @author SuzieQ
  */
-class RecipeController extends Controller {
+class OrderController extends Controller {
     //put your code here
     
    
@@ -25,9 +25,10 @@ class RecipeController extends Controller {
         //dd($recipes);
         //return "recipes";
         
-        $recipes= Recipe::all();
-        return view('recipes.index')-> with('recipes', $recipes);                
+        //$recipes= Recipe::all();
+        //return view('recipes.index')-> with('recipes', $recipes);                
         //go to resources/views/recipes...create index.blade.php file
+        return "order form";
     }
     
     public function show($id){

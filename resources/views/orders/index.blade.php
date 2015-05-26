@@ -1,13 +1,13 @@
-{{!--@extends('layouts.recipelayout')
+@extends('layouts.master')
 
 @section('content')
---}}
+
 
 <!-- 
 <div>List of Recipes</div>
 <h2>List of recipes</h2>
 -->
-
+{{--
 @foreach($recipes as $recipe)
 
 <h3><a href="{{ url('/recipes', $recipe->dish_id) }}">{{ $recipe->dish_id }} {{ $recipe->dish_name }}</a></h3>
@@ -18,5 +18,12 @@
     <br>
 
 @endforeach
+
+--}}
+
+
+
+
+ORDER FORM will be updated
 
 @stop
