@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Order;
+use Illuminate\Http\Request;
+
 class philController extends Controller {
 
 	/*
@@ -30,7 +33,9 @@ class philController extends Controller {
 	 */
 	public function index()
 	{
-		return view('phil.index');
+            $items = order::all();
+            return view('phil.index')->with('items',$items);
+                
 	}
 
 }
