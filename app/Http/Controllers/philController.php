@@ -20,7 +20,7 @@ class philController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('auth');
+		//$this->middleware('auth');
 	}
 
 	/**
@@ -30,7 +30,7 @@ class philController extends Controller {
 	 */
 	public function index()
 	{
-		return view('phil/index');
+		return view('phil.index');
 	}
 
 }
