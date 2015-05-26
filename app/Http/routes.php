@@ -32,7 +32,7 @@ Route::get('about', 'HomeController@about');
 //	'auth' => 'Auth\AuthController',
 //	'password' => 'Auth\PasswordController',
 //]);
-x
+
 
 
 
