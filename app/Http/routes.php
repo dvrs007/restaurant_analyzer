@@ -11,6 +11,15 @@
 |
 */
 
+Route::get('/', 'WelcomeController@index');
+
+Route::get('home', 'HomeController@index');
+
+//Route::controllers([
+//	'auth' => 'Auth\AuthController',
+//	'password' => 'Auth\PasswordController',
+//]);
+
 /**************************************************************************
  PHIL'S ROUTES
  *************************************************************************/
@@ -22,21 +31,14 @@ Route::get('phil', 'philController@index');
  END PHIL'S ROUTES
  *************************************************************************/
 
-Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+/**************************************************************************
+ JOHNSON'S ROUTES
+ *************************************************************************/
 
-Route::get('about', 'HomeController@about');
-
-//Route::controllers([
-//	'auth' => 'Auth\AuthController',
-//	'password' => 'Auth\PasswordController',
-//]);
+Route::get('johnson', 'johnsonController@index');
 
 
-
-
-Route::get('test2', function(){
-    $name = "Hey";
-    return("Hello World " . $name);
-});
+/**************************************************************************
+ END JOHNSON'S ROUTES
+ *************************************************************************/
