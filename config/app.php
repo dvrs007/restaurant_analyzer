@@ -1,6 +1,8 @@
 <?php
 
 return [
+        /*  lava charts */
+        "Khill\Lavacharts\Laravel\LavachartsServiceProvider",
 
 	/*
 	|--------------------------------------------------------------------------
