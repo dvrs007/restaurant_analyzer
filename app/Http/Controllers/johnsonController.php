@@ -12,9 +12,9 @@ class johnsonController extends Controller {
 	public function index()
 	{
 
-$lava = new Lavacharts; // See note below for Laravel
+//$lava = new Lavacharts; // See note below for Laravel
 
-$temperatures = Lava::DataTable();
+$temperatures = \Lava::DataTable();
 
 $temperatures->addDateColumn('Date')
              ->addNumberColumn('Max Temp')
@@ -39,11 +39,14 @@ $temperatures->addDateColumn('Date')
              ->addRow(array('2014-10-17', 72, 66, 60))
              ->addRow(array('2014-10-18', 63, 62, 62));
 
-$linechart = Lava::LineChart('Temps')
+            $linechart = \Lava::LineChart('Temps')
                   ->dataTable($temperatures)
                   ->title('Weather in October');
 
-         return view('johnson.index')->with('order',$linechart);
+            $order = order::all();
+            return view('johnson.index')->with('order',$order);
+            return view('johnson.index')->with('linechart',$linechart);
+            
 	}
 
 }

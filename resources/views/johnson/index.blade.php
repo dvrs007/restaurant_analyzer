@@ -14,6 +14,7 @@ Sales Chart
 
     <p>Welcome to the JOHNSON Page</p>
     <div id="temps_div"></div>
+    
     <?php echo Lava::render('LineChart', 'Temps', 'temps_div') ?>
 
     @linechart('Temps', 'temps_div')
