@@ -1,18 +1,16 @@
 @extends('layouts.master')
 
 @section('title')
-Restaurant Analyzer
+Order.Eat.Repeat
 @stop
 
 @section('maintitle')
-Restaurant Analyzer
+Order.Eat.Repeat
 
 @stop
 
 @section('sidebar')
-    
-
-    <p>Welcome to the About Page</p>
+    <p>Order your food right away!</p>
 @stop
 
 @section('content')

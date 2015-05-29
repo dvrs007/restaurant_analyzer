@@ -4,7 +4,6 @@
  * Ref:http://www.quirksmode.org/dom/domform.html
  */
 
-alert("Hello");
 
 $(document).ready(function() {
     var max_fields      = 10; //maximum input boxes allowed
