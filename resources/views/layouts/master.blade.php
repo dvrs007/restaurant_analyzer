@@ -29,7 +29,9 @@
             <div id="footer">
                 <div class="container">
                     <div class="col-md-4">Footer Item</div>
-                    
+                    <div class="col-md-4">Footer Item</div>
+                    <div class="col-md-4">Footer Item</div>
+                    <p>Copyright &copy; <?php echo date("Y"); ?></p>
                 </div>
             </div>
         </div>
