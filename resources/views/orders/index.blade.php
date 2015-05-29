@@ -1,29 +1,37 @@
 @extends('layouts.master')
 
 @section('content')
+<h2>List of items</h2>
+<br/>
+<form>
+
+    <div class="input_fields_wrap">
+        <button class="add_field_button">Add More Items</button>
+        <div class="order_fields">
+            <select name="item[]">
+                @foreach($items as $item)
+                <option value="">{{ $item->item_name }}  (${{ $item->item_price}})</option>
+                @endforeach
+            </select>
+
+            <select name="quantity[]">
+                @for($i=1; $i<21;$i++)
+                <option value="{{$i}}">{{$i}}</option>
+                @endfor
+            </select>
+        </div>
+    </div>
+    
+    <input type="submit" value="Order Now" />
+    
+</form>
 
 
-<!-- 
-<div>List of Recipes</div>
-<h2>List of recipes</h2>
--->
-{{--
-@foreach($recipes as $recipe)
-
-<h3><a href="{{ url('/recipes', $recipe->dish_id) }}">{{ $recipe->dish_id }} {{ $recipe->dish_name }}</a></h3>
-<a href="{{ URL::to('/recipes')}}/{{$recipe->dish_id}}/delete">Delete </a>
-{{--    <div>
-        {{ $recipe-> dish_ingredients }} : {{ $recipe -> dish_steps }}        
-    </div>--}}
-    <br>
-
-@endforeach
-
---}}
 
 
 
 
-ORDER FORM will be updated
+
 
 @stop
+

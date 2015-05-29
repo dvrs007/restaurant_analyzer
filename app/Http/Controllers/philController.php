@@ -33,9 +33,11 @@ class philController extends Controller {
 	 */
 	public function index()
 	{
-            $items = order::all();
-            return view('phil.index')->with('items',$items);
-                
+            $items= Order::all();
+            //dd($items);
+            //return "items";
+            
+            return view('phil.index')->with("items", $items);
 	}
 
 }
