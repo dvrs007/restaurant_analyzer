@@ -1,11 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Mail;
-use App\Http\Requests\CreateCdRequest;
-
 use App\Order;
-use Illuminate\Http\Request; 
-
+use Illuminate\Http\Request;
 
 class philController extends Controller {
 
