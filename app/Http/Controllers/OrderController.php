@@ -28,7 +28,7 @@ class OrderController extends Controller {
         //$recipes= Recipe::all();
         //return view('recipes.index')-> with('recipes', $recipes);                
         //go to resources/views/recipes...create index.blade.php file
-        return "order form";
+        return view('orders.index');
     }
     
     public function show($id){

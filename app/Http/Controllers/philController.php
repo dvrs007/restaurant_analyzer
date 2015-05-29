@@ -1,5 +1,12 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\CreateCdRequest;
+
+use App\Order;
+use Illuminate\Http\Request; 
+
+
 class philController extends Controller {
 
 	/*
@@ -30,7 +37,11 @@ class philController extends Controller {
 	 */
 	public function index()
 	{
-		return view('phil.index');
+            $items= Order::all();
+            //dd($items);
+            //return "items";
+            
+            return view('phil.index')->with("items", $items);
 	}
 
 }
