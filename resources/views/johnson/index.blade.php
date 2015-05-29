@@ -12,18 +12,23 @@ Sales Chart
 @section('sidebar')
     
 
-    <p>Welcome to the JOHNSON Page</p>
-    <div id="temps_div"></div>
+    <h1>Statistics on the sales of each item</h1>
     
-    <?php echo Lava::render('LineChart', 'Temps', 'temps_div') ?>
+    
+    <?php 
+    
+    echo Lava::render('BarChart', 'TotalSales', 'sales_div', array('height'=>700, 'width'=>1000))  ?>
 
-    @linechart('Temps', 'temps_div')
     
-    @foreach($order as $ord)
+    <ul>
+        @foreach($order as $ord)
  
-    <h3>{{ $ord->item_name }}</h3>
+        <li>{{ $ord->item_name }} </li>
+        <li>Price: ${{ $ord->item_price }} | Cost: ${{ $ord->item_cost }} </li>
 
-    @endforeach
+        @endforeach
+    </ul>
+    
     
 @stop
 

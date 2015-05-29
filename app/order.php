@@ -1,17 +1,7 @@
 <?php
 namespace App;
 use Illuminate\Database\Eloquent\Model;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of order
- *
- * @author SuzieQ
- */
 class order extends Model{
     protected $table= "items" ;
     //recipe: table name in the database(.env file)
