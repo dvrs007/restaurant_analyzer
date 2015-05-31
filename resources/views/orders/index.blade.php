@@ -4,8 +4,9 @@
 <br/>
 <h2>Orders: item/quantity</h2>
 <br/>
-<form action="">
-    <div class="form-group order-select-container">                
+
+<div id="order" class="form-group order-select-container"> 
+    <p>
         <select name="item[]" style="color:black;">
             @foreach($items as $item)
             <option value="">{{ $item->item_name }}  (${{ $item->item_price}})</option>
@@ -16,21 +17,19 @@
             @for($i=1; $i<21;$i++)
             <option value="{{$i}}">{{$i}}</option>
             @endfor
-        </select>
-        <a href="#" class="btn btn-xs btn-danger btn-remove">Remove</a>
-    </div>
-    <a href="" class="btn btn-sm btn-info btn-add-more-order">Add More</a>
-    <br/><br/>
+        </select>   
+    </p>
+</div>
 
-    <input type="submit" value="Order Now" />
+<a href="" id="addOrder" class="btn btn-sm btn-info btn-add-more-order">Add More</a>
+<br/><br/>
+
+<input type="submit" value="Order Now" />
 </form>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
-
-
-var template = '<div class="form-group order-select-container">' +
-        '<select name="item[]" style="color:black;">' +
+var template = '<p><select name="item[]" style="color:black;">' +
         '@foreach($items as $item)' +
         '<option value="">' + '{{ $item->item_name }}' + ' ' + '(${{ $item->item_price}})</option>' +
         '@endforeach' +
@@ -40,23 +39,28 @@ var template = '<div class="form-group order-select-container">' +
         '<option value="{{$i}}">{{$i}}</option>' +
         '@endfor' +
         '</select>' +
-        ' <a href="#" class="btn btn-xs btn-danger btn-remove">Remove</a>' +
-        '</div>'
+        ' <a href="#" id="removeOrder" class="btn btn-xs btn-danger btn-remove">Remove</a>' +
+        '</p>'
 
-$('.btn-add-more-order').on('click', function (e) {
-    e.preventDefault();
-
-    $(this).before(template);
+$(function () {
+    var orderDiv = $('#order');
+    var i = $('#order').size() + 1;
+    $(document).on('click','#addOrder', function () {
+        $(template).appendTo('#order');
+        i++;
+        return false;
+    });
+   console.log('i:'+i);
+    $(document).on('click','.btn-remove', function () {
+        if (i > 2) {
+            $(this).parents('p').remove();
+            i--;
+        }
+        return false;
+    });
 });
-
-$(document).on('click','.btn-remove',function(e){
-    e.preventDefault();
-    $(this).parents('.order-select-container').remove();
-    
-});
+//Ref:https://www.youtube.com/watch?v=Ow82DXUlp8A
 </script>
-
-
 
 @stop
 
