@@ -12,14 +12,14 @@ class johnsonController extends Controller {
 	public function index()
 	{
 
-//$lava = new Lavacharts; // See note below for Laravel
-        $order = order::all();
+
+//        order::all('items')
+//            ->join('lineitems', 'items.id', '=', 'lineitems.id')
+//            ->join('orders', 'items.id', '=', 'orders.id')
+//            ->select('items.id', 'lineitems.ordered_quantity', 'orders.total')
+//            ->get();
         
-        order::table('items')
-            ->join('lineitems', 'users.id', '=', 'contacts.user_id')
-            ->join('orders', 'users.id', '=', 'orders.user_id')
-            ->select('users.id', 'contacts.phone', 'orders.price')
-            ->get();
+        $order = order::all();
         
         //carbon for date
 
