@@ -15,11 +15,11 @@ class johnsonController extends Controller {
 //$lava = new Lavacharts; // See note below for Laravel
         $order = order::all();
         
-//        order::table('items')
-//            ->join('lineitems', 'users.id', '=', 'contacts.user_id')
-//            ->join('orders', 'users.id', '=', 'orders.user_id')
-//            ->select('users.id', 'contacts.phone', 'orders.price')
-//            ->get();
+        order::table('items')
+            ->join('lineitems', 'users.id', '=', 'contacts.user_id')
+            ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->select('users.id', 'contacts.phone', 'orders.price')
+            ->get();
         
         //carbon for date
 

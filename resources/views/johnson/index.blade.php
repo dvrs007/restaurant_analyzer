@@ -18,16 +18,12 @@ Sales Chart
     <?php 
     
     echo Lava::render('BarChart', 'TotalSales', 'sales_div', array('height'=>700, 'width'=>1000))  ?>
-
     
-    <ul>
-        @foreach($order as $ord)
- 
-        <li>{{ $ord->item_name }} </li>
-        <li>Price: ${{ $ord->item_price }} | Cost: ${{ $ord->item_cost }} </li>
-
+    <select name="item[]" style="color:black;">
+        @foreach($order as $item)
+        <option value="">{{ $item->item_name }}</option>
         @endforeach
-    </ul>
-    
+    </select> 
+            
     
 @stop
