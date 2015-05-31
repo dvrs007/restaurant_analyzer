@@ -50,6 +50,8 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('johnson', 'johnsonController@index');
 
+Route::get('stats', 'statsController@stats');
+
 
 /**************************************************************************
  END JOHNSON'S ROUTES

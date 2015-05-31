@@ -9,6 +9,8 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/angular.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
     </head>
     <body>
         <div id="wrap">
@@ -48,12 +50,7 @@
                     <div class="row">
                         <div class="img-container">
                             <img src="images/cafe_main_pic.jpg" alt="" />
-                        </div>
-                        <div class="container-fluid">
-                            <div class="col-md-5">
-                                <h2 class="intro-heading">Order.Eat.Repeat.</h2>
-                            </div>
-                        </div>
+                        </div
                     </div>
                     <div class="container-fluid">
                         <h2>@yield('maintitle')</h2>
