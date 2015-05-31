@@ -135,25 +135,8 @@ img{
     margin: 0;
 }
 
-#main .intro-text{
-    position:relative;
-}
-
 .img-container img{
     position: relative; 
     width: 100%; /* for IE 6 */
     opacity:.4;
-}
-
-#main .intro-heading {
-    //position:absolute;    
-    color:white;
-    font-size:5em;
-    font-weight:bold;
-    left:150px;
-    top:-200px;
-    border-radius: 10px 10px 10px 10px;
-    -moz-border-radius: 10px 10px 10px 10px;
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border: 0px solid #000000;
 }
