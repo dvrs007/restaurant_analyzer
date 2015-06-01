@@ -85,6 +85,10 @@ html, body {
     padding:0 0 60px 0; /* this needs to be bigger than footer height*/
 }
 
+.body-content{
+    margin: 25px 0;
+}
+
 #footer {
     position:absolute;
     bottom:0;
@@ -112,6 +116,11 @@ html, body {
     color: #FFFBD3;
 }
 
+.navbar-default .navbar-brand {
+  color: #fff;
+  font-size: 1.5em;
+}
+
 .nav li{
     font-size: 1.5em;
 }
@@ -135,14 +144,113 @@ img{
     margin: 0;
 }
 
-.img-container img{
-    position: relative; 
-    width: 100%; /* for IE 6 */
+/* HEADER IMAGE CONTAINER */
+.hero {
+    //background: url('../images/cafe_main_pic.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: table;
+    width: 100%;
     margin-bottom: 25px;
 }
+.hero .container {
+    width:100%;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    height: 280px;
+    background-color: #222;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.hero .container h1 {
+    margin-right:auto;
+    margin-left: auto;
+    color: #fff;
+    font-size: 4em;
+    margin-bottom:10px;
+}
+
+.hero .container p {
+    margin-right:auto;
+    margin-left: auto;
+    margin-bottom: 30px;
+    width: 50%;
+    color: #fff;
+    font-size: 1.5em;
+}
+
+.hero .container a {
+    margin: 30px;
+    font-weight:bold;
+    font-size: 2em;
+    color:#fff;
+    padding: 5px;
+    border: none;
+    margin:0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: #ff3019; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
+}
+
+@media screen and (max-width: 768px) {
+    
+    .hero .container p {
+        width: 80%;
+        font-size: 1.25em;
+    }
+    
+    .hero .container a {
+    font-size: 1.25em;
+    }
+}
+
+@media screen and (max-width: 648px) {
+    .hero .container {
+    padding: 15px 0;
+    }
+    
+    .hero .container h1 {
+    font-size: 2em;
+    }
+
+    .hero .container p {
+        width: 80%;
+        font-size: 1.25em;
+    }
+    
+    .hero .container a {
+    font-size: 1.25em;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+
+    .hero .container h1 {
+    font-size: 2.5em;
+    }
+
+    .hero .container p {
+        font-size: 1em;
+    }
+}
+
+
 
 /*  footer */
 #footer{
+    color:#fff;
     padding: 15px 0;
     border: none;
     margin:0;

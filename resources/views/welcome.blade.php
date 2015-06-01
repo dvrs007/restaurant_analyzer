@@ -14,9 +14,11 @@ Order.Eat.Repeat
 @stop
 
 @section('content')
-    <div class="row">
-        <div class="col-md-4">FOOD FROM DATABASE BOXES</div>
-        <div class="col-md-4">FOOD FROM DATABASE BOXES</div>
-        <div class="col-md-4">FOOD FROM DATABASE BOXES</div>
-    </div><!--food list-->
+    <div class="body-content">
+        <div class="row">
+            <div class="col-md-4">FOOD FROM DATABASE BOXES</div>
+            <div class="col-md-4">FOOD FROM DATABASE BOXES</div>
+            <div class="col-md-4">FOOD FROM DATABASE BOXES</div>
+        </div><!--food list-->
+    </div><!--/body-content-->
 @stop
