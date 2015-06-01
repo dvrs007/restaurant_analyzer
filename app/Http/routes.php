@@ -36,7 +36,7 @@ Route::get('phil', 'philController@index');
  *************************************************************************/
 
 Route::get('orders', 'OrderController@index');
-
+Route::get('jeesoo', 'jeesooController@index');
 
 /**************************************************************************
  END JS'S ROUTES

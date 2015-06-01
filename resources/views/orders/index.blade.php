@@ -60,6 +60,7 @@ $(function () {
     });
 });
 //Ref:https://www.youtube.com/watch?v=Ow82DXUlp8A
+//http://api.jquery.com/live/
 </script>
 
 @stop
