@@ -1,18 +1,16 @@
 @extends('layouts.master')
 
 @section('content')
-<br/>
-<br/>
-            <a href="{{ url('orders')  }}">List of Orders</a>
-            |
-            <a href="{{ url('orders/create')  }}">Create</a>
-            |
-            <a href="{{ url('/')}}">Home</a>
+<hr/>
+<h1>List of Orders</h1>
+
+<a href="{{ url('orders')  }}">List of Orders</a>
+|
+<a href="{{ url('orders/create')  }}">Create</a>
+|
+<a href="{{ url('/')}}">Home</a>
 <br/>
 <hr/>
-<br/>
-<h1>List of Orders</h1>
-<br/>
 
 @foreach($orders as $order)
 
@@ -25,8 +23,8 @@
     Subtotal: ${{ $order->subtotal}}<br/>
     Tax(13%): ${{ $order->tax}}<br/>
     Total   : ${{ $order->total}}<br/>
-    </h3>
-    <br>
+</h3>
+<br>
 @endforeach
 @stop
 

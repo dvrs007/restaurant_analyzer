@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 //use Illuminate\Routing\Controller;
 
 use App\Order;
+use App\Item;
+use App\Lineitem;
 use Illuminate\Http\Request;  //changed it after adding validation
 
 //use Request; //object capture request
@@ -42,8 +44,7 @@ class OrderController extends Controller {
     public function store(Request $request) {
         $this->validate($request, [
             'tbl_number' => 'required|Integer',
-            'server' => 'required',
-            'datetime' => 'required'
+            'server' => 'required'            
             ]
         );
 
@@ -55,14 +56,22 @@ class OrderController extends Controller {
         $inputs = $request->all(); //added after validation added
         //STEP2: Create an order and saved it into db
         //method1       
-//        $cd = new Cd;
-//        $cd ->titel = $inputs['titel'];
-//        $cd->interpret = $inputs['interpret'];
-//        $cd->jahr = $inputs['jahr'];
-//        
-//        $cd->save();
+        $order = new Order;
+        $order->tbl_nummber = $inputs['tbl_number'];
+        $order->server = $inputs['server'];  
+        
+        
+        $lineitems =new Lineitem;
+        $lineitmes->order_id=$inputs['order_id'];
+        $lineitems->item_id=$inputs['item_id'];
+        $lineitems->ordered_quantity=$inputs['ordered_quantity'];
+        
+        $order->subtotal=$item->item_price * $lineitems->ordered_quantity;
+        $order->save();
+        $lineitems->save();
         //method2
-        Order::create($inputs);
+        //Order::create($inputs);
+        
 
         //return "recipe inserted";
         //return $inputs;

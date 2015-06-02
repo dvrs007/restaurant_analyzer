@@ -5,16 +5,14 @@ Restaurant Analyzer
 @stop
 
 @section('maintitle')
-<h1>Trends Analysis of Sales in Total sales amount ($)</h1>
-
+<h1>Trends Analysis of Sales in Total sales amount ($)</h1><hr>
 @stop
 
 @section('sidebar')    
 @stop
 
 @section('content')
-
-
+<hr/>
 @foreach($orders as $order)
 
 <h3>{{ $order->id }} | $ {{ $order->total }} | {{ $order -> date}} | {{$order ->time }} </h3>

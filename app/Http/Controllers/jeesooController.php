@@ -31,8 +31,11 @@ class jeesooController extends Controller{
         return view('jeesoo.index')->with("orders", $orders);          
     }
     
-    
-    public function totalSales (){
+    public function totalSales(){
+        return view('jeesoo.totalSales');
+        
+    }
+    public function example (){
         //creating a new datatable
         $stocksTable= \Lava::DataTable();
         $stocksTable->addDateColumn('Day of Month')
@@ -61,7 +64,7 @@ class jeesooController extends Controller{
                 ->title('Stock Market Trends');
         
        
-            return view('jeesoo.totalSales')->with('lineChart',$lineChart);
+            return view('jeesoo.chartExample')->with('lineChart',$lineChart);
         
     }
 }

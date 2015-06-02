@@ -1,18 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
+<hr/><h1>Add a New Order</h1>
+<a href="{{ url('orders')  }}">List of Orders</a>
+|
+<a href="{{ url('orders/create')  }}">Create</a>
+|
+<a href="{{ url('/')}}">Home</a>
 <br/>
-<br/>
-            <a href="{{ url('orders')  }}">List of Orders</a>
-            |
-            <a href="{{ url('orders/create')  }}">Create</a>
-            |
-            <a href="{{ url('/')}}">Home</a>
-<br/>
-<hr/>
-<br/>
-<h1>Add a New Order</h1>
-<br/>
+
 @if($errors->any())
 @foreach($errors ->all() as $error)
 <li>{{ $error }}</li>
@@ -24,28 +20,41 @@
 {!! Form:: open( ['url' => 'orders' ]) !!} 
 <div class="form-group">
     {!! Form::label('tbl_number', 'Table #: ') !!}
-    {!! Form::text('tbl_number', null, ['class'=>'form-control']) !!}        
+    {!! Form::selectRange('tbl_number',1,15) !!}        
 </div>
 
 <div class="form-group" >
     {!! Form::label('server', 'Server: ') !!}
     {!! Form::select('server', array('Jeesoo' => 'Jeesoo', 'Johnson'=>'Johnson', 'Phil'=>'Phil')) !!}        
 </div>
+
 <div class="form-group">
-    {!! Form::label('datetime', 'Ordered On: ') !!}
-    {!! Form::input('date','datetime',date('Y-m-d'), ['class'=>'form-control']) !!}
+    <select name="item[]" style="color:black;">
+        @foreach($items as $item)
+        <option value="">{{ $item->item_name }}  (${{ $item->item_price}})</option>
+        @endforeach
+    </select>  
+    <br/>
+    {!! Form::label('item', 'Item: ' ) !!}
+    {!! Form::text('item_name', null, ['class'=>'form-control']) !!}
 </div>
 
-{{--
-    <div>
-        {!! Form::label('item', 'Item: ' ) !!}
-        {!! Form::text('item_name', null, ['class'=>'form-control']) !!}
-    </div>
-    <div>
-        {!! Form::label('ordered_quantity', 'Quantity: ' ) !!}
-        {!! Form::text('ordered_quantity', null, ['class' => 'form-control']) !!}
-    </div>
-    --}}
+<div>
+    <select name="quantity[]" style="color:black;">
+        @for($i=1; $i<21;$i++)
+        <option value="{{$i}}">{{$i}}</option>
+        @endfor
+    </select>   
+    <br/>
+    {!! Form::label('ordered_quantity', 'Quantity: ' ) !!}
+    {!! Form::text('ordered_quantity', null, ['class' => 'form-control']) !!}
+</div>
+<!--div class="form-group">
+    {{--{!! Form::label('datetime', 'Ordered On: ') !!}
+    {!! Form::input('date','datetime',date('Y-m-d'), ['class'=>'form-control']) !!}--}}
+</div-->
+
+
 <!--
 <form action="">
 <div id="order" class="form-group order-select-container"> 

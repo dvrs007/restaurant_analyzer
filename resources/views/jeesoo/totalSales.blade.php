@@ -1,25 +1,17 @@
-
 @extends('layouts.master')
-{{--
+
 @section('title')
 Restaurant Analyzer
 @stop
 
 @section('maintitle')
-<h1>Trends Analysis of Sales in Total sales amount ($)</h1>
+<h1>Trends Analysis of Sales in Total sales amount ($)</h1><br/>
 @stop
-
 
 @section('content')
+<hr/>
+<h1>TOTAL SALES ($) over the years, months, .......</h1>
 
-<div id='stocks-div'></div>
-<?php //echo Lava::render('LineChart','Stocks','stocks-div'); ?>
 
-@linechart('Stocks','stocks-div')
+<hr/><br/>
 @stop
---}}
-
-<div id='stocks-div'></div>
-<?php echo Lava::render('LineChart','Stocks','stocks-div'); ?>
-
-@linechart('Stocks','stocks-div')
