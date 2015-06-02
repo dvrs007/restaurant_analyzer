@@ -13,39 +13,38 @@ class johnsonController extends Controller {
 	}
 
 	public function index()
-	{
-            
+	{  
         //get the tables, joined, all the orders, items, and item quantities
         $results = DB::table('orders')
                     ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
                     ->join('items', 'lineitems.item_id', '=', 'items.id')
                     ->groupBy('lineitems.order_id')
                     ->get();
-
         
-        //$item = item::all();
-        
-        //carbon for date
+        //get the count of current servers
+        $itemcount = DB::table('items')
+                    ->distinct()->count('item_name');
+            
+            //var_dump($itemcount);
 
         $sales = \Lava::DataTable();
+        
+        foreach($results as $value){
+        $sales->addStringColumn('Sales')
+            ->addNumberColumn('Percent')
+            ->addRow(array($value->item_name, $value->item_price-$value->item_cost));
+        }
+        
+        $piechart = \Lava::PieChart('TotalSales')
+                 ->setOptions(array(
+                   'datatable' => $sales,
+                   'title' => 'Total sales of each item',
+                   'is3D' => true
+                  ));
 
-            $sales->addStringColumn('Month')
-                    ->addNumberColumn('Item Name')
-                    ->addNumberColumn('Item Profit');
             
-            //echo $order;
-            
-            foreach($results as $value){
-                $sales->addRow(array($value->item_name, $value->item_price-$value->item_cost));
-            }
-            
-            $barchart = \Lava::BarChart('TotalSales')
-                  ->setOptions(array(
-                    'datatable' => $sales));
-
-            
-            return view('johnson.index')->with('order',$results);
-            return view('johnson.index')->with('barchart',$barchart);
+            return view('johnson.index')->with('order',$results)->with('itemcount', $itemcount);
+            return view('johnson.index')->with('piechart',$piechart);
             
 	}
     }

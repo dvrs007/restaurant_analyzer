@@ -16,8 +16,8 @@ Restaurant Analyzer
 @stop
 
 @section('content')
-    <p>This is a website built using Laravel, PHP, and Bootstrap. It's very basic right now and doesn't really do anything, but soon I will connect a database to it and it will be totally mind-boggling.</p>
-    
+    <h2>Data Analysis by Server</h2>
+    <h3>Currently, a total of servers have taken orders.</h3>
     <!--chart code -->
     <div id="myStocks"></div>
     
@@ -29,9 +29,15 @@ Restaurant Analyzer
     @foreach($results as $item)
 
 <h3>
-        
-        {{ $item->server }}
-        {{ $item->ordered_quantity }}
+    Order ID: {{ $item->order_id }}<br>
+    Subtotal: {{ $item->subtotal }}<br>
+    Table Number: {{ $item->tbl_number }}<br>
+    Server: {{ $item->server }}<br>
+    Items:
+    {{ $item->item_name }} 
+    <br>
+    
+    <br>
     
     </h3>
 
