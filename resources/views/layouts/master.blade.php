@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/angular.min.js')}}"></script>
@@ -48,10 +49,13 @@
 
                 <div id="main">
                     <div class="row">
-                        <div class="img-container">
-                            <img src="images/cafe_main_pic.jpg" alt="" >
-                        </div
-                    </div>
+                        <section class="hero">
+                            <section class="container">
+                                <h1>Order.Eat.Repeat.</h1>
+                                <p>Our Mobile Ordering Application for iOS, Android and tablet helps you and your consumers order in advance, pay in advance and build relationships.</p>
+                                <a href="">Make your order now!</a>
+                            </section>
+                        </section>
                     <div class="container-fluid">
                         <h2>@yield('maintitle')</h2>
                         @section('sidebar')
