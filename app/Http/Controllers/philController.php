@@ -39,25 +39,39 @@ class philController extends Controller {
             //get the tables, joined, all the orders, items, and item quantities
             $results = DB::table('orders')
             ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+            ->join('items', 'lineitems.item_id', '=', 'items.id')
+                    ->groupBy('lineitems.order_id')
             ->get();
             
-//            $items= item::all();
+            $serverresults = DB::table('orders')
+            ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+            ->join('items', 'lineitems.item_id', '=', 'items.id')
+            ->groupBy('lineitems.order_id')
+            ->get();
+            
+            $orders= order::all();
 //            //dd($items);
 //            //return "items";
+            
+            //get the count of current servers
+            $serverscount = DB::table('orders')
+                    ->distinct()->count('server');
+            
+            var_dump($serverscount);
             
             
             //set the data for the chart
             $stocksTable = \Lava::DataTable();
 
-            $stocksTable->addDateColumn('Day of Month')
-            ->addNumberColumn('Projected')
-            ->addNumberColumn('Official');
+            $stocksTable->addStringColumn('Server Name')
+            ->addNumberColumn('Subtotal');
+            //->addNumberColumn('Official');
 
             // Random Data For Example
-            for ($a = 1; $a < 30; $a++)
+            foreach($orders as $value)
             {
                 $rowData = array(
-                  "2014-8-$a", rand(800,1000), rand(800,1000)
+                  $value->server, $value->subtotal
                 );
 
                 $stocksTable->addRow($rowData);
@@ -76,6 +90,8 @@ class philController extends Controller {
                 // ));
             
             return view('phil.index')->with("results", $results);
+            return view('phil.index')->with("serverscount",$serverscount);
+            return view('phil.index')->with("itemsresults", $serverresults);
             return view('phil.index')->with("chart",$chart);
 	}
 
