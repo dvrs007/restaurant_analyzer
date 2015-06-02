@@ -14,9 +14,3 @@ Restaurant Analyzer
 
 @linechart('Stocks','stocks-div')
 @stop
-
-<div id='stocks-div'></div>
-<?php echo Lava::render('LineChart','Stocks','stocks-div'); ?>
-
-@linechart('Stocks','stocks-div')
-@stop

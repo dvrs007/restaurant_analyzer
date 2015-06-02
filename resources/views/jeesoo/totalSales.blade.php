@@ -14,12 +14,15 @@ Restaurant Analyzer
 <hr/><br/><h1>{{ $var  }}</h1>
 
 
- <div id="chart_div"></div>
+ <div id="colchart_div"></div>
 <?php
     //echo Lava::render('ColumnChart', 'TotalSales', 'chart_div');
-    //  ?>
-    
-    
-@columnchart('TotalSales','chart_div')
+    //  ?>   
+@columnchart('TotalSales','colchart_div')
    
+<br/>
+<div id='linechart-div'></div>
+<?php //echo Lava::render('LineChart','Stocks','stocks-div'); ?>
+
+@linechart('TotalSales','linechart-div')
 @stop

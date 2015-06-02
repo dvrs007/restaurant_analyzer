@@ -43,9 +43,9 @@ class jeesooController extends Controller {
 
         $sales = \Lava::DataTable();
 
-        
+
         $sales->addStringColumn('Date')
-                ->addNumberColumn('Sales Total($)');
+               ->addNumberColumn('Sales Total($)');
         //  ->setDateTimeFormat('Y-m-d');
         //echo $order;
 
@@ -54,16 +54,25 @@ class jeesooController extends Controller {
         }
 
         $columnchart = \Lava::ColumnChart('TotalSales')
-        ->setOptions(array(
-        'datatable' => $sales,
-        'title' => 'TOTAL SALES ($) over the years, months, .......'
+                ->setOptions(array(
+            'datatable' => $sales,
+            'title' => 'TOTAL SALES ($) over the years, months, .......'
         ));
-        
+
         $myVar = "HI..HELLO";
         echo $myVar;
-        
+
+        $lineChart = \Lava::LineChart('TotalSales')
+                ->dataTable($sales)
+                ->title('Stock Market Trends');
+
+
+
+
         return \View('jeesoo.totalSales')->with("var", $myVar)
-                                        ->with("order", $results);
+                        ->with("order", $results)
+                        ->with('lineChart', $lineChart);
+        
     }
 
     public function example() {
