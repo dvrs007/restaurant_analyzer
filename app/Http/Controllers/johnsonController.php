@@ -1,6 +1,9 @@
 <?php namespace App\Http\Controllers;
 
 use App\Order;
+use App\Item;
+use App\Lineitem;
+use DB;
 use Khill\Lavacharts\Lavacharts;
 
 class johnsonController extends Controller {
@@ -11,28 +14,29 @@ class johnsonController extends Controller {
 
 	public function index()
 	{
+            
+        //get the tables, joined, all the orders, items, and item quantities
+        $results = DB::table('orders')
+                    ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+                    ->join('items', 'lineitems.item_id', '=', 'items.id')
+                    ->groupBy('lineitems.order_id')
+                    ->get();
 
-
-//        order::all('items')
-//            ->join('lineitems', 'items.id', '=', 'lineitems.id')
-//            ->join('orders', 'items.id', '=', 'orders.id')
-//            ->select('items.id', 'lineitems.ordered_quantity', 'orders.total')
-//            ->get();
         
-        $order = order::all();
+        //$item = item::all();
         
         //carbon for date
 
         $sales = \Lava::DataTable();
 
-            $sales->addStringColumn('Item Name')
-                ->addNumberColumn('Item Price')
-                ->addNumberColumn('Item Cost');
+            $sales->addStringColumn('Month')
+                    ->addNumberColumn('Item Name')
+                    ->addNumberColumn('Item Profit');
             
             //echo $order;
             
-            foreach($order as $value){
-                $sales->addRow(array($value->item_name, $value->item_price, $value->item_cost));
+            foreach($results as $value){
+                $sales->addRow(array($value->item_name, $value->item_price-$value->item_cost));
             }
             
             $barchart = \Lava::BarChart('TotalSales')
@@ -40,7 +44,7 @@ class johnsonController extends Controller {
                     'datatable' => $sales));
 
             
-            return view('johnson.index')->with('order',$order);
+            return view('johnson.index')->with('order',$results);
             return view('johnson.index')->with('barchart',$barchart);
             
 	}
