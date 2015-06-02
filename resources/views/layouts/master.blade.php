@@ -49,7 +49,7 @@
                 <div id="main">
                     <div class="row">
                         <div class="img-container">
-                            <img src="images/cafe_main_pic.jpg" alt="" />
+                            <img src="images/cafe_main_pic.jpg" alt="" >
                         </div
                     </div>
                     <div class="container-fluid">

@@ -20,13 +20,13 @@ class OrderController extends Controller {
 
 
     public function index() {
-        $items = Order::all();
+        $orders = Order::all();
         //dd($items);
         //return "items";
 
-        return view('orders.index')->with("items", $items);
+        return view('orders.index')->with("orders", $orders);
     }
-
+/*
     public function show($id) {
         //get a single detail
         $recipe = Recipe::find($id); //helper method to find recipe with id
@@ -34,18 +34,17 @@ class OrderController extends Controller {
 
         return view('recipes.show')->with('recipe', $recipe);
     }
-
+*/
     public function create() {
-        return view('recipes.create');
+        return view('orders.create');
     }
 
     public function store(Request $request) {
         $this->validate($request, [
-            'dish_name' => 'required|min:10',
-            'dish_ingredients' => 'required',
-            'dish_steps' => 'required'
-                //'dish_steps' => 'required|Integer'                    
-                ]
+            'tbl_number' => 'required|Integer',
+            'server' => 'required',
+            'datetime' => 'required'
+            ]
         );
 
         //insert a data into database
@@ -54,7 +53,7 @@ class OrderController extends Controller {
         //$inputs = Request::all();
         //STEP1: Fetch the inputs(fetch all of the input from create)
         $inputs = $request->all(); //added after validation added
-        //STEP2: Create a recipe and saved it into db
+        //STEP2: Create an order and saved it into db
         //method1       
 //        $cd = new Cd;
 //        $cd ->titel = $inputs['titel'];
@@ -63,14 +62,14 @@ class OrderController extends Controller {
 //        
 //        $cd->save();
         //method2
-        Recipe::create($inputs);
+        Order::create($inputs);
 
         //return "recipe inserted";
         //return $inputs;
         //STEP3: Redierect
-        return Redirect('recipes');
+        return Redirect('orders');
     }
-
+/*
     //update
 
     public function edit($id) {
@@ -80,6 +79,7 @@ class OrderController extends Controller {
         return view('recipes.edit')->with('recipe', $recipe);
     }
 
+    
     public function update(Request $request) {
         //this is for update 
         //get a single detail
@@ -117,7 +117,7 @@ class OrderController extends Controller {
         Recipe::where('dish_id', $request['dish_id'])->delete();
         return Redirect('recipes');
     }
-
+*/
 }
 
 //end of class

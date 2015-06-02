@@ -36,7 +36,19 @@ Route::get('phil', 'philController@index');
  *************************************************************************/
 
 Route::get('orders', 'OrderController@index');
+
+//CREATE(INSERT)://capture post request from OrderController
+Route::get('orders/create', 'OrderController@create');
+
+//STORE
+Route::post('orders','OrderController@store');
+
+
+
+//Analysis
+
 Route::get('jeesoo', 'jeesooController@index');
+Route::get('jeesoo/analysis', 'jeesooController@totalSales');
 
 /**************************************************************************
  END JS'S ROUTES

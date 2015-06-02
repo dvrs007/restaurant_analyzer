@@ -13,6 +13,8 @@ Restaurant Analyzer
 @stop
 
 @section('content')
+
+
 @foreach($orders as $order)
 
 <h3>{{ $order->id }} | $ {{ $order->total }} | {{ $order -> date}} | {{$order ->time }} </h3>
@@ -20,4 +22,6 @@ Restaurant Analyzer
     <br>
 
 @endforeach
+
+
 @stop
