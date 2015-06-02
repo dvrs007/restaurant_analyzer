@@ -23,16 +23,15 @@ Restaurant Analyzer
     
     <?php 
     // Example #1, output into a div you already created
-    echo Lava::render('LineChart', 'myFancyChart', 'myStocks'); 
+    echo Lava::render('BarChart', 'myFancyChart', 'myStocks'); 
     ?>
     
-    @foreach($items as $item)
+    @foreach($results as $item)
 
 <h3>
         
-        
-        
-        {{ $item->item_name }}
+        {{ $item->server }}
+        {{ $item->ordered_quantity }}
     
     </h3>
 

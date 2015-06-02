@@ -2,6 +2,7 @@
 
 use App\item;
 use App\Order;
+use DB;
 use Illuminate\Http\Request;
 use Khill\Lavacharts\Lavacharts;
 
@@ -33,11 +34,16 @@ class philController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index()              
 	{
-            $items= item::all();
-            //dd($items);
-            //return "items";
+            //get the tables, joined, all the orders, items, and item quantities
+            $results = DB::table('orders')
+            ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+            ->get();
+            
+//            $items= item::all();
+//            //dd($items);
+//            //return "items";
             
             
             //set the data for the chart
@@ -57,8 +63,10 @@ class philController extends Controller {
                 $stocksTable->addRow($rowData);
             }
             
+            
+            
             //decide on the chart type to use
-            $chart = \Lava::LineChart('myFancyChart');
+            $chart = \Lava::BarChart('myFancyChart');
 
                 $chart->datatable($stocksTable);
 
@@ -67,7 +75,7 @@ class philController extends Controller {
                 //   'datatable' => $stocksTable
                 // ));
             
-            return view('phil.index')->with("items", $items);
+            return view('phil.index')->with("results", $results);
             return view('phil.index')->with("chart",$chart);
 	}
 
