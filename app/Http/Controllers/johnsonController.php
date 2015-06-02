@@ -21,11 +21,12 @@ class johnsonController extends Controller {
                     ->join('items', 'lineitems.item_id', '=', 'items.id')
                     ->groupBy('lineitems.order_id')
                     ->get();
-
         
-        //$item = item::all();
-        
-        //carbon for date
+        //get the count of current servers
+            $itemcount = DB::table('orders')
+                    ->distinct()->count('server');
+            
+            //var_dump($itemcount);
 
         $sales = \Lava::DataTable();
 
@@ -36,7 +37,7 @@ class johnsonController extends Controller {
             //echo $order;
             
             foreach($results as $value){
-                $sales->addRow(array($value->item_name, $value->item_price-$value->item_cost));
+                $sales->addRow(array($value->date, $value->item_name, $value->item_price-$value->item_cost));
             }
             
             $barchart = \Lava::BarChart('TotalSales')
@@ -44,7 +45,7 @@ class johnsonController extends Controller {
                     'datatable' => $sales));
 
             
-            return view('johnson.index')->with('order',$results);
+            return view('johnson.index')->with('order',$results)->with('itemcount', $itemcount);
             return view('johnson.index')->with('barchart',$barchart);
             
 	}

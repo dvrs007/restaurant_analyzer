@@ -10,20 +10,23 @@ Sales Chart
 @stop
 
 @section('sidebar')
-    
 
-    <h1>Statistics on the sales of each item</h1>
+@stop
     
+@section('content')
+    <h1>Statistics on the sales of {{ $itemcount }} items</h1>
+    <div id='sales_div'></div>
     
     <?php 
     
     echo Lava::render('BarChart', 'TotalSales', 'sales_div', array('height'=>700, 'width'=>1000))  ?>
     
-    <select name="item[]" style="color:black;">
         @foreach($order as $item)
-        <option value="">{{ $item->server }} {{ $item->ordered_quantity }} {{ $item->item_price - $item->item_cost }}</option>
+        <h3>Item Name: {{ $item->item_name }}<br />
+            Item Price: {{ $item->item_price }}<br />
+            Item Cost: {{ $item->item_cost }}<br />
+            Profit: {{ $item->item_price - $item->item_cost }}</h3>
         @endforeach
-    </select> 
             
     
 @stop
