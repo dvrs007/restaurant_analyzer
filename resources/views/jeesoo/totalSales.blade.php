@@ -11,7 +11,15 @@ Restaurant Analyzer
 @section('content')
 <hr/>
 <h1>TOTAL SALES ($) over the years, months, .......</h1>
+<hr/><br/><h1>{{ $var  }}</h1>
 
 
-<hr/><br/>
+ <div id="chart_div"></div>
+<?php
+    //echo Lava::render('ColumnChart', 'TotalSales', 'chart_div');
+    //  ?>
+    
+    
+@columnchart('TotalSales','chart_div')
+   
 @stop
