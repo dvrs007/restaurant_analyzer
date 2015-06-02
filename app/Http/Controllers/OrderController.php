@@ -56,27 +56,32 @@ class OrderController extends Controller {
         $inputs = $request->all(); //added after validation added
         //STEP2: Create an order and saved it into db
         //method1       
-        $order = new Order;
-        $order->tbl_nummber = $inputs['tbl_number'];
-        $order->server = $inputs['server'];  
-        
-        
-        $lineitems =new Lineitem;
-        $lineitmes->order_id=$inputs['order_id'];
-        $lineitems->item_id=$inputs['item_id'];
-        $lineitems->ordered_quantity=$inputs['ordered_quantity'];
-        
-        $order->subtotal=$item->item_price * $lineitems->ordered_quantity;
-        $order->save();
-        $lineitems->save();
+        //$order = new Order;
+        //$order->tbl_nummber = $inputs['tbl_number'];
+        //$order->server = $inputs['server'];   
+       
         //method2
-        //Order::create($inputs);
+        Order::create($inputs);
         
 
         //return "recipe inserted";
         //return $inputs;
         //STEP3: Redierect
+        return Redirect('orders/choose');
+    }
+    
+    
+    public function choose(){
+        $items = Item::all();        
+        
+        return view('orders.choose')->with("items", $items);
+    }
+    
+    public function itemStore(){
+        $inputs = Request::all();
+        Lineitem::create($inputs);
         return Redirect('orders');
+        
     }
 /*
     //update

@@ -39,9 +39,11 @@ Route::get('orders', 'OrderController@index');
 
 //CREATE(INSERT)://capture post request from OrderController
 Route::get('orders/create', 'OrderController@create');
-
 //STORE
-Route::post('orders','OrderController@store');
+Route::post('orders/choose','OrderController@store');
+
+Route::get('orders/choose','OrderController@choose');
+Route::post('orders','OrderController@itemStore');
 
 
 //Analysis
