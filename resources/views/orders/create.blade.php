@@ -29,10 +29,10 @@
 </div>
 
 
-<!--div class="form-group">
-    {{--{!! Form::label('datetime', 'Ordered On: ') !!}
-    {!! Form::input('date','datetime',date('Y-m-d'), ['class'=>'form-control']) !!}--}}
-</div-->
+<div class="form-group">
+    {!! Form::label('datetime', 'Ordered On: ') !!}
+    {!! Form::input('date','datetime',date('Y-m-d'), ['class'=>'form-control']) !!}
+</div>
 
 <br/>
 <div class="form-group">    
