@@ -21,7 +21,7 @@ Sales Chart
     
     <select name="item[]" style="color:black;">
         @foreach($order as $item)
-        <option value="">{{ $item->item_name }}</option>
+        <option value="">{{ $item->server }} {{ $item->ordered_quantity }} {{ $item->item_price - $item->item_cost }}</option>
         @endforeach
     </select> 
             
