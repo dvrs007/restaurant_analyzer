@@ -32,7 +32,10 @@ class jeesooController extends Controller{
     }
     
     public function totalSales(){
-        return view('jeesoo.totalSales');
+        $orders = Order::all();
+        
+        
+        return view('jeesoo.totalSales')->with("orders", $orders);
         
     }
     public function example (){
