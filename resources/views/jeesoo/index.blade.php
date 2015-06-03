@@ -15,7 +15,7 @@ Restaurant Analyzer
 <hr/>
 @foreach($orders as $order)
 
-<h3>{{ $order->id }} | $ {{ $order->total }} | {{ $order -> date}} | {{$order ->time }} </h3>
+<h3>{{ $order->id }} | $ {{ $order->total }} | {{ $order -> order_date}} | {{$order ->order_time }} </h3>
 
     <br>
 

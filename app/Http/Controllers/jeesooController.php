@@ -44,15 +44,17 @@ class jeesooController extends Controller {
         $sales = \Lava::DataTable();
 
 
-        $sales->addStringColumn('Date')
+        $sales->addStringColumn('Year')
                ->addNumberColumn('Sales Total($)');
         //  ->setDateTimeFormat('Y-m-d');
         //echo $order;
 
         foreach ($results as $value) {
+            //$sales->addRow(array($value->order_date, $value->total));
             $sales->addRow(array($value->order_date, $value->total));
         }
-
+        // Try later:  echo date('Y',$value->order_date)."/".date('m', $value->order_date) ."/".date('d', $value->order_date)
+        
         $columnchart = \Lava::ColumnChart('TotalSales')
                 ->setOptions(array(
             'datatable' => $sales,
