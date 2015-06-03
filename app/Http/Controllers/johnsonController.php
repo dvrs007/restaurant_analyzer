@@ -13,38 +13,50 @@ class johnsonController extends Controller {
 	}
 
 	public function index()
-	{  
+	{
+            
         //get the tables, joined, all the orders, items, and item quantities
-        $results = DB::table('orders')
-                    ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
-                    ->join('items', 'lineitems.item_id', '=', 'items.id')
+            $results = DB::table('orders')
+            ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+            ->join('items', 'lineitems.item_id', '=', 'items.id')
                     ->groupBy('lineitems.order_id')
-                    ->get();
+            ->get();
         
         //get the count of current servers
-        $itemcount = DB::table('items')
+            $itemcount = DB::table('items')
                     ->distinct()->count('item_name');
             
             //var_dump($itemcount);
+            
+            $orders= order::all();
 
-        $sales = \Lava::DataTable();
-        
-        foreach($results as $value){
-        $sales->addStringColumn('Sales')
-            ->addNumberColumn('Percent')
-            ->addRow(array($value->item_name, $value->item_price-$value->item_cost));
-        }
-        
-        $piechart = \Lava::PieChart('TotalSales')
-                 ->setOptions(array(
-                   'datatable' => $sales,
-                   'title' => 'Total sales of each item',
-                   'is3D' => true
-                  ));
+        //set the data for the chart
+            $sales = \Lava::DataTable();
+
+            $sales->addStringColumn('Server Name')
+            ->addNumberColumn('Subtotal');
+            //->addNumberColumn('Official');
+
+            // Random Data For Example
+            foreach($orders as $value)
+            {
+                $rowData = array(
+                  $value->item_name, $value->ordered_quantity
+                );
+
+                $sales->addRow($rowData);
+            }
+            
+            
+            
+            //decide on the chart type to use
+            $barchart = \Lava::BarChart('MostOrdered');
+
+                $barchart->datatable($sales);
 
             
-            return view('johnson.index')->with('order',$results)->with('itemcount', $itemcount);
-            return view('johnson.index')->with('piechart',$piechart);
+            return view('johnson.index')->with('results',$results)->with('itemcount', $itemcount);
+            return view('johnson.index')->with('barchart',$barchart);
             
 	}
     }

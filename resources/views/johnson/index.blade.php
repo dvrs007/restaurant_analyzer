@@ -15,13 +15,13 @@ Sales Chart
     
 @section('content')
     <h1>Statistics on the sales of {{ $itemcount }} items</h1>
-    <div id="chart-div"></div>
+    <div id='sales_div'></div>
     
     <?php 
     
-    echo Lava::render('PieChart', 'TotalSales', 'chart-div')  ?>
+    echo Lava::render('BarChart', 'MostOrdered', 'sales_div', array('height'=>700, 'width'=>1000))  ?>
     
-        @foreach($order as $item)
+        @foreach($results as $item)
         <h3>Item Name: {{ $item->item_name }}<br />
             Item Price: {{ $item->item_price }}<br />
             Item Cost: {{ $item->item_cost }}<br />
