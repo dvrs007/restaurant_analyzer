@@ -11,7 +11,7 @@ Restaurant Analyzer
 @section('content')
 <hr/>
 <h1>TOTAL SALES ($) over the years, months, .......</h1>
-<hr/><br/><h1>{{ $var  }}</h1>
+<hr/>
 
 
  <div id="colchart_div"></div>

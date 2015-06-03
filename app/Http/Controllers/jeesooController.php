@@ -50,7 +50,7 @@ class jeesooController extends Controller {
         //echo $order;
 
         foreach ($results as $value) {
-            $sales->addRow(array($value->date, $value->total));
+            $sales->addRow(array($value->order_date, $value->total));
         }
 
         $columnchart = \Lava::ColumnChart('TotalSales')
@@ -59,20 +59,18 @@ class jeesooController extends Controller {
             'title' => 'TOTAL SALES ($) over the years, months, .......'
         ));
 
-        $myVar = "HI..HELLO";
-        echo $myVar;
+        //$myVar = "HI..HELLO";
+        //echo $myVar;
 
         $lineChart = \Lava::LineChart('TotalSales')
                 ->dataTable($sales)
                 ->title('Stock Market Trends');
 
-
-
-
-        return \View('jeesoo.totalSales')->with("var", $myVar)
-                        ->with("order", $results)
-                        ->with('lineChart', $lineChart);
-        
+        //return \View('jeesoo.totalSales')->with("var", $myVar)
+        return \View('jeesoo.totalSales') ->with("order", $results)
+                        ->with('lineChart', $lineChart)
+            ->with('columnchart',$columnchart);
+                        
     }
 
     public function example() {

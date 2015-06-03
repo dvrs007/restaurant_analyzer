@@ -12,9 +12,9 @@ class order extends Model {
     //order objects bind to this table
     //protected $primaryKey= "id";//customize the default setting of the primary key 
     public $timestamps = false; //from method 1 in the cdcontroller
-    protected $created_at = 'datetime';
-    protected $updated_at= 'datetime';
-    protected $fillable = ['tbl_number', 'server'];
+    protected $created_at = 'time_stamp';
+    protected $updated_at= 'time_stamp';
+    protected $fillable = ['tbl_number', 'server','order_date','order_time'];
 
     //from method2 in the recipecontroller
     //modify the default setting in the model.php 
