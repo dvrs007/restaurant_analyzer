@@ -17,7 +17,7 @@ Restaurant Analyzer
 
 @section('content')
     <h2>Data Analysis by Server</h2>
-    <h3>Currently, a total of servers have taken orders.</h3>
+    <h3>Currently, a total {{ $serverscount}} of servers have taken orders.</h3>
     <!--chart code -->
     <div id="myStocks"></div>
     
