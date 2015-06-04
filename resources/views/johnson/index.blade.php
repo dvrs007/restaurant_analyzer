@@ -14,12 +14,17 @@ Sales Chart
 @stop
     
 @section('content')
-    <h1>Statistics on the sales of {{ $itemcount }} items</h1>
+    <ul>
+        <li>Statistics on the sales of {{ $itemcount }} items</li>
+        <li>Total items ordered: {{ $itemOrders }}</li>
+        <li>Total made: ${{ $totalGen }}</li>
+    </ul>
+
     <div id='sales_div'></div>
     
     <?php 
     
-    echo Lava::render('BarChart', 'MostOrdered', 'sales_div', array('height'=>700, 'width'=>1000))  ?>
+    echo Lava::render('BarChart', 'MostOrdered', 'sales_div')  ?>
     
         @foreach($results as $item)
         <h3>Item Name: {{ $item->item_name }}<br />

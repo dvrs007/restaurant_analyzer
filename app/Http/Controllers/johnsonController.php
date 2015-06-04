@@ -19,35 +19,39 @@ class johnsonController extends Controller {
             $results = DB::table('orders')
             ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
             ->join('items', 'lineitems.item_id', '=', 'items.id')
-                    ->groupBy('lineitems.order_id')
-            ->get();
+            ->groupBy('lineitems.order_id')
+            ->distinct('items.item_name')->get();
         
         //get the count of current servers
             $itemcount = DB::table('items')
-                    ->distinct()->count('item_name');
-            
+                    ->distinct()
+                    ->count('item_name');
+        //get the count of total items ordered
+            $itemOrders = DB::table('lineitems')
+                    ->distinct()
+                    ->sum('lineitems.ordered_quantity');
+        //get the total $ generated
+            $totalGen = DB::table('orders')
+                    ->distinct()
+                    ->sum('orders.total');
             //var_dump($itemcount);
-            
-            $orders= order::all();
+            //$item= item::all();
 
         //set the data for the chart
             $sales = \Lava::DataTable();
 
-            $sales->addStringColumn('Server Name')
-            ->addNumberColumn('Subtotal');
+            $sales->addStringColumn('Item Name')
+            ->addNumberColumn('Ordered Quantity');
             //->addNumberColumn('Official');
 
-            // Random Data For Example
-            foreach($orders as $value)
+            
+            foreach($results as $value)
             {
                 $rowData = array(
                   $value->item_name, $value->ordered_quantity
                 );
-
                 $sales->addRow($rowData);
             }
-            
-            
             
             //decide on the chart type to use
             $barchart = \Lava::BarChart('MostOrdered');
@@ -55,8 +59,12 @@ class johnsonController extends Controller {
                 $barchart->datatable($sales);
 
             
-            return view('johnson.index')->with('results',$results)->with('itemcount', $itemcount);
-            return view('johnson.index')->with('barchart',$barchart);
+            return view('johnson.index')
+                    ->with('results',$results)
+                    ->with('itemcount', $itemcount)
+                    ->with('itemOrders', $itemOrders)
+                    ->with('totalGen', $totalGen)
+                    ->with('barchart',$barchart);
             
 	}
     }
