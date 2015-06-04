@@ -20,11 +20,8 @@ Sales Chart
         <li>Total made: ${{ $totalGen }}</li>
     </ul>
 
-    <div id='sales_div'></div>
-    
-    <?php 
-    
-    echo Lava::render('BarChart', 'MostOrdered', 'sales_div')  ?>
+    <div id="temps_div"></div>
+<?php echo Lava::render('LineChart', 'Temps', 'temps_div') ?>
     
         @foreach($results as $item)
         <h3>Item Name: {{ $item->item_name }}<br />

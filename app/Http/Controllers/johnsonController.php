@@ -21,6 +21,13 @@ class johnsonController extends Controller {
             ->join('items', 'lineitems.item_id', '=', 'items.id')
             ->groupBy('lineitems.order_id')
             ->distinct('items.item_name')->get();
+            
+        //query with raw mysql
+            $itemz = DB::select( DB::raw("SELECT DISTINCT item_name, SUM( ordered_quantity ) AS orderedQuantity, (item_price-item_cost)*SUM(ordered_quantity) as net_revenue
+                FROM items
+                INNER JOIN lineitems ON items.id = lineitems.item_id
+                INNER JOIN orders ON lineitems.order_id = orders.id
+                GROUP BY item_name") );
         
         //get the count of current servers
             $itemcount = DB::table('items')
@@ -37,26 +44,38 @@ class johnsonController extends Controller {
             //var_dump($itemcount);
             //$item= item::all();
 
-        //set the data for the chart
+        //set the data for the piechart
             $sales = \Lava::DataTable();
 
-            $sales->addStringColumn('Item Name')
-            ->addNumberColumn('Ordered Quantity');
-            //->addNumberColumn('Official');
-
-            
-            foreach($results as $value)
+            foreach($itemz as $value)
             {
-                $rowData = array(
-                  $value->item_name, $value->ordered_quantity
-                );
-                $sales->addRow($rowData);
+            $sales->addDateColumn('Date')
+             ->addNumberColumn('Max Temp')
+             ->addNumberColumn('Mean Temp')
+             ->addNumberColumn('Min Temp')
+             ->addRow(array('2014-10-1', 67, 65, 62))
+             ->addRow(array('2014-10-2', 68, 65, 61))
+             ->addRow(array('2014-10-3', 68, 62, 55))
+             ->addRow(array('2014-10-4', 72, 62, 52))
+             ->addRow(array('2014-10-5', 61, 54, 47))
+             ->addRow(array('2014-10-6', 70, 58, 45))
+             ->addRow(array('2014-10-7', 74, 70, 65))
+             ->addRow(array('2014-10-8', 75, 69, 62))
+             ->addRow(array('2014-10-9', 69, 63, 56))
+             ->addRow(array('2014-10-10', 64, 58, 52))
+             ->addRow(array('2014-10-11', 59, 55, 50))
+             ->addRow(array('2014-10-12', 65, 56, 46))
+             ->addRow(array('2014-10-13', 66, 56, 46))
+             ->addRow(array('2014-10-14', 75, 70, 64))
+             ->addRow(array('2014-10-15', 76, 72, 68))
+             ->addRow(array('2014-10-16', 71, 66, 60))
+             ->addRow(array('2014-10-17', 72, 66, 60))
+             ->addRow(array('2014-10-18', 63, 62, 62));
             }
-            
-            //decide on the chart type to use
-            $barchart = \Lava::BarChart('MostOrdered');
 
-                $barchart->datatable($sales);
+            $linechart = \Lava::LineChart('Temps')
+                  ->dataTable($sales)
+                  ->title('Weather in October');
 
             
             return view('johnson.index')
@@ -64,7 +83,7 @@ class johnsonController extends Controller {
                     ->with('itemcount', $itemcount)
                     ->with('itemOrders', $itemOrders)
                     ->with('totalGen', $totalGen)
-                    ->with('barchart',$barchart);
+                    ->with('linechart',$linechart);
             
 	}
     }
