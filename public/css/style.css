@@ -79,9 +79,9 @@ html, body {
 .navbar{
     border: none;
     margin:0;
-    -webkit-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
+    /*-webkit-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
-    box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);*/
     background: #ff3019; /* Old browsers */
     background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404)); /* Chrome,Safari4+ */
@@ -97,7 +97,7 @@ html, body {
 }
 
 .navbar-default .navbar-brand {
-    text-shadow: -1px 2px 2px rgba(0, 0, 0, 1);
+    /*text-shadow: -1px 2px 2px rgba(0, 0, 0, 1);*/
     color: #FFFBD3;
     font-size: 1.75em;
 }
@@ -240,6 +240,25 @@ img{
 .blue{
     color:blue;
 }
+
+
+/*--------------- GRAPH TITLE STYLING ------------------*/
+
+.main-graph-title{
+    border-bottom:1px solid #333;
+    width:100%;
+    margin: 10px 0;
+    padding: 5px 0;
+}
+
+.graph-title{
+    text-align:center;
+    width:100%;
+}
+
+
+
+/*--------------- MEDIA QUERIES ------------------*/
 
 @media screen and (max-width: 768px) {
     
