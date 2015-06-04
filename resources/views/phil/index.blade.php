@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Restaurant Analyzer
+Server Analysis
 @stop
 
 @section('maintitle')
@@ -11,13 +11,16 @@ Restaurant Analyzer
 
 @section('sidebar')
     
-
-    <p>Welcome to the About Page</p>
 @stop
 
 @section('content')
+<div class="main-graph-title">
     <h2>Data Analysis by Server</h2>
-    <h3>Currently, a total <span class="blue">{{ $serverscount}}</span> of servers have taken orders.</h3>
+</div>
+    <div class="graph-title">
+        <h3>Sales Performance by Server</h3>
+    </div>
+
     <!--chart code -->
     <div id="myStocks"></div>
     
@@ -26,7 +29,25 @@ Restaurant Analyzer
     echo Lava::render('BarChart', 'myFancyChart', 'myStocks'); 
     ?>
     
-    @foreach($results as $item)
+    <div class="graph-title">
+        <h3>Currently, a total <span class="blue">{{ $serverscount}}</span> of servers have taken orders.</h3>
+    </div>
+    
+    <div class="main-graph-title">
+    <h2>Data Analysis by Table</h2>
+</div>
+    <div class="graph-title">
+        <h3>Sales Performance by Table</h3>
+    </div>
+
+    <!--chart code -->
+    <div id="tablezChart"></div>
+    
+    <?php 
+    // Example #1, output into a div you already created
+    echo Lava::render('PieChart', 'tablesPieChart', 'tablezChart'); 
+    ?>
+<!--    @foreach($results as $item)
 
 <h3>
     Order ID: {{ $item->order_id }}<br>
@@ -43,6 +64,6 @@ Restaurant Analyzer
 
     <br>
 
-@endforeach
+@endforeach-->
 
 @stop

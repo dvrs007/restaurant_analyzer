@@ -42,74 +42,97 @@ class philController extends Controller {
             ->join('items', 'lineitems.item_id', '=', 'items.id')
                     ->groupBy('lineitems.order_id')
             ->get();
-            
-            $serverresults = DB::table('orders')
-            ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
-            ->join('items', 'lineitems.item_id', '=', 'items.id')
-            ->groupBy('lineitems.order_id')
-            ->get();
-            
-            $orders= order::all();
-            
+           
+            //-------------------------------------------------------------------------------------
+            ////-------------------------------------------------------------------------------------
+            //************************GET TOTAL COUNT OF ALL SERVERS**************************************//
+            //
             //get the count of current servers
             $serverscount = DB::table('orders')
                     ->distinct()->count('server');  
             
-            //get all the current servers to be graphed on the x-axis
-            //raw MySQL query needed to get the correct data: 
-            //SELECT DISTINCT server, SUM( subtotal )
-            //FROM orders
-            //GROUP BY server
-            
-            //query with raw mysql
+            //************************END TOTAL COUNT OF ALL SERVERS**************************************//
+            //-------------------------------------------------------------------------------------
+            ////-------------------------------------------------------------------------------------
+            //************************ANALYZE SERVER SALES**************************************//
+            //
+            //query with raw mysql to get all servers and their total sales
             $serverz = DB::select( DB::raw("SELECT DISTINCT server, SUM(subtotal) as subtotal FROM orders GROUP BY server") );
-            
-//            $serverz = DB::table('orders')
-//                    ->distinct()
-//                    ->select('server', 'subtotal')
-//                    ->groupBy('server')
-//                    ->get();
-            
-            //print_r($serverz);
-            
-            //set the data for the chart
+            //set the data columns for the chart
             $stocksTable = \Lava::DataTable();
-
             $stocksTable->addStringColumn('Server Name')
-            ->addNumberColumn('Subtotal');
+            ->addNumberColumn('Pre-tax Sales');
             
+            //get the data from the SQL statment and bind it to a variable
             foreach($serverz as $s){
                 //var_dump($s->subtotal);
                 $rowData = array($s->server, $s->subtotal);
                 $stocksTable->addRow($rowData);
             }
 
-//            foreach($orders as $value)
-//            {
-//                $rowData = array(
-//                  $value->server, $value->subtotal
-//                );
-//
-//                $stocksTable->addRow($rowData);
-//            }
-
-            //decide on the chart type to use
+            //decide on the chart type to use, name the chart
             $chart = \Lava::BarChart('myFancyChart');
 
-                $chart->datatable($stocksTable);
+            //bind the data to the chart itself
+            $chart->datatable($stocksTable);
 
-                // You could also pass an associative array to setOptions() method
-                // $chart->setOptions(array(
-                //   'datatable' => $stocksTable
-                // ));
+            //************************END ANALYZE SERVER SALES****************************************//
+            //-------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------
+            
+            //************************ANALYZE TABLE PERFORMANCE**************************************//
+            
+            //query with raw mysql to get all servers and their total sales
+            $tablez = DB::select( DB::raw("SELECT DISTINCT tbl_number, SUM(subtotal) as subtotal FROM orders GROUP BY tbl_number") );
+//            //set the data columns for the chart
+//            $tablezTable = \Lava::DataTable();
+//            $tablezTable->addStringColumn('Table Number')
+//            ->addNumberColumn('Pre-tax Sales');
+//            
+//            //get the data from the SQL statment and bind it to a variable
+//            foreach($tablez as $t){
+//                //var_dump($s->subtotal);
+//                $rowData = array($t->tbl_number, $t->subtotal);
+//                $tablezTable->addRow($rowData);
+//            }
+//
+//            //decide on the chart type to use, name the chart
+//            $tablezchart = \Lava::LineChart('tablesPieChart');
+//
+//            //bind the data to the chart itself
+//            $tablezchart->datatable($tablezTable);
+            
+            $tablezTable = \Lava::DataTable();
+            $tablezTable->addStringColumn('Table Number')
+        ->addNumberColumn('Percent');
+        foreach($tablez as $t){
+                $convert = floatval($t->subtotal);
+                //var_dump($t->subtotal);
+                //var_dump($convert);
+                
+                $rowData = array($t->tbl_number, $convert);
+                $tablezTable->addRow($rowData);
+            }
+
+        $tablezchart = \Lava::PieChart('tablesPieChart');
+        $tablezchart->datatable($tablezTable);
+            
+            ////************************END TABLE PERFORMANCE***************************************//
+            //-------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------
+
+            
+            //************************SEND DATA TO THE VIEW*****************************************//
             
             return view('phil.index')
                     ->with("results", $results)
                     ->with("serverscount", $serverscount)
                     ->with("serverz",$serverz)
-                    ->with("itemsresults", $serverresults)
-                    ->with("chart",$chart);
+                    ->with("chart",$chart)
+                    ->with("tablez",$tablezchart);
             
+            //************************END SEND DATA TO THE VIEW********************//
+            //-------------------------------------------------------------------------------------
             
 	}
 
