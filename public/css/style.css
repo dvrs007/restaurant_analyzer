@@ -234,6 +234,10 @@ img{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
 }
 
+.blue{
+    color:blue;
+}
+
 @media screen and (max-width: 768px) {
     
     .hero .container p {

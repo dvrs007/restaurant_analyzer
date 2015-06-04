@@ -50,35 +50,49 @@ class philController extends Controller {
             ->get();
             
             $orders= order::all();
-//            //dd($items);
-//            //return "items";
             
             //get the count of current servers
             $serverscount = DB::table('orders')
-                    ->distinct()->count('server');
+                    ->distinct()->count('server');  
             
-            var_dump($serverscount);
+            //get all the current servers to be graphed on the x-axis
+            //raw MySQL query needed to get the correct data: 
+            //SELECT DISTINCT server, SUM( subtotal )
+            //FROM orders
+            //GROUP BY server
             
+            //query with raw mysql
+            $serverz = DB::select( DB::raw("SELECT DISTINCT server, SUM(subtotal) as subtotal FROM orders GROUP BY server") );
+            
+//            $serverz = DB::table('orders')
+//                    ->distinct()
+//                    ->select('server', 'subtotal')
+//                    ->groupBy('server')
+//                    ->get();
+            
+            //print_r($serverz);
             
             //set the data for the chart
             $stocksTable = \Lava::DataTable();
 
             $stocksTable->addStringColumn('Server Name')
             ->addNumberColumn('Subtotal');
-            //->addNumberColumn('Official');
-
-            // Random Data For Example
-            foreach($orders as $value)
-            {
-                $rowData = array(
-                  $value->server, $value->subtotal
-                );
-
+            
+            foreach($serverz as $s){
+                //var_dump($s->subtotal);
+                $rowData = array($s->server, $s->subtotal);
                 $stocksTable->addRow($rowData);
             }
-            
-            
-            
+
+//            foreach($orders as $value)
+//            {
+//                $rowData = array(
+//                  $value->server, $value->subtotal
+//                );
+//
+//                $stocksTable->addRow($rowData);
+//            }
+
             //decide on the chart type to use
             $chart = \Lava::BarChart('myFancyChart');
 
@@ -89,10 +103,14 @@ class philController extends Controller {
                 //   'datatable' => $stocksTable
                 // ));
             
-            return view('phil.index')->with("results", $results);
-            return view('phil.index')->with("serverscount",$serverscount);
-            return view('phil.index')->with("itemsresults", $serverresults);
-            return view('phil.index')->with("chart",$chart);
+            return view('phil.index')
+                    ->with("results", $results)
+                    ->with("serverscount", $serverscount)
+                    ->with("serverz",$serverz)
+                    ->with("itemsresults", $serverresults)
+                    ->with("chart",$chart);
+            
+            
 	}
 
 }

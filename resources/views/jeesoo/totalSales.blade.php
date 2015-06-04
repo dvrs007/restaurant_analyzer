@@ -10,19 +10,41 @@ Restaurant Analyzer
 
 @section('content')
 <hr/>
-<h1>TOTAL SALES ($) over the years, months, .......</h1>
-<hr/>
 
 
- <div id="colchart_div"></div>
+<div id="chart_year_amt"></div>
+@columnchart('TotalSalesY','chart_year_amt')
+
+
+<div style='border:double 5px;'></div>
+
+<div id='chart_year_cnt'></div>
+@columnchart('TotalNumberY','chart_year_cnt')
+<div style='border:double 5px;'></div>
+
+<div id='chart_month_amt'></div>
+@columnchart('TotalSalesM','chart_month_amt')
+
+
+<div style='border:double 5px;'></div>
+
+<div id='chart_month_cnt'></div>
+@columnchart('TotalCountM','chart_month_cnt')
+
+
+
+
+
+ <!-- div id="colchart_div"></div -->
 <?php
     //echo Lava::render('ColumnChart', 'TotalSales', 'chart_div');
     //  ?>   
-@columnchart('TotalSales','colchart_div')
+{{-- columnchart('TotalSales','colchart_div')--}}
    
 <br/>
-<div id='linechart-div'></div>
+<!-- div id='linechart-div'></div-->
 <?php //echo Lava::render('LineChart','Stocks','stocks-div'); ?>
 
-@linechart('TotalSales','linechart-div')
+{{-- @linechart('TotalSales','linechart-div') --}}
+--}}
 @stop
