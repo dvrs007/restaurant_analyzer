@@ -39,6 +39,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Statistics <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                   <li><a href="#">Sales</a></li>
+                                  <li><a href="{{url('server-stats')}}">Servers</a></li>
                                 </ul>
                               </li>
                             </ul>
@@ -51,7 +52,7 @@
                     <div class="row">
                  
                     <div class="container-fluid">
-                        <h2>@yield('maintitle')</h2>
+                        <h1 class="graph-title">@yield('maintitle')</h1>
                         @section('sidebar')
                         This is the master sidebar.
                         @show
