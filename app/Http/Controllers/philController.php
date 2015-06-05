@@ -42,20 +42,60 @@ class philController extends Controller {
             ->join('items', 'lineitems.item_id', '=', 'items.id')
                     ->groupBy('lineitems.order_id')
             ->get();
-           
+            
+            
             //-------------------------------------------------------------------------------------
-            ////-------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------
+            //************************ANALYZE SERVER ITEM QUANTITIES SOLD**************************************//
+            
+            //query with raw mysql to get all servers and their total sales
+            $quantitiez = DB::select( DB::raw("SELECT SUM( lineitems.ordered_quantity ) as subtotal , orders.server FROM orders JOIN lineitems ON orders.id = lineitems.order_id GROUP BY server") );
+            
+            //var_dump($quantitiez);
+            
+            //set the data columns for the chart
+            $quantitiezTable = \Lava::DataTable();
+            $quantitiezTable->addStringColumn('Server Name')
+            ->addNumberColumn('Quantity of Items Sold');
+            
+            
+            //get the data from the SQL statment and bind it to a variable
+            foreach($quantitiez as $q){
+                //var_dump($s->subtotal);
+                $row = array($q->server, $q->subtotal);
+                $quantitiezTable->addRow($row);
+            }
+
+            
+            //decide on the chart type to use, name the chart
+            $quantitiezchart = \Lava::BarChart('quantitiezChart')
+                    ->setOptions(array(
+                   'datatable' => $quantitiezTable,
+                   'title' => 'Total Items Sold by Each Server',
+                   'colors' => array('#333333')));
+
+            
+//            //bind the data to the chart itself
+//            $quantitiezchart->datatable($quantitiezTable);
+            
+            //************************ANALYZE SERVER ITEM QUANTITIES SOLD**************************************//
+            //-------------------------------------------------------------------------------------
+
+            
+            //-------------------------------------------------------------------------------------
             //************************GET TOTAL COUNT OF ALL SERVERS**************************************//
-            //
+
             //get the count of current servers
             $serverscount = DB::table('orders')
                     ->distinct()->count('server');  
             
             //************************END TOTAL COUNT OF ALL SERVERS**************************************//
             //-------------------------------------------------------------------------------------
-            ////-------------------------------------------------------------------------------------
+
+            
+            //-------------------------------------------------------------------------------------
             //************************ANALYZE SERVER SALES**************************************//
-            //
+
             //query with raw mysql to get all servers and their total sales
             $serverz = DB::select( DB::raw("SELECT DISTINCT server, SUM(subtotal) as subtotal FROM orders GROUP BY server") );
             //set the data columns for the chart
@@ -84,23 +124,6 @@ class philController extends Controller {
             
             //query with raw mysql to get all servers and their total sales
             $tablez = DB::select( DB::raw("SELECT DISTINCT tbl_number, SUM(subtotal) as subtotal FROM orders GROUP BY tbl_number") );
-//            //set the data columns for the chart
-//            $tablezTable = \Lava::DataTable();
-//            $tablezTable->addStringColumn('Table Number')
-//            ->addNumberColumn('Pre-tax Sales');
-//            
-//            //get the data from the SQL statment and bind it to a variable
-//            foreach($tablez as $t){
-//                //var_dump($s->subtotal);
-//                $rowData = array($t->tbl_number, $t->subtotal);
-//                $tablezTable->addRow($rowData);
-//            }
-//
-//            //decide on the chart type to use, name the chart
-//            $tablezchart = \Lava::LineChart('tablesPieChart');
-//
-//            //bind the data to the chart itself
-//            $tablezchart->datatable($tablezTable);
             
             $tablezTable = \Lava::DataTable();
             $tablezTable->addStringColumn('Table Number')
@@ -114,8 +137,62 @@ class philController extends Controller {
                 $tablezTable->addRow($rowData);
             }
 
-        $tablezchart = \Lava::PieChart('tablesPieChart');
-        $tablezchart->datatable($tablezTable);
+        $tablezchart = \Lava::PieChart('tablesPieChart')
+                ->setOptions(array(
+                   'datatable' => $tablezTable,
+                   'title' => 'Total Sales By Table Number',
+                   'is3D' => false,
+                    'height' => 700
+//                    'slices' => array(
+//                        \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                        \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                        \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                \Lava::Slice(array(
+//                          'offset' => 0.3
+//                        )),
+//                \Lava::Slice(array(
+//                          'offset' => 0.3
+                        //))
+                      
+                    ));
+                
+       
             
             ////************************END TABLE PERFORMANCE***************************************//
             //-------------------------------------------------------------------------------------
@@ -129,7 +206,8 @@ class philController extends Controller {
                     ->with("serverscount", $serverscount)
                     ->with("serverz",$serverz)
                     ->with("chart",$chart)
-                    ->with("tablez",$tablezchart);
+                    ->with("tablez",$tablezchart)
+                    ->with("quantitiezTable", $quantitiezTable);
             
             //************************END SEND DATA TO THE VIEW********************//
             //-------------------------------------------------------------------------------------
