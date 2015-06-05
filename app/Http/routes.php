@@ -24,7 +24,7 @@ Route::get('home', 'HomeController@index');
  PHIL'S ROUTES
  *************************************************************************/
 
-Route::get('phil', 'philController@index');
+Route::get('server-stats', 'philController@index');
 
 
 /**************************************************************************
