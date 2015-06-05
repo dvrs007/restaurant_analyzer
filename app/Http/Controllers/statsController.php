@@ -9,11 +9,12 @@ class statsController extends Controller {
 		//$this->middleware('auth');
 	}
 
-	public function stats()
+	public function Stats_index()
 	{
-            return view('stats');
+            return view('stats.Stats_index');
             
 	}
+        
     }
 
 

@@ -28,7 +28,7 @@ class johnsonController extends Controller {
                 INNER JOIN lineitems ON items.id = lineitems.item_id
                 INNER JOIN orders ON lineitems.order_id = orders.id
                 GROUP BY item_name
-                ORDER BY net_revenue limit 10") );
+                ORDER BY net_revenue DESC limit 10") );
         
         //set the data for the piechart
             $sales = \Lava::DataTable();
@@ -43,10 +43,38 @@ class johnsonController extends Controller {
                 $sales->addRow($rowData);
             }
             
-            $piechart = \Lava::PieChart('NetRevenue')
+            $piechart = \Lava::PieChart('NetRevenue_highestNet')
                     ->setOptions(array(
                         'datatable' => $sales,
                         'title' => 'Top 10 Highest Net Revenue per Item ($)'
+                    ));
+            
+        
+        //query with raw mysql for lowest net revenue
+            $net_revenue2 = DB::select( DB::raw("SELECT DISTINCT item_name, order_date, SUM( ordered_quantity ) AS orderedQuantity, (item_price-item_cost)*SUM(ordered_quantity) as net_revenue
+                FROM items
+                INNER JOIN lineitems ON items.id = lineitems.item_id
+                INNER JOIN orders ON lineitems.order_id = orders.id
+                GROUP BY item_name
+                ORDER BY net_revenue limit 10") );
+        
+        //set the data for the piechart
+            $sales_lowestNet = \Lava::DataTable();
+            
+            $sales_lowestNet->addStringColumn('Item Name')
+                    ->addNumberColumn('Net Revenue ($)');
+            foreach($net_revenue2 as $value)
+            {
+                //convert datatype to string for this column
+                $convert = floatval($value->net_revenue);
+                $rowData = array($value->item_name, $convert);
+                $sales_lowestNet->addRow($rowData);
+            }
+            
+            $piechart_lowestNet = \Lava::PieChart('NetRevenue_lowestNet')
+                    ->setOptions(array(
+                        'datatable' => $sales_lowestNet,
+                        'title' => 'Top 10 Lowest Net Revenue per Item ($)'
                     ));
             
         
@@ -77,7 +105,8 @@ class johnsonController extends Controller {
                     ->with('itemcount', $itemcount)
                     ->with('itemOrders', $itemOrders)
                     ->with('totalGen', $totalGen)
-                    ->with('piechart',$piechart);
+                    ->with('piechart',$piechart)
+                    ->with('piechart_lowestNet',$piechart_lowestNet);
             
 	}
     }

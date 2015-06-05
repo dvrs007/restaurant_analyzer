@@ -15,6 +15,8 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('stats/Stats_index', 'statsController@Stats_index');
+
 //Route::controllers([
 //	'auth' => 'Auth\AuthController',
 //	'password' => 'Auth\PasswordController',
@@ -62,8 +64,6 @@ Route::get('/', 'WelcomeController@index');
  *************************************************************************/
 
 Route::get('johnson', 'johnsonController@index');
-
-Route::get('stats', 'statsController@stats');
 
 
 /**************************************************************************

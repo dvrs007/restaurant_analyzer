@@ -1,6 +1,6 @@
 <!-- Stored in app/views/layouts/master.blade.php -->
 
-<html>
+<html ng-app="myApp">
     <head>
         <title>@yield('title')</title>
         <meta charset="UTF-8">
