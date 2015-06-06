@@ -1,17 +1,4 @@
 @extends('layouts.master')
-
-@section('title')
-Restaurant Analyzer
-@stop
-
-@section('maintitle')
-Sales Chart
-
-@stop
-
-@section('sidebar')
-
-@stop
     
 @section('content')
 

@@ -356,3 +356,13 @@ img{
 #positive_charts, #negative_charts{
     display:none;
 }
+
+#main-food{
+    text-align:center;
+}
+
+
+.body-content img{
+    margin: auto;
+    width:250px;
+}

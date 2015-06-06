@@ -53,11 +53,6 @@
                     <div class="row">
                  
                     <div class="container-fluid">
-                        <h1 class="graph-title">@yield('maintitle')</h1>
-                        @section('sidebar')
-                        This is the master sidebar.
-                        @show
-
                         @yield('content')
                     </div>
                 </div>
