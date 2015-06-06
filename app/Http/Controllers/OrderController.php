@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\Item;
 use App\Lineitem;
+use DB;
 use Illuminate\Http\Request;  //changed it after adding validation
 
 //use Request; //object capture request
@@ -28,15 +29,26 @@ class OrderController extends Controller {
 
         return view('orders.index')->with("orders", $orders);
     }
-/*
-    public function show($id) {
+    
+    public function show($orderID) {
         //get a single detail
-        $recipe = Recipe::find($id); //helper method to find recipe with id
+        $order = Order::find($orderID); //helper method to find recipe with id
         //$recipe=Recipe::where('dish_name' , '=', 'sausage');
+        $lineitems = Lineitem::where('order_id', '=', $orderID);
+                
+          $results = DB::table('orders')
+          ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+          ->join('items', 'lineitems.item_id', '=', 'items.id')
+          ->where('orders.id','=',$orderID)
+          ->get();
+        
+        
 
-        return view('recipes.show')->with('recipe', $recipe);
+        return view('orders.show')->with('order', $order)
+                                  ->with('lineitems', $lineitems)
+                                  ->with('results',$results);
     }
-*/
+
     public function create() {
         return view('orders.create');
     }
@@ -67,19 +79,23 @@ class OrderController extends Controller {
         //return "recipe inserted";
         //return $inputs;
         //STEP3: Redierect
-        return Redirect('orders/choose');
+        return Redirect('orders');
     }
     
     
-    public function choose(){
+    public function items($orderID){
+        //parameter: orderid
+        $order =Order::find($orderID);
         $items = Item::all();        
         
-        return view('orders.choose')->with("items", $items);
+        return view('orders.items')->with("items", $items)
+                                   ->with("order",$order);
     }
     
     public function itemStore(){
         $inputs = Request::all();
         Lineitem::create($inputs);
+        
         return Redirect('orders');
         
     }

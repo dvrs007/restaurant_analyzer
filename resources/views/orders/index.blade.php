@@ -14,17 +14,19 @@
 
 @foreach($orders as $order)
 
-<h3><!--a href="{{ url('/orders', $order->id) }}"-->
-    {{ $order->id }}: <br/>
+<h3><a href="{{ url('/orders', $order->id) }}">
+    Order Number: {{ $order->id }}<br/>
     Table #:{{$order->tbl_number }} <br/>
-    Server :{{$order->server }}
-    at {{ $order->date}} {{ $order->time }} <br/>
-    (Ref: datetime: {{ $order->datetime}}) <br/>
+    Server :{{$order->server }} <br/>
+    Ordered at {{ $order->order_date}} {{ $order->order_time }} <br/></a>
+    
     Subtotal: ${{ $order->subtotal}}<br/>
     Tax(13%): ${{ $order->tax}}<br/>
     Total   : ${{ $order->total}}<br/>
 </h3>
 <br>
+
+
 @endforeach
 @stop
 

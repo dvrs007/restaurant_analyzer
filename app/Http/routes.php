@@ -36,14 +36,24 @@ Route::get('phil', 'philController@index');
  *************************************************************************/
 //Orders
 Route::get('orders', 'OrderController@index');
+//SHOW
+Route::get('orders/{id}','OrderController@show');
 
 //CREATE(INSERT)://capture post request from OrderController
 Route::get('orders/create', 'OrderController@create');
 //STORE
-Route::post('orders/choose','OrderController@store');
+Route::post('orders','OrderController@store');
 
-Route::get('orders/choose','OrderController@choose');
-Route::post('orders','OrderController@itemStore');
+
+
+//ADD ITEM(S)
+Route::get('orders/{id}/items','OrderController@item');
+
+//INSERT ITEMs/UPDATE orders table
+Route::post('itemsUpdate', 'OrderController@update');
+
+//Route::get('orders/choose','OrderController@choose');
+//Route::post('orders','OrderController@itemStore');
 
 
 //Analysis

@@ -17,7 +17,7 @@
 <hr/>
 
 
-{!! Form:: open( ['url' => 'orders/choose' ]) !!} 
+{!! Form:: open( ['url' => 'orders' ]) !!} 
 <div class="form-group">
     {!! Form::label('tbl_number', 'Table #: ') !!}
     {!! Form::selectRange('tbl_number',1,15) !!}        

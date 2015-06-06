@@ -11,6 +11,9 @@ Restaurant Analyzer
 @section('content')
 <hr/>
 
+<div id="chart_year_avg"></div>
+@columnchart('AverageSalesY','chart_year_avg')
+
 
 <div id="chart_year_amt"></div>
 @columnchart('TotalSalesY','chart_year_amt')
@@ -31,7 +34,8 @@ Restaurant Analyzer
 <div id='chart_month_cnt'></div>
 @columnchart('TotalCountM','chart_month_cnt')
 
-
+<div id="chart_day_amt"></div>
+@columnchart('TotalSalesD','chart_day_amt')
 
 
 
@@ -46,5 +50,5 @@ Restaurant Analyzer
 <?php //echo Lava::render('LineChart','Stocks','stocks-div'); ?>
 
 {{-- @linechart('TotalSales','linechart-div') --}}
---}}
+
 @stop
