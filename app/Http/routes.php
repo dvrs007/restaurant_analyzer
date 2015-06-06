@@ -13,7 +13,7 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('stats/Stats_index', 'statsController@Stats_index');
 
 //Route::controllers([
 //	'auth' => 'Auth\AuthController',
@@ -24,7 +24,7 @@ Route::get('home', 'HomeController@index');
  PHIL'S ROUTES
  *************************************************************************/
 
-Route::get('phil', 'philController@index');
+Route::get('server-stats', 'philController@index');
 
 
 /**************************************************************************
@@ -72,8 +72,6 @@ Route::get('/', 'WelcomeController@index');
  *************************************************************************/
 
 Route::get('johnson', 'johnsonController@index');
-
-Route::get('stats', 'statsController@stats');
 
 
 /**************************************************************************

@@ -42,6 +42,10 @@ html, body {
     background-color:#fff;
 }
 
+.left{
+    text-align:left;
+}
+
 #wrap {
     margin:0 auto;
     min-height:100%;
@@ -79,9 +83,9 @@ html, body {
 .navbar{
     border: none;
     margin:0;
-    -webkit-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
+    /*-webkit-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
-    box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);*/
     background: #ff3019; /* Old browsers */
     background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404)); /* Chrome,Safari4+ */
@@ -97,7 +101,7 @@ html, body {
 }
 
 .navbar-default .navbar-brand {
-    text-shadow: -1px 2px 2px rgba(0, 0, 0, 1);
+    /*text-shadow: -1px 2px 2px rgba(0, 0, 0, 1);*/
     color: #FFFBD3;
     font-size: 1.75em;
 }
@@ -121,7 +125,7 @@ html, body {
 }
 
 .nav li a{
-    text-shadow: -1px 2px 2px rgba(0, 0, 0, 1);
+    /*text-shadow: -1px 2px 2px rgba(0, 0, 0, 1);*/
     color:#FFFBD3;
 }
 
@@ -238,6 +242,52 @@ img{
     color:blue;
 }
 
+
+/*--------------- GRAPH TITLE STYLING ------------------*/
+
+.main-graph-title{
+    border-bottom:1px solid #333;
+    width:100%;
+    margin: 10px 0;
+    padding: 5px 0;
+}
+
+.graph-title{
+    text-align:center;
+    width:100%;
+}
+
+#guyContainer{
+    /*background: url('../images/cream.jpg');*/
+}
+
+.arrow-container{
+    border: 3px solid #33333;
+    min-height:50;
+    min-width:50;
+    display:none;
+}
+
+.arrow-up {
+	width: 0; 
+	height: 0; 
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-bottom: 25px solid #ff3019;
+        position:fixed;
+        bottom: 30;
+        right: 30;
+}
+
+.arrow-up:hover{
+    cursor:pointer;
+    opacity:0.8;
+}
+
+
+
+/*--------------- MEDIA QUERIES ------------------*/
+
 @media screen and (max-width: 768px) {
     
     .hero .container p {
@@ -300,4 +350,19 @@ img{
     background: -ms-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
+}
+
+
+#positive_charts, #negative_charts{
+    display:none;
+}
+
+#main-food{
+    text-align:center;
+}
+
+
+.body-content img{
+    margin: auto;
+    width:250px;
 }

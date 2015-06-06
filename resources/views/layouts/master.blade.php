@@ -1,6 +1,6 @@
 <!-- Stored in app/views/layouts/master.blade.php -->
 
-<html>
+<html ng-app="myApp">
     <head>
         <title>@yield('title')</title>
         <meta charset="UTF-8">
@@ -15,6 +15,7 @@
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/angular.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 
@@ -42,17 +43,16 @@
                                 <a class="navbar-brand" href="#">Order.Eat.Repeat</a>
                             </div>
 
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav">
-                                    <li><a href="#">Menu</a></li>
-                                    <li><a href="#">Orders</a></li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Statistics <span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Sales</a></li>
-                                        </ul>
-                                    </li>
+                          <!-- Collect the nav links, forms, and other content for toggling -->
+                          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                              <li><a href="#">Menu</a></li>
+                              <li><a href="#">Orders</a></li>
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Statistics <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Sales</a></li>
+                                  <li><a href="{{url('server-stats')}}">Servers</a></li>
                                 </ul>
                             </div><!-- /.navbar-collapse -->
                         </div><!-- /.container-fluid -->
@@ -74,11 +74,7 @@
                 </div>
                 <div id="footer">
                     <div class="container-fluid">
-                        <div class="col-sm-5 col-md-6">Footer Item</div>
-                        <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">Footer Item</div>
-                        <div class="col-lg-8">
-                            <p>Copyright &copy; <?php echo date("Y"); ?></p>
-                        </div>
+                        @yield('content')
                     </div>
                 </div>
             </div>
