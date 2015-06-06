@@ -10,6 +10,7 @@
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/angular.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
     </head>

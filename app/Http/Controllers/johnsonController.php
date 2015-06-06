@@ -56,7 +56,10 @@ class johnsonController extends Controller {
                 INNER JOIN lineitems ON items.id = lineitems.item_id
                 INNER JOIN orders ON lineitems.order_id = orders.id
                 GROUP BY item_name
-                ORDER BY net_revenue limit 10") );
+                ORDER BY net_revenue limit 10"));
+            
+            
+            
         
         //set the data for the piechart
             $sales_lowestNet = \Lava::DataTable();
@@ -92,8 +95,8 @@ class johnsonController extends Controller {
             $totalGen = DB::table('orders')
                     ->distinct()
                     ->sum('orders.total');
-            //var_dump($itemcount);
-            //$item= item::all();
+        //get the minimum value
+            
             
         ////////////////// END VARIABLE COUNTS ////////////////////////
 
@@ -110,6 +113,3 @@ class johnsonController extends Controller {
             
 	}
     }
-
-
-
