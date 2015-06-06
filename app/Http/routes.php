@@ -34,17 +34,20 @@ Route::get('server-stats', 'philController@index');
 /**************************************************************************
  JS'S ROUTES
  *************************************************************************/
+//Menus
+Route::get('menus', 'MenuController@index');
+
 //Orders
 Route::get('orders', 'OrderController@index');
-//SHOW
-Route::get('orders/{id}','OrderController@show');
+
 
 //CREATE(INSERT)://capture post request from OrderController
 Route::get('orders/create', 'OrderController@create');
 //STORE
 Route::post('orders','OrderController@store');
 
-
+//SHOW
+Route::get('orders/{id}','OrderController@show');
 
 //ADD ITEM(S)
 Route::get('orders/{id}/items','OrderController@item');

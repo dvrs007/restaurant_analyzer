@@ -40,14 +40,14 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="#">Order.Eat.Repeat</a>
+                                <a class="navbar-brand" href="{{ url('/') }}">Order.Eat.Repeat</a>
                             </div>
 
                           <!-- Collect the nav links, forms, and other content for toggling -->
                           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                              <li><a href="#">Menu</a></li>
-                              <li><a href="#">Orders</a></li>
+                              <li><a href="{{ url('menus') }}">Menu</a></li>                              
+                              <li><a href="{{ url('orders/create') }}">Orders</a></li>
                               <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Statistics <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
@@ -74,7 +74,7 @@
                 </div>
                 <div id="footer">
                     <div class="container-fluid">
-                        @yield('content')
+                        
                     </div>
                 </div>
             </div>
