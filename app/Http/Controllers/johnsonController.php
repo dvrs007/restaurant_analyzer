@@ -58,9 +58,6 @@ class johnsonController extends Controller {
                 GROUP BY item_name
                 ORDER BY net_revenue limit 10"));
             
-            
-            
-        
         //set the data for the piechart
             $sales_lowestNet = \Lava::DataTable();
             
@@ -80,6 +77,38 @@ class johnsonController extends Controller {
                         'title' => 'Top 10 Lowest Net Revenue per Item ($)'
                     ));
             
+        
+        //query with raw mysql for highest net revenue
+            $orderedQuantity = DB::select( DB::raw("SELECT DISTINCT item_name, order_date, SUM( ordered_quantity ) AS orderedQuantity
+                FROM items
+                INNER JOIN lineitems ON items.id = lineitems.item_id
+                INNER JOIN orders ON lineitems.order_id = orders.id
+                GROUP BY item_name
+                ORDER BY orderedQuantity DESC limit 10") );
+        
+        //column chart for item quantity ordered
+            $items_orderedQuantity = \Lava::DataTable();
+            
+            $items_orderedQuantity->addStringColumn('Item Name')
+                                    ->addNumberColumn('Quantity')
+                                    ->setDateTimeFormat('Y');
+            foreach($orderedQuantity as $value)
+            {
+                //convert datatype to string for this column
+                $convert = floatval($value->orderedQuantity);
+                $rowData = array($value->item_name, $convert);
+                $items_orderedQuantity->addRow($rowData);
+            }
+            
+            $columnchart = \Lava::ColumnChart('OrderedQuantity')
+                    ->setOptions(array(
+                      'datatable' => $items_orderedQuantity,
+                      'title' => 'Ordered Quantity',
+                      'titleTextStyle' => \Lava::TextStyle(array(
+                        'color' => '#eb6b2c',
+                        'fontSize' => 14
+                      ))
+                    ));
         
             
         /////////////// VARIABLE COUNTS //////////////////////////////////////////////////
@@ -109,7 +138,8 @@ class johnsonController extends Controller {
                     ->with('itemOrders', $itemOrders)
                     ->with('totalGen', $totalGen)
                     ->with('piechart',$piechart)
-                    ->with('piechart_lowestNet',$piechart_lowestNet);
+                    ->with('piechart_lowestNet',$piechart_lowestNet)
+                    ->with('columnchart', $columnchart);
             
 	}
     }

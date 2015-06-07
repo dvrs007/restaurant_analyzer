@@ -2,25 +2,31 @@
     
 @section('content')
 
+        <h1>General Item Statistics</h1>
+        <ul>
+            <li>Statistics on the sales of <span style="color:#0000C2;">{{ $itemcount }}</span> items</li>
+            <li>Total items ordered: <span style="color:#0000C2;">{{ $itemOrders }}</span></li>
+            <li>Total made: <span style="color:#0000C2;"> ${{ $totalGen }} </span></li>
+        </ul>
+        <hr />
 <div class="col-sm-5 col-md-6">
     <div class="row">
-        <ul>
-            <li>Statistics on the sales of {{ $itemcount }} items</li>
-            <li>Total items ordered: {{ $itemOrders }}</li>
-            <li>Total made: ${{ $totalGen }}</li>
-        </ul>
+        <h3>The highest grossing item is: </h3>
         <button id="positive_stats">Show positive charts</button>
 
         <div id="positive_charts">
             <div id="poll_div"></div>
             <?php echo Lava::render('PieChart', 'NetRevenue_highestNet', 'poll_div') ?>
+            
+            <div id="perf_div"></div>
+            <?php echo Lava::render('ColumnChart', 'OrderedQuantity', 'perf_div') ?>
         </div>
     </div>
 </div>
 
 <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">
     <div class="row">
-        <h3>Oh no! </h3>
+        <h3>Oh no! ___ is not doing well!</h3>
         <button id="negative_stats">Show negative charts</button>
 
         <div id="negative_charts">
