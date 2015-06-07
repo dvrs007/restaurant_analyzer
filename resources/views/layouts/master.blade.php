@@ -64,9 +64,6 @@
 
                         <div class="container-fluid">
                             <h2>@yield('maintitle')</h2>
-                            @section('sidebar')
-                            This is the master sidebar.
-                            @show
 
                             @yield('content')
                         </div>
