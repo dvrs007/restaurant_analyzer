@@ -15,53 +15,32 @@
 @endforeach
 @endif
 <hr/>
-<h2>{{ $order->id }}  {{ $order->tbl_number}} {{$order->server}}</h2>
+<h2>Order#: {{ $order->id }}</h2>
+Table#:{{ $order->tbl_number}}<br/>
+Server:{{$order->server}}
 <hr/>
 
-{!! Form:: open( ['url' => itemStore' ]) !!} 
-{!! Form::hidden('order_id',  $items->order_id  ) !!}
+{!! Form:: open( ['url' => 'AddLineItems' ]) !!} 
+{!! Form::hidden('order_id',  $order->id  ) !!}
 
-<div class="form-group">
-    <select name="item[]" style="color:black;">
-        @foreach($items as $item)
-        <option value="">{{ $item->item_name }}  (${{ $item->item_price}})</option>
-        @endforeach
-    </select>      
-</div>
-
-<div>
-    <select name="quantity[]" style="color:black;">
-        @for($i=1; $i<21;$i++)
-        <option value="{{$i}}">{{$i}}</option>
-        @endfor
-    </select>    
-</div>
-
-
-
-
-<form action="">
 <div id="order" class="form-group order-select-container"> 
-    
-<p><select name="item[]" style="color:black;">
-        @foreach($items as $item)
-        <option value="">{{ $item->item_name }}  (${{ $item->item_price}})</option>
-        @endforeach
-    </select>  
-    <select name="quantity[]" style="color:black;">
-        @for($i=1; $i<21;$i++)
-        <option value="{{$i}}">{{$i}}</option>
-        @endfor
-    </select>    
-</p> </div>
+
+    <p><select name="item[]">
+            @foreach($items as $item)
+            <option value="{{ $item->item_id }}">{{ $item->item_name }}  (${{ $item->item_price}})</option>
+            @endforeach
+        </select>  
+        <select name="quantity[]">
+            @for($i=1; $i<21;$i++)
+            <option value="{{$i}}">{{$i}}</option>
+            @endfor
+        </select>    
+    </p> 
+</div>
 <a href="" id="addOrder" class="btn btn-sm btn-info btn-add-more-order">Add More</a>
 <br/><br/>
-<input type="submit" value="Order Now" />
-</form>
-
-<br/>
 <div class="form-group">    
-    {!! Form::submit('Complete Order', ['class ' => 'btn btn-primary form-control']) !!}
+    {!! Form::submit('Complete Order', ['class' => 'btn btn-primary form-control']) !!}
 </div>
 {!! Form:: close() !!}
 @stop
@@ -70,12 +49,12 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
 
-var template = '<p><select name="item[]" style="color:black;">' +
+var template = '<p><select name="item[]">' +
         '@foreach($items as $item)' +
         '<option value="">' + '{{ $item->item_name }}' + ' ' + '(${{ $item->item_price}})</option>' +
         '@endforeach' +
         '</select>' +
-        ' <select name="quantity[]" style="color:black;">' +
+        ' <select name="quantity[]">' +
         '@for($i=1; $i<21;$i++)' +
         '<option value="{{$i}}">{{$i}}</option>' +
         '@endfor' +
@@ -102,9 +81,4 @@ $(function () {
 });
 //Ref:https://www.youtube.com/watch?v=Ow82DXUlp8A
 //http://api.jquery.com/live/
-
-
 </script>
-
-
-
