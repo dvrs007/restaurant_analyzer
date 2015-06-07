@@ -16,7 +16,6 @@
 @endif
 <hr/>
 
-
 {!! Form:: open( ['url' => 'orders' ]) !!} 
 <div class="form-group">
     {!! Form::label('tbl_number', 'Table #: ') !!}
@@ -30,10 +29,17 @@
 
 
 <div class="form-group">
-    {!! Form::label('datetime', 'Ordered On: ') !!}
-    {!! Form::input('date','datetime',date('Y-m-d'), ['class'=>'form-control']) !!}
+    {!! Form::label('order_date', 'Ordered On: ') !!}
+    {!! Form::text('order_date', Carbon::now()->format('Y-m-d'), ['class'=>'form-control']) !!}
 </div>
-
+<div class="form-group">
+    {!! Form::label('order_time', 'Ordered At ') !!}
+    {!! Form::text('order_time', Carbon::now()->format('h:i:s A'), ['class'=>'form-control']) !!}
+</div>
+{{-- vendor/compiled.php: line 1808-1809 date_default_timezone_set('America/New_York');
+    config/app.php:line39 ...'timezone' => 'EDT',
+    Ref:http://php.net/manual/fr/function.date-default-timezone-set.php
+    --}}
 <br/>
 <div class="form-group">    
     {!! Form::submit('Go to the next', ['class ' => 'btn btn-primary form-control']) !!}

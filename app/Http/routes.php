@@ -46,14 +46,15 @@ Route::get('orders/create', 'OrderController@create');
 //STORE
 Route::post('orders','OrderController@store');
 
-//SHOW
-Route::get('orders/{id}','OrderController@show');
 
 //ADD ITEM(S)
-Route::get('orders/{id}/items','OrderController@item');
+Route::get('orders/{id}/chooseItem','OrderController@chooseItem');
 
-//INSERT ITEMs/UPDATE orders table
-Route::post('itemsUpdate', 'OrderController@update');
+//INSERT ITEMs into lineitems table
+Route::post('AddLineItems', 'OrderController@itemStore');
+
+//SHOW
+Route::get('orders/{id}','OrderController@show');
 
 //Route::get('orders/choose','OrderController@choose');
 //Route::post('orders','OrderController@itemStore');

@@ -6,6 +6,9 @@
 
 
 <h3><a href="{{ URL::to('/orders')}}/{{$order->id}}/items"></a></h3>
+Table#:{{ $order->tbl_number}}<br/>
+Server:{{ $order->server}}<br/>
+Ordered at:{{ $order->order_date}} {{ $order->order_time}}
 <div>
     <!!- for each loop thru items for this order-->
     <table class="table table-bordered table-condensed table-responsive table-hover table-striped">
