@@ -94,7 +94,7 @@ class OrderController extends Controller {
 //                        ->with("order", $order);
 //    }
 
-    
+
 
     public function chooseItem($orderID) {
         //parameter: orderid
@@ -119,24 +119,39 @@ class OrderController extends Controller {
         //Lineitem::create($inputs);
         $lineitem = new Lineitem;
         $lineitem->order_id = $request['order_id'];
-        $lineitem->item_id  = $request['item_id']; 
-        $lineitem->ordered_quantity = $request['ordered_quantity'];        
+        $lineitem->item_id = $request['item_id'];
+        $lineitem->ordered_quantity = $request['ordered_quantity'];
         $lineitem->save();
-        
-        
-        $inputs = array (
+
+
+//        DB::table('orders')
+//                ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+//                ->join('items', 'lineitems.item_id', '=', 'items.id')
+//                ->whereRaw('order_id=$request["order_id"] AND orders.id = lineitems.order_id')
+//                ->groupBy('lineitems.order_id')
+//                ->update(['orders.subtotal' => 'sum(items.item_price*lineitems.ordered_quantity)',
+//                    'orders.tax' => 'orders.subtotal' * 0.13,
+//                    'orders.total' => 'orders.subtotal' + 'orders.tax'
+//                   
+//        ]);
+//UPDATE orders o
+//INNER JOIN lineitems l ON o.id=l.order_id
+//INNER JOIN items i ON i.id=l.item_id 
+//SET o.subtotal=SUM(i.item_price * l.ordered_quantity),
+//o.tax=o.subtotal*0.13,
+//o.total=o.subtotal+tax
+//WHERE l.item_id=i.id AND o.id=l.order_id
+//GROUP BY l.order_id;
+        $inputs = array(
             'order_complete' => $request['order_complete']
-            
-                
-                
-        );        
-        Order::where('id',$request['order_id'])->update($inputs);
-        
-        
+        );
+        Order::where('id', $request['order_id'])->update($inputs);
+
+
 
         return Redirect('orders');
     }
-    
+
     /*
       //update
 
