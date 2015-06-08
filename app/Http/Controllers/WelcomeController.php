@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Item;
+use DB;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -30,7 +33,12 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+            //query with raw mysql for highest net revenue
+            $itemRand = Item::orderBy(\DB::raw('RAND()'))->first();
+            
+            
+		return view('welcome')
+                        ->with('itemRand', $itemRand);
 	}
 
 }

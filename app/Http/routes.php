@@ -75,7 +75,7 @@ Route::get('/', 'WelcomeController@index');
  JOHNSON'S ROUTES
  *************************************************************************/
 
-Route::get('johnson', 'johnsonController@index');
+Route::get('item-sales', 'johnsonController@index');
 
 
 /**************************************************************************
