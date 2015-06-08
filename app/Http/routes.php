@@ -63,7 +63,7 @@ Route::get('orders/{id}','OrderController@show');
 //Analysis
 Route::get('jeesoo', 'jeesooController@index');
 Route::get('jeesoo/ex','jeesooController@example');
-Route::get('jeesoo/analysis', 'jeesooController@totalSales');
+Route::get('jeesoo/list', 'jeesooController@orderlist');
 
 /**************************************************************************
  END JS'S ROUTES

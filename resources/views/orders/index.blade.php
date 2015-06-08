@@ -32,6 +32,8 @@
             <td>{{ $order->total}}</td>
             <td>@if(  $order->order_complete != 1) 
                 <a href="{{ URL::to('/orders')}}/{{$order->id}}/chooseItem">Choose Items</a>
+                @elseif( $order->subtotal == 0.00)
+                
                 @else
                 Order Complete: <a href="{{ url('/orders', $order->id) }}">List of Items</a>
                 @endif
