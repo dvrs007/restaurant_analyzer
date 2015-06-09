@@ -109,6 +109,41 @@ class johnsonController extends Controller {
                         'fontSize' => 14
                       ))
                     ));
+            
+            
+            //query highest grossing item
+            $highest_gross_item = DB::select( DB::raw("SELECT DISTINCT item_name, (
+                                                        item_price - item_cost
+                                                        ) * SUM( ordered_quantity ) AS net_revenue
+                                                        FROM items
+                                                        INNER JOIN lineitems ON items.id = lineitems.item_id
+                                                        INNER JOIN orders ON lineitems.order_id = orders.id
+                                                        GROUP BY item_name
+                                                        ORDER BY net_revenue
+                                                        DESC
+                                                        LIMIT 1") );
+            foreach($highest_gross_item as $key)
+            {
+                //convert datatype to string for this column
+                $high_gross_item = ($key->item_name);
+            }
+            
+            //query lowest grossing item
+            $lowest_gross_item = DB::select( DB::raw("SELECT DISTINCT item_name, (
+                                                        item_price - item_cost
+                                                        ) * SUM( ordered_quantity ) AS net_revenue
+                                                        FROM items
+                                                        INNER JOIN lineitems ON items.id = lineitems.item_id
+                                                        INNER JOIN orders ON lineitems.order_id = orders.id
+                                                        GROUP BY item_name
+                                                        ORDER BY net_revenue
+                                                        ASC
+                                                        LIMIT 1") );
+            foreach($lowest_gross_item as $key)
+            {
+                //convert datatype to string for this column
+                $low_gross_item = ($key->item_name);
+            }
         
             
         /////////////// VARIABLE COUNTS //////////////////////////////////////////////////
@@ -139,7 +174,9 @@ class johnsonController extends Controller {
                     ->with('totalGen', $totalGen)
                     ->with('piechart',$piechart)
                     ->with('piechart_lowestNet',$piechart_lowestNet)
-                    ->with('columnchart', $columnchart);
+                    ->with('columnchart', $columnchart)
+                    ->with('high_gross_item', $high_gross_item)
+                    ->with('low_gross_item', $low_gross_item);
             
 	}
     }
