@@ -28,7 +28,7 @@
     </head>
     <body>
         <div id="wrap">
-            <div class="container">
+            <!--<div class="container">-->
                 <header>
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
@@ -63,7 +63,7 @@
                     <div class="row">
 
                         <div class="container-fluid">
-                            <h2>@yield('maintitle')</h2>
+                            <h2 class="main-title">@yield('maintitle')</h2>
 
                             @yield('content')
                         </div>
@@ -71,10 +71,21 @@
                 </div>
                 <div id="footer">
                     <div class="container-fluid">
-                        
+                        <div class="col-sm-4">
+                            <h4 class="footer-title">Orders</h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4 class="footer-title">Menu</h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4 class="footer-title">Statistics</h4>
+                            <p><a href="{{ url('item-sales') }}">Item</a></p>
+                            <p><a href="{{url('server-stats')}}">Servers</a></p>
+                            <p><a href="{{url('jeesoo')}}">Total Sales</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <!--</div>-->
 
             <!-- jQuery -->
             <script src="../public/js/jquery.js"></script>
