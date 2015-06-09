@@ -41,7 +41,7 @@
                             <a class="navbar-brand" href="{{ url('/') }}">Order.Analyze.Repeat.</a>
                         </div>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <!-- Collect the nav links, forms, and other content for togglingg -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li><a href="{{ url('menus') }}">Menu</a></li>                              
@@ -57,7 +57,7 @@
                                     </div><!-- /.container-fluid -->
                                     </nav>
                                     </header>
-            
+
                                     <div id="main">
                                         <div class="row">
 
@@ -85,46 +85,7 @@
                                         </div>
                                     </div>
                                     <!--</div>-->
-<div class="arrow-container">
-                <div class="arrow-up"></div>
-            </div>
-            
-            <script type="text/javascript">
-            //ARROW SCROLLER
-            // show arrow if user has scrolled down, or hide if at top
-            $(window).scroll(function() {
-                
 
-                var height = $(window).scrollTop();
-                
-                if(height > 0)
-                {
-                    $( ".arrow-container" ).fadeIn( 2000, function() {
-                    // Animation complete
-                    });
-                }
-                else
-                {
-                    $( ".arrow-container" ).fadeOut( 2000, function() {
-                    // Animation complete
-                    });
-                }
-            });
-            
-            
-            //scroll to top of page if arrow clicked
-            $(".arrow-container").click(function () {
-            
-                $('html,body').animate({
-                    
-                scrollTop: $("html,body").offset().top
-                });
-            
-            });
-            //END ARROW SCROLLER
-           
-            </script>
-            
                                     <!-- jQuery -->
                                     <script src="../public/js/jquery.js"></script>
 
