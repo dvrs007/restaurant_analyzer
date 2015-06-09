@@ -1,6 +1,6 @@
 <!-- Stored in app/views/layouts/master.blade.php -->
 
-<html ng-app="myApp">
+<html>
     <head>
         <title>@yield('title')</title>
         <meta charset="UTF-8">
@@ -38,7 +38,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="{{ url('/') }}">Order.Eat.Repeat</a>
+                                <a class="navbar-brand" href="{{ url('/') }}">Order.Analyze.Repeat.</a>
                             </div>
 
                           <!-- Collect the nav links, forms, and other content for toggling -->
