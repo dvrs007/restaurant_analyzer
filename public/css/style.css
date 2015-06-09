@@ -52,6 +52,16 @@ html, body {
     position:relative;
 }
 
+.main-title{
+    width:100%;
+    padding:15px 5px;
+    border: 2px solid #00b3ee;
+    background: #0000C2;
+    color:#ffffff;
+    text-align: center;
+    border-radius: 20px;
+}
+
 .container{
     padding:0;
     margin:0 auto;

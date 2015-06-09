@@ -16,52 +16,31 @@ Server Statistics - Restaurant Analyzer
 <div id="guyContainer">
     
             <div class="main-graph-title">
-                <h2>General Server Statistics</h2>
+                <h2>Individual Server Statistics</h2>
+                <form action="" method="post">
+                <label for="servers">Select a Server: </label>
+                <select id="servers">
+                    <?php 
+                    foreach($allservers as $server){
+                        
+                        echo "<option>" . $server->server . "</option>";
+                        
+                    }
+                    ?>
+                </select>
+                <input type="submit" value="View Stats">
+                </form>
             </div>
-
-                <h4>Currently, a total <span class="blue">{{ $serverscount}}</span> of servers have taken orders.</h4>
-
-            
-            <div class="graph-title">
-                <h3>Sales Performance by Server</h3>
-            </div>
-
-            <!--chart code -->
-            <div id="myStocks"></div>
-            <?php 
-            // Example #1, output into a div you already created
-                echo Lava::render('BarChart', 'myFancyChart', 'myStocks'); 
-            ?>
-    
-    
-            <div class="graph-title">
-                <h3>Items Quantity by Server</h3>
-            </div>
-
-            <!--chart code -->
-            <div id="quantities"></div>
-            <?php 
-            // Example #1, output into a div you already created
-                echo Lava::render('BarChart', 'quantitiezChart', 'quantities'); 
-            ?>
-
     
     <div class="main-graph-title">
-    <h2>Data Analysis by Table</h2>
-    </div>
-    <div class="col-md-12">
-    
-    <div class="graph-title">
-        <h3>Sales Performance by Table</h3>
-    </div>
-
-    <!--chart code -->
-    <div id="tablezChart"></div>
-    
-    <?php 
-    // Example #1, output into a div you already created
-    echo Lava::render('PieChart', 'tablesPieChart', 'tablezChart'); 
-    ?>
+        <h2>Current Servers:</h2>
+        <?php 
+        
+        foreach($allservers as $server){
+            
+            echo '<div class="col-md-4"><h3>' . $server->server . '</h3></div>';   
+        } 
+        ?>
     </div>
             
             <div class="arrow-container">

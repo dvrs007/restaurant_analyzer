@@ -78,7 +78,7 @@ class philController extends Controller {
 //            //bind the data to the chart itself
 //            $quantitiezchart->datatable($quantitiezTable);
             
-            //************************ANALYZE SERVER ITEM QUANTITIES SOLD**************************************//
+            //************************END ANALYZE SERVER ITEM QUANTITIES SOLD**************************************//
             //-------------------------------------------------------------------------------------
 
             
@@ -119,6 +119,7 @@ class philController extends Controller {
             //************************END ANALYZE SERVER SALES****************************************//
             //-------------------------------------------------------------------------------------
             //-------------------------------------------------------------------------------------
+            
             
             //************************ANALYZE TABLE PERFORMANCE**************************************//
             
@@ -198,6 +199,7 @@ class philController extends Controller {
             //-------------------------------------------------------------------------------------
             //-------------------------------------------------------------------------------------
 
+        
             
             //************************SEND DATA TO THE VIEW*****************************************//
             
@@ -213,6 +215,26 @@ class philController extends Controller {
             //-------------------------------------------------------------------------------------
             
 	}
+        
+        public function server(){
+                        
+            //************************STATS BY INDIVIDUAL SERVER **************************************//
+            
+            //get all current servers to populate the dropdown list
+            $allservers = DB::select( DB::raw("SELECT DISTINCT server FROM orders"));
+            
+            
+            
+            //************************ END STATS BY INDIVIDUAL SERVER **************************************//
+            
+            //************************SEND DATA TO THE VIEW*****************************************//
+            
+            return view('phil.servers')
+                    ->with("allservers", $allservers);
+            
+            //************************END SEND DATA TO THE VIEW********************//
+            //-------------------------------------------------------------------------------------
+        }
 
 }
 
