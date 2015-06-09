@@ -11,7 +11,7 @@
         <hr />
 <div class="col-sm-5 col-md-6">
     <div class="row">
-        <h3>The highest grossing item is: {{ $high_gross_item }}</h3>
+        <h3>The highest grossing item is {{ $high_gross_item }}</h3>
         <button id="positive_stats">Show positive charts</button>
 
         <div id="positive_charts">

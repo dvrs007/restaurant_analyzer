@@ -62,6 +62,16 @@ html, body {
     border-radius: 20px;
 }
 
+.footer-title{
+    border-bottom: 1px solid #fff;
+    font-size: 22px;
+}
+
+#footer p a{
+    color: #fff;
+    font-size: 16px;
+}
+
 .container{
     padding:0;
     margin:0 auto;
@@ -69,7 +79,7 @@ html, body {
 }
 
 .container-fluid{
-    width:90%;
+    width:100%;
     margin:0 auto;
     padding:0;
 }
@@ -87,7 +97,7 @@ html, body {
     position:absolute;
     bottom:0;
     width:100%;
-    height:60px;   /* Height of the footer */
+    height:auto;   /* Height of the footer */
 } 
 
 .navbar{
@@ -349,9 +359,9 @@ img{
     padding: 15px 0;
     border: none;
     margin:0;
-    -webkit-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
+/*    -webkit-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
-    box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);*/
     background: #ff3019; /* Old browsers */
     background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404)); /* Chrome,Safari4+ */

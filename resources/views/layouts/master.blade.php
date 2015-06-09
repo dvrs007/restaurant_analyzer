@@ -1,6 +1,6 @@
 <!-- Stored in app/views/layouts/master.blade.php -->
 
-<html ng-app="myApp">
+<html>
     <head>
         <title>@yield('title')</title>
         <meta charset="UTF-8">
@@ -16,8 +16,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
-        <script type="text/javascript" src="{{asset('js/angular.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 
         <!-- jQuery -->
         <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
@@ -28,7 +26,7 @@
     </head>
     <body>
         <div id="wrap">
-            <div class="container">
+            <!--<div class="container">-->
                 <header>
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
@@ -40,7 +38,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="{{ url('/') }}">Order.Eat.Repeat</a>
+                                <a class="navbar-brand" href="{{ url('/') }}">Order.Analyze.Repeat.</a>
                             </div>
 
                           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,7 +61,7 @@
                     <div class="row">
 
                         <div class="container-fluid">
-                            <h2>@yield('maintitle')</h2>
+                            <h2 class="main-title">@yield('maintitle')</h2>
 
                             @yield('content')
                         </div>
@@ -71,10 +69,21 @@
                 </div>
                 <div id="footer">
                     <div class="container-fluid">
-                        
+                        <div class="col-sm-4">
+                            <h4 class="footer-title">Orders</h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4 class="footer-title">Menu</h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4 class="footer-title">Statistics</h4>
+                            <p><a href="{{ url('item-sales') }}">Item</a></p>
+                            <p><a href="{{url('server-stats')}}">Servers</a></p>
+                            <p><a href="{{url('jeesoo')}}">Total Sales</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <!--</div>-->
 
             <!-- jQuery -->
             <script src="../public/js/jquery.js"></script>
