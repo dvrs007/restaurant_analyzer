@@ -3,8 +3,8 @@
 @section('content')
 <section class="hero">
                             <section class="container">
-                                <h1>Order.Eat.Repeat.</h1>
-                                <p>Our mobile ordering application for iOS, Android and tablet helps you and your consumers order in advance, pay in advance and build relationships.</p>
+                                <h1>Order.Analyze.Repeat.</h1>
+                                <p>Analyze the sales of your restaurant</p>
                                 <a href="{{ url('orders/create') }}">Make your order now!</a>
                             </section>
                         </section>

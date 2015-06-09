@@ -63,7 +63,7 @@ Server Statistics - Restaurant Analyzer
     echo Lava::render('PieChart', 'tablesPieChart', 'tablezChart'); 
     ?>
     </div>
-            
+</div>
             
 
 @stop
