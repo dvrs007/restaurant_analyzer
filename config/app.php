@@ -36,7 +36,7 @@ return [
       |
      */
 //    'timezone' => 'UTC',
-    'timezone' => 'EDT',
+    'timezone' => 'EST',
     /*
       |--------------------------------------------------------------------------
       | Application Locale Configuration
