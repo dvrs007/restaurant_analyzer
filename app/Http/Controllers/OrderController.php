@@ -142,6 +142,17 @@ class OrderController extends Controller {
 //o.total=o.subtotal+tax
 //WHERE l.item_id=i.id AND o.id=l.order_id
 //GROUP BY l.order_id;
+        
+        
+        /*
+         DB::update('UPDATE orders o SET o.expenses= 1.13*(SELECT SUM( i.item_cost * l.ordered_quantity) '
+          . 'FROM lineitems l '
+          . 'JOIN items i ON i.id=l.item_id '
+          . 'WHERE o.id=l.order_id '
+          . 'GROUP BY o.id)');
+        */
+         /**********************************************/
+         
         $inputs = array(
             'order_complete' => $request['order_complete']
         );
