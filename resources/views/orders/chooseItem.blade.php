@@ -25,13 +25,13 @@ Server:{{$order->server}}
 
 
 <div class='form-group'>
-    <select name="item_id">
+    <select id="item_id" name="item_id">
         @foreach($items as $item)
         <option id="" value="{{ $item->id }}">{{ $item->item_name }}  (${{ $item->item_price}})</option>
         @endforeach
     </select>  
 
-    <select name="ordered_quantity">
+    <select id="ordered_quantity" name="ordered_quantity">
         @for($i=1; $i<21;$i++)
         <option value="{{$i}}">{{$i}}</option>
         @endfor
