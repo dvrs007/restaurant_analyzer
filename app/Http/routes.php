@@ -26,6 +26,8 @@ Route::get('stats/Stats_index', 'statsController@Stats_index');
 
 Route::get('server-stats', 'philController@index');
 
+Route::get('server-stats-individual', 'philController@server');
+
 
 /**************************************************************************
  END PHIL'S ROUTES
