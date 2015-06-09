@@ -19,23 +19,19 @@ use Illuminate\Http\Request;  //changed it after adding validation
  * @author SuzieQ
  */
 class OrderController extends Controller {
-
-    //put your code here
-
-
     public function index() {
         $orders = DB::table('orders')->orderBy('id', 'desc')->get();
-        //$orders = Order::all();
-        //dd($items);
-        //return "items";
+//$orders = Order::all();
+//dd($items);
+//return "items";
 
         return view('orders.index')->with("orders", $orders);
     }
 
     public function show($orderID) {
-        //get a single detail
+//get a single detail
         $order = Order::find($orderID); //helper method to find recipe with id
-        //$recipe=Recipe::where('dish_name' , '=', 'sausage');
+//$recipe=Recipe::where('dish_name' , '=', 'sausage');
         $lineitems = Lineitem::where('order_id', '=', $orderID);
 
         $results = DB::table('orders')
@@ -62,42 +58,29 @@ class OrderController extends Controller {
                 ]
         );
 
-        //insert a data into database
-        //1, get the request...what were sent using post
-        //line 8 added
-        //$inputs = Request::all();
-        //STEP1: Fetch the inputs(fetch all of the input from create)
+//insert a data into database
+//1, get the request...what were sent using post
+//line 8 added
+//$inputs = Request::all();
+//STEP1: Fetch the inputs(fetch all of the input from create)
         $inputs = $request->all(); //added after validation added
-        //STEP2: Create an order and saved it into db
-        //method1       
-        //$order = new Order;
-        //$order->tbl_nummber = $inputs['tbl_number'];
-        //$order->server = $inputs['server'];   
-        //method2
+//STEP2: Create an order and saved it into db
+//method1       
+//$order = new Order;
+//$order->tbl_nummber = $inputs['tbl_number'];
+//$order->server = $inputs['server'];   
+//method2
         Order::create($inputs);
 
 
-        //return "recipe inserted";
-        //return $inputs;
-        //STEP3: Redierect
+//return "recipe inserted";
+//return $inputs;
+//STEP3: Redierect
         return Redirect('orders');
     }
 
-//    public function items($orderID) {
-//        //parameter: orderid
-//        $order = Order::find($orderID);
-//        $items = Item::all();
-//
-//
-//
-//        return view('orders.items')->with("items", $items)
-//                        ->with("order", $order);
-//    }
-
-
-
     public function chooseItem($orderID) {
-        //parameter: orderid
+//parameter: orderid
         $order = Order::find($orderID);
         $items = Item::all();
         $lineitems = Lineitem::all();
@@ -114,9 +97,9 @@ class OrderController extends Controller {
     }
 
     public function itemStore(Request $request) {
-        //this function is to insert lineitems per an order into lineitems table
-        //$inputs = Request::all();
-        //Lineitem::create($inputs);
+//this function is to insert lineitems per an order into lineitems table
+//$inputs = Request::all();
+//Lineitem::create($inputs);
         $lineitem = new Lineitem;
         $lineitem->order_id = $request['order_id'];
         $lineitem->item_id = $request['item_id'];
@@ -128,7 +111,7 @@ class OrderController extends Controller {
         DB::update('UPDATE orders SET tax=subtotal*0.13, total=subtotal+tax');
         /*         * ******************************************* */
         $order_complete = $request['order_complete'];
-        
+
         DB::table('orders')
                 ->where('id', $request['order_id'])
                 ->update(array('order_complete' => $order_complete));
@@ -136,53 +119,42 @@ class OrderController extends Controller {
         return Redirect('orders');
     }
 
+//Ver.2: adding/inserting lineitems per an order
+//Files for this controller : items.blade.php
+//
+    public function addItems($orderID) {
+        //parameter: orderid
+        $order = Order::find($orderID);
+        $items = Item::all();
+        $lineitems = Lineitem::all();
+        $results = DB::table('orders')
+                ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+                ->join('items', 'lineitems.item_id', '=', 'items.id')
+                ->where('orders.id', '=', $orderID)
+                ->get();
+
+
+
+        return view('orders.items')->with("items", $items)
+                        ->with("order", $order)
+                        ->with("lineitems", $lineitems)
+                        ->with("results", $results);
+    }
+
+    public function itemsAdd(){
+        //to store/insert line items into lineitems table for an order
+        
+    }
+    
     /*
-      //update
-
-      public function edit($id) {
-      $recipe = Recipe::find($id);
-      //$recipe = Recipe::where('dish_id' , '=', $id);
-
-      return view('recipes.edit')->with('recipe', $recipe);
-      }
-
-
-      public function update(Request $request) {
-      //this is for update
-      //get a single detail
-
-      $this->validate($request, [
-      'dish_name' => 'required|min:10',
-      'dish_ingredients' => 'required',
-      'dish_steps' => 'required'
-      //'dish_steps' => 'required|Integer'
-      ]
-      );
-
-      //STEP1: Fetch the inputs
-      //$inputs =  $request -> all(); //added after validation added
-      $inputs = array(
-      'dish_name' => $request['dish_name'],
-      'dish_ingredients' => $request['dish_ingredients'],
-      'dish_steps' => $request['dish_steps']
-      );
-
-      //STEP2: Store
-      //Recipe::find($request['dish_id'])->update($inputs);
-      Recipe::where('dish_id', $request['dish_id'])->update($inputs);
-      //helper method to find recipe with id
-      //return view('recipes.recipe')->with('recipe',$recipe);
-      return Redirect('recipes');
-      }
-
       public function deleteLink($id) {
-      Recipe::where('dish_id', $id)->delete();
-      return Redirect('recipes');
+      Item::where('id', $id)->delete();
+      return Redirect('items');
       }
 
       public function deleteButton(Request $request) {
-      Recipe::where('dish_id', $request['dish_id'])->delete();
-      return Redirect('recipes');
+      Item::where('id', $request['id'])->delete();
+      return Redirect('items');
       }
      */
 }
