@@ -15,7 +15,7 @@ class johnsonController extends Controller {
 	public function index()
 	{
             
-        //get the tables, joined, all the orders, items, and item quantities
+        //get the tables, joined, all the orders, items, and item quantitiess
             $results = DB::table('orders')
             ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
             ->join('items', 'lineitems.item_id', '=', 'items.id')
