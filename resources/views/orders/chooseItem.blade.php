@@ -20,8 +20,9 @@ Table#:{{ $order->tbl_number}}<br/>
 Server:{{$order->server}}
 <hr/>
 
-{!! Form:: open( ['url' => 'AddLineItems' ]) !!} 
+{!! Form:: open( ['url' => 'AddLineItems']) !!} 
 {!! Form::hidden('order_id',  $order->id  ) !!}
+
 
 <div class='form-group'>
     <select name="item_id">
@@ -39,8 +40,18 @@ Server:{{$order->server}}
 
 <div class='form-group'>
     {!! Form::Label('order_complete','Order Complete? Check if YES') !!}
-    {!! Form::checkbox('order_complete','value') !!}
+    {!! Form::radio('order_complete', 1 , false, ['class' => 'field'] ) !!}
 </div>
+<!--
+public function checkbox($name, $value = 1, $checked = null, $options = array())
+{
+    return $this->checkable('checkbox', $name, $value, $checked, $options);
+}
+1st param: name
+2nd : value
+3rd : checked or not (i.e. null, false or true)
+4th : attributes.
+-->
 <br/><br/>
 <div class="form-group">    
     {!! Form::submit('Complete Order', ['class' => 'btn btn-primary form-control']) !!}

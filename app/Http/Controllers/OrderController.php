@@ -123,42 +123,15 @@ class OrderController extends Controller {
         $lineitem->ordered_quantity = $request['ordered_quantity'];
         $lineitem->save();
 
-
-//        DB::table('orders')
-//                ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
-//                ->join('items', 'lineitems.item_id', '=', 'items.id')
-//                ->whereRaw('order_id=$request["order_id"] AND orders.id = lineitems.order_id')
-//                ->groupBy('lineitems.order_id')
-//                ->update(['orders.subtotal' => 'sum(items.item_price*lineitems.ordered_quantity)',
-//                    'orders.tax' => 'orders.subtotal' * 0.13,
-//                    'orders.total' => 'orders.subtotal' + 'orders.tax'
-//                   
-//        ]);
-//UPDATE orders o
-//INNER JOIN lineitems l ON o.id=l.order_id
-//INNER JOIN items i ON i.id=l.item_id 
-//SET o.subtotal=SUM(i.item_price * l.ordered_quantity),
-//o.tax=o.subtotal*0.13,
-//o.total=o.subtotal+tax
-//WHERE l.item_id=i.id AND o.id=l.order_id
-//GROUP BY l.order_id;
+        DB::update('UPDATE orders o SET o.expenses= 1.13*(SELECT SUM( i.item_cost * l.ordered_quantity) FROM lineitems l JOIN items i ON i.id=l.item_id WHERE o.id=l.order_id GROUP BY o.id)');
+        DB::update('UPDATE orders o SET o.subtotal = (SELECT SUM( i.item_price * l.ordered_quantity) FROM lineitems l JOIN items i ON i.id=l.item_id WHERE o.id=l.order_id GROUP BY o.id)');
+        DB::update('UPDATE orders SET tax=subtotal*0.13, total=subtotal+tax');
+        /*         * ******************************************* */
+        $order_complete = $request['order_complete'];
         
-        
-        /*
-         DB::update('UPDATE orders o SET o.expenses= 1.13*(SELECT SUM( i.item_cost * l.ordered_quantity) '
-          . 'FROM lineitems l '
-          . 'JOIN items i ON i.id=l.item_id '
-          . 'WHERE o.id=l.order_id '
-          . 'GROUP BY o.id)');
-        */
-         /**********************************************/
-         
-        $inputs = array(
-            'order_complete' => $request['order_complete']
-        );
-        Order::where('id', $request['order_id'])->update($inputs);
-
-
+        DB::table('orders')
+                ->where('id', $request['order_id'])
+                ->update(array('order_complete' => $order_complete));
 
         return Redirect('orders');
     }
