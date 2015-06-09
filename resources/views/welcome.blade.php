@@ -4,8 +4,8 @@
 <section class="hero">
                             <section class="container">
                                 <h1>Order.Analyze.Repeat.</h1>
-                                <p>Analyze the sales of your restaurant</p>
-                                <a href="{{ url('orders/create') }}">Make your order now!</a>
+                                <p>Analyze the sales of your restaurant. <br>Track your best performing items, servers, and more.</p>
+                                <a href="{{ url('orders/create') }}">Enter an order now.</a>
                             </section>
                         </section>
     <div class="body-content">
