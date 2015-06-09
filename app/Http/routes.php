@@ -84,7 +84,7 @@ Route::get('orders/{id}','OrderController@show');
 
 
 //Analysis-------------------------------------
-Route::get('jeesoo', 'jeesooController@index');
+Route::get('totalSales', 'jeesooController@index');
 Route::get('jeesoo/ex','jeesooController@example');
 Route::get('jeesoo/list', 'jeesooController@orderlist');
 

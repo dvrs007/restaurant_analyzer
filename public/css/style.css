@@ -55,7 +55,6 @@ html, body {
 .main-title{
     width:100%;
     padding:15px 5px;
-    border: 2px solid #00b3ee;
     background: #0000C2;
     color:#ffffff;
     text-align: center;
@@ -94,6 +93,7 @@ html, body {
 }
 
 #footer {
+    margin-top:30px;
     position:absolute;
     bottom:0;
     width:100%;
