@@ -85,6 +85,49 @@
                 </div>
             <!--</div>-->
 
+            
+            
+            <div class="arrow-container">
+                <div class="arrow-up"></div>
+            </div>
+            
+            <script type="text/javascript">
+            //ARROW SCROLLER
+            // show arrow if user has scrolled down, or hide if at top
+            $(window).scroll(function() {
+                
+
+                var height = $(window).scrollTop();
+                
+                if(height > 0)
+                {
+                    $( ".arrow-container" ).fadeIn( 2000, function() {
+                    // Animation complete
+                    });
+                }
+                else
+                {
+                    $( ".arrow-container" ).fadeOut( 2000, function() {
+                    // Animation complete
+                    });
+                }
+            });
+            
+            
+            //scroll to top of page if arrow clicked
+            $(".arrow-container").click(function () {
+            
+                $('html,body').animate({
+                    
+                scrollTop: $("html,body").offset().top
+                });
+            
+            });
+            //END ARROW SCROLLER
+           
+            </script>
+            
+            
             <!-- jQuery -->
             <script src="../public/js/jquery.js"></script>
 
