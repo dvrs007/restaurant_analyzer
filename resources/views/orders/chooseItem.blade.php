@@ -27,7 +27,7 @@ Server:{{$order->server}}
 <div class='form-group'>
     <select name="item_id">
         @foreach($items as $item)
-        <option value="{{ $item->id }}">{{ $item->item_name }}  (${{ $item->item_price}})</option>
+        <option id="" value="{{ $item->id }}">{{ $item->item_name }}  (${{ $item->item_price}})</option>
         @endforeach
     </select>  
 
@@ -41,6 +41,10 @@ Server:{{$order->server}}
 <div class='form-group'>
     {!! Form::Label('order_complete','Order Complete? Check if YES') !!}
     {!! Form::radio('order_complete', 1 , false, ['class' => 'field'] ) !!}
+</div>
+
+<div id="totalprice">
+    <h3>The total before tax: <span class="price"></span></h3>
 </div>
 <!--
 public function checkbox($name, $value = 1, $checked = null, $options = array())

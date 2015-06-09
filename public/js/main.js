@@ -10,7 +10,7 @@ $(document).ready(function(){
         $('#negative_charts').slideToggle();
     });
     
-    
+    $('.price').text()
     
     
 });

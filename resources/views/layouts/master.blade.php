@@ -1,6 +1,6 @@
 <!-- Stored in app/views/layouts/master.blade.php -->
 
-<html ng-app="myApp">
+<html>
     <head>
         <title>@yield('title')</title>
         <meta charset="UTF-8">
@@ -16,8 +16,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
-        <script type="text/javascript" src="{{asset('js/angular.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 
         <!-- jQuery -->
         <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
@@ -40,7 +38,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="{{ url('/') }}">Order.Eat.Repeat</a>
+                                <a class="navbar-brand" href="{{ url('/') }}">Order.Analyze.Repeat.</a>
                             </div>
 
                           <!-- Collect the nav links, forms, and other content for toggling -->
