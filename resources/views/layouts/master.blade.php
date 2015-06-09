@@ -41,7 +41,7 @@
                             <a class="navbar-brand" href="{{ url('/') }}">Order.Analyze.Repeat.</a>
                         </div>
 
-                        <!-- Collect the nav links, forms, and other content for togglingg -->
+                        <!-- Collect the nav links, forms, and other content for togglinggg -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li><a href="{{ url('menus') }}">Menu</a></li>                              
