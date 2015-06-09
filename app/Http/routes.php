@@ -34,10 +34,26 @@ Route::get('server-stats', 'philController@index');
 /**************************************************************************
  JS'S ROUTES
  *************************************************************************/
-//Menus
+//Menus----------------------------------------
 Route::get('menus', 'MenuController@index');
 
-//Orders
+//CREATE
+Route::get('menus/create','MenuController@create');
+//STORE
+Route::post('menus','MenuController@store');
+
+//SHOW
+Route::get('menus/{id}','MenuController@show');
+
+//EDIT
+Route::get('menus/{id}/edit','MenuController@edit');
+//UPDATE(store edited one)
+Route::post('menusUpdate', 'MenuController@update');
+
+//Delete
+Route::post('menuDelete','MenuController@deleteButton');
+
+//Orders----------------------------------------
 Route::get('orders', 'OrderController@index');
 
 
@@ -60,7 +76,7 @@ Route::get('orders/{id}','OrderController@show');
 //Route::post('orders','OrderController@itemStore');
 
 
-//Analysis
+//Analysis-------------------------------------
 Route::get('jeesoo', 'jeesooController@index');
 Route::get('jeesoo/ex','jeesooController@example');
 Route::get('jeesoo/list', 'jeesooController@orderlist');

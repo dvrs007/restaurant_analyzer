@@ -4,9 +4,7 @@
 <hr/>
 <h1>List of Menus</h1>
 
-<a href="{{ url('orders')  }}">List of Orders</a>
-|
-<a href="{{ url('orders/create')  }}">Create</a>
+<a href="{{ url('menus/create')  }}">Create</a>
 |
 <a href="{{ url('/')}}">Home</a>
 <br/>
@@ -17,12 +15,13 @@
         <tr>
             <th>Menu</th>
             <th>Price</th>
+            
     </thead>   
     <tbody>
-        @foreach($items as $menu)
+        @foreach($items as $item)
         <tr>
-            <td>{{ $menu->item_name}}</td>
-            <td>{{ $menu->item_price}}</td>
+            <td><a href="{{ url('/menus', $item->id) }}">{{ $item->item_name}}</td>
+            <td>{{ $item->item_price}}</td>
         </tr>
         @endforeach
       

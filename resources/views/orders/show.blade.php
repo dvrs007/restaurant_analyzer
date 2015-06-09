@@ -9,8 +9,12 @@
 Table#:{{ $order->tbl_number}}<br/>
 Server:{{ $order->server}}<br/>
 Ordered at:{{ $order->order_date}} {{ $order->order_time}}
+<br/><br/>
+<a href="{{ url('orders')  }}">Back to the list of orders</a>
+<br/><br/>
 <div>
     <!!- for each loop thru items for this order-->
+    
     <table class="table table-bordered table-condensed table-responsive table-hover table-striped">
         <thead>
             <tr>
@@ -33,9 +37,9 @@ Ordered at:{{ $order->order_date}} {{ $order->order_time}}
             <tr><td colspan="3">Tax</td><td>{{ $result->tax }}</td></tr>
             <tr><td colspan="3">Total</td><td>{{ $result->total }}</td></tr>
         </tbody>
-
     </table>
 </div>
 <br>
+<a href="{{ url('orders')  }}">Back to the list of orders</a>
 
 @stop
