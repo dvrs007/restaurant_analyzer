@@ -11,7 +11,7 @@
         <hr />
 <div class="col-sm-5 col-md-6">
     <div class="row">
-        <h3>The highest grossing item is: </h3>
+        <h3>The highest grossing item is: {{ $high_gross_item }}</h3>
         <button id="positive_stats">Show positive charts</button>
 
         <div id="positive_charts">
@@ -26,7 +26,7 @@
 
 <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">
     <div class="row">
-        <h3>Oh no! ___ is not doing well!</h3>
+        <h3>Oh no! {{ $low_gross_item }} is not doing well!</h3>
         <button id="negative_stats">Show negative charts</button>
 
         <div id="negative_charts">
