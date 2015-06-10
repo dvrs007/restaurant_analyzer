@@ -22,6 +22,7 @@
         <tr>
             <td><a href="{{ url('/menus', $item->id) }}">{{ $item->item_name}}</td>
             <td>{{ $item->item_price}}</td>
+            <td>{{ $item->item_cost}}</td>
         </tr>
         @endforeach
       

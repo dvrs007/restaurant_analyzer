@@ -36,12 +36,12 @@ Item Statistics - Restaurant Analyzer
 
         <hr />
         
-        <div id="perf_div"></div>
-        <?php echo Lava::render('ColumnChart', 'OrderedQuantity', 'perf_div') ?>
+        <div id="poll_div2"></div>
+        <?php echo Lava::render('PieChart', 'NetRevenue_lowestNet', 'poll_div2') ?>
 
         <hr />
 
-        <div id="poll_div2"></div>
-        <?php echo Lava::render('PieChart', 'NetRevenue_lowestNet', 'poll_div2') ?>
+        <div id="perf_div"></div>
+        <?php echo Lava::render('ColumnChart', 'OrderedQuantity', 'perf_div') ?>
     
 @stop
