@@ -22,7 +22,8 @@
 
         <!-- DataTables -->
         <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-
+        
+        
     </head>
     <body>
         <div id="wrap">
@@ -72,14 +73,18 @@
                                         <div class="container-fluid">
                                             <div class="col-sm-4">
                                                 <h4 class="footer-title">Orders</h4>
+                                                <p><a href="{{ url('orders') }}">View All</a></p>
+                                                <p><a href="{{url('orders/create')}}">Add New</a></p>
                                             </div>
                                             <div class="col-sm-4">
                                                 <h4 class="footer-title">Menu</h4>
+                                                <p><a href="{{ url('menus') }}">Current Menu</a></p>
+                                                <p><a href="{{url('menus/create')}}">Add Item</a></p>
                                             </div>
                                             <div class="col-sm-4">
                                                 <h4 class="footer-title">Statistics</h4>
-                                                <p><a href="{{ url('item-sales') }}">Item</a></p>
-                                                <p><a href="{{url('server-stats')}}">Servers</a></p>
+                                                <p><a href="{{ url('item-sales') }}">Menu Items</a></p>
+                                                <p><a href="{{url('server-stats')}}">Servers &amp; Tables</a></p>
                                                 <p><a href="{{url('jeesoo')}}">Total Sales</a></p>
                                             </div>
                                         </div>
@@ -99,13 +104,13 @@
                 
                 if(height > 0)
                 {
-                    $( ".arrow-container" ).fadeIn( 2000, function() {
+                    $( ".arrow-container" ).fadeIn( 700, function() {
                     // Animation complete
                     });
                 }
                 else
                 {
-                    $( ".arrow-container" ).fadeOut( 2000, function() {
+                    $( ".arrow-container" ).fadeOut( 700, function() {
                     // Animation complete
                     });
                 }

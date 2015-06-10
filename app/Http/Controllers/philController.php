@@ -199,7 +199,8 @@ class philController extends Controller {
             //-------------------------------------------------------------------------------------
             //-------------------------------------------------------------------------------------
 
-        
+            //get all current servers to populate the dropdown list
+            $allservers = DB::select( DB::raw("SELECT DISTINCT server FROM orders"));
             
             //************************SEND DATA TO THE VIEW*****************************************//
             
@@ -209,7 +210,8 @@ class philController extends Controller {
                     ->with("serverz",$serverz)
                     ->with("chart",$chart)
                     ->with("tablez",$tablezchart)
-                    ->with("quantitiezTable", $quantitiezTable);
+                    ->with("quantitiezTable", $quantitiezTable)
+                    ->with("allservers", $allservers);;
             
             //************************END SEND DATA TO THE VIEW********************//
             //-------------------------------------------------------------------------------------

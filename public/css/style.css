@@ -55,7 +55,7 @@ html, body {
 .main-title{
     width:100%;
     padding:15px 5px;
-    background: #0000C2;
+    background: #7FB5DA;
     color:#ffffff;
     text-align: center;
 }
@@ -267,14 +267,78 @@ img{
     color:blue;
 }
 
+/*----- Tabs -----*/
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+ 
+    /*----- Tab Links -----*/
+    /* Clearfix */
+    .tab-links:after {
+        display:block;
+        clear:both;
+        content:'';
+    }
+ 
+    .tab-links li {
+        margin:0px 5px;
+        float:left;
+        list-style:none;
+    }
+ 
+        .tab-links a {
+            padding:9px 15px;
+            display:inline-block;
+            border-radius:3px 3px 0px 0px;
+            background:#7FB5DA;
+            font-size:16px;
+            font-weight:600;
+            color:#4c4c4c;
+            transition:all linear 0.15s;
+        }
+ 
+        .tab-links a:hover {
+            background:#a7cce5;
+            text-decoration:none;
+        }
+ 
+    li.active a, li.active a:hover {
+        background:#fff;
+        color:#4c4c4c;
+    }
+ 
+    /*----- Content of Tabs -----*/
+    .tab-content {
+        padding:15px;
+        border-radius:3px;
+        box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+        background:#fff;
+    }
+ 
+        .tab {
+            display:none;
+        }
+ 
+        .tab.active {
+            display:block;
+        }
+
 
 /*--------------- GRAPH TITLE STYLING ------------------*/
 
 .main-graph-title{
+    border-top:1px solid #333;
     border-bottom:1px solid #333;
     width:100%;
-    margin: 10px 0;
-    padding: 5px 0;
+    margin: 20 0;
+    padding: 10 0;
+    text-align:center;
+}
+
+.main-graph-title h2{
+    margin:0; 
+    padding: 0;
 }
 
 .graph-title{

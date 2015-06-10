@@ -17,7 +17,9 @@ Server Statistics - Restaurant Analyzer
     
             <div class="main-graph-title">
                 <h2>Individual Server Statistics</h2>
-                <form action="" method="post">
+                
+            </div>
+            <form action="" method="post">
                 <label for="servers">Select a Server: </label>
                 <select id="servers">
                     <?php 
@@ -29,19 +31,18 @@ Server Statistics - Restaurant Analyzer
                     ?>
                 </select>
                 <input type="submit" value="View Stats">
-                </form>
-            </div>
+            </form>
     
-    <div class="main-graph-title">
-        <h2>Current Servers:</h2>
-        <?php 
+            <div class="main-graph-title">
+                <h2>Current Servers:</h2>
+                <?php 
         
-        foreach($allservers as $server){
+                    foreach($allservers as $server){
             
-            echo '<div class="col-md-4"><h3>' . $server->server . '</h3></div>';   
-        } 
-        ?>
-    </div>
+                        echo '<div class="col-md-4"><h3>' . $server->server . '</h3></div>';   
+                    } 
+                ?>
+            </div>
             
             <div class="arrow-container">
                 <div class="arrow-up"></div>
