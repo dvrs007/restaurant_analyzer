@@ -1,8 +1,22 @@
 @extends('layouts.master')
+
+@section('title')
+Item Analysis
+@stop
+
+@section('maintitle')
+Item Statistics - Restaurant Analyzer
+@stop
+
+@section('sidebar')
+    
+@stop
     
 @section('content')
 
-        <h1>General Item Statistics</h1>
+        <div class="main-graph-title">
+            <h2>General Item Statistics</h2>
+        </div>
         <ul>
             <li>Statistics on the sales of <span style="color:#0000C2;">{{ $itemcount }}</span> items</li>
             <li>Total items ordered: <span style="color:#0000C2;">{{ $itemOrders }}</span></li>

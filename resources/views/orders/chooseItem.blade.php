@@ -43,9 +43,6 @@ Server:{{$order->server}}
     {!! Form::radio('order_complete', 1 , false, ['class' => 'field'] ) !!}
 </div>
 
-<div id="totalprice">
-    <h3>The total before tax: <span class="price"></span></h3>
-</div>
 <!--
 public function checkbox($name, $value = 1, $checked = null, $options = array())
 {
@@ -58,7 +55,7 @@ public function checkbox($name, $value = 1, $checked = null, $options = array())
 -->
 <br/><br/>
 <div class="form-group">    
-    {!! Form::submit('Complete Order', ['class' => 'btn btn-primary form-control']) !!}
+    {!! Form::submit('Complete Order', ['class' => 'completeOrd btn btn-primary form-control']) !!}
 </div>
 {!! Form:: close() !!}
 @stop
