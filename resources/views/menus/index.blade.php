@@ -15,7 +15,7 @@
         <tr>
             <th>Menu</th>
             <th>Price</th>
-            
+            <th>Cost</th>
     </thead>   
     <tbody>
         @foreach($items as $item)
