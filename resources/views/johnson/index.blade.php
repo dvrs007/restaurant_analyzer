@@ -21,33 +21,27 @@ Item Statistics - Restaurant Analyzer
             <li>Statistics on the sales of <span style="color:#0000C2;">{{ $itemcount }}</span> items</li>
             <li>Total items ordered: <span style="color:#0000C2;">{{ $itemOrders }}</span></li>
             <li>Total made: <span style="color:#0000C2;"> ${{ $totalGen }} </span></li>
+            <li><h3 style="color:green;">The highest grossing item is {{ $high_gross_item }}</h3></li>
+            <li><h3 style="color:red;">Oh no! {{ $low_gross_item }} is not doing well!</h3></li>
         </ul>
         <hr />
-<div class="col-sm-5 col-md-6">
-    <div class="row">
-        <h3>The highest grossing item is {{ $high_gross_item }}</h3>
-        <button id="positive_stats">Show positive charts</button>
+        
+        <div id="chart-div"></div>
+        <?php echo Lava::render('DonutChart', 'DonutChart', 'chart-div') ?>
+        
+        <hr />
+        
+        <div id="poll_div"></div>
+        <?php echo Lava::render('PieChart', 'NetRevenue_highestNet', 'poll_div') ?>
 
-        <div id="positive_charts">
-            <div id="poll_div"></div>
-            <?php echo Lava::render('PieChart', 'NetRevenue_highestNet', 'poll_div') ?>
-            
-            <div id="perf_div"></div>
-            <?php echo Lava::render('ColumnChart', 'OrderedQuantity', 'perf_div') ?>
-        </div>
-    </div>
-</div>
+        <hr />
+        
+        <div id="perf_div"></div>
+        <?php echo Lava::render('ColumnChart', 'OrderedQuantity', 'perf_div') ?>
 
-<div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">
-    <div class="row">
-        <h3>Oh no! {{ $low_gross_item }} is not doing well!</h3>
-        <button id="negative_stats">Show negative charts</button>
+        <hr />
 
-        <div id="negative_charts">
-            <div id="poll_div2"></div>
-            <?php echo Lava::render('PieChart', 'NetRevenue_lowestNet', 'poll_div2') ?>
-        </div>
-    </div>
-</div>
+        <div id="poll_div2"></div>
+        <?php echo Lava::render('PieChart', 'NetRevenue_lowestNet', 'poll_div2') ?>
     
 @stop
