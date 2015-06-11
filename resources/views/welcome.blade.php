@@ -8,9 +8,9 @@
         <a href="{{ url('orders/create') }}">Enter an order now.</a>
     </section>
 </section>
-    <div class="body-content">
+    <div class="body-content center-block">
         <div class="row">
-            <div class="col-md-8">
+            <div class="instructions col-md-4">
                 <h2>EASY ONLINE ORDERING</h2>
                 <ol>
                     <li>Click on "Make Your Order Now" button</li>

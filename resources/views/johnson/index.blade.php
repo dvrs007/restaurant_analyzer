@@ -20,7 +20,7 @@ Item Statistics - Restaurant Analyzer
             <li>Total items ordered: <span style="color:#0000C2;">{{ $itemOrders }}</span></li>
             <li>Total made: <span style="color:#0000C2;"> ${{ $totalGen }} </span></li>
             <li><h3 style="color:green;">The highest grossing item is {{ $high_gross_item }}</h3></li>
-            <li><h3 style="color:red;">Oh no! {{ $low_gross_item }} is not doing well!</h3></li>
+            <li id="warning" class="animated infinite shake"><h3 style="color:red;">Oh no! {{ $low_gross_item }} is not doing well!</h3></li>
         </ul>
         <hr />
         

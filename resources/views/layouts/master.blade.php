@@ -7,6 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}">
+        <link href='http://fonts.googleapis.com/css?family=Allan:400,700' rel='stylesheet' type='text/css'>
 
         <!-- DataTables CSS -->
         <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
@@ -38,7 +40,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="{{ url('/') }}">Order.Analyze.Repeat.</a>
+                            <a class="navbar-brand animated slideInDown" href="{{ url('/') }}">Order.Analyze.Repeat.</a>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for togglinggg -->

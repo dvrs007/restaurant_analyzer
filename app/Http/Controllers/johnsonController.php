@@ -46,7 +46,8 @@ class johnsonController extends Controller {
             $piechart = \Lava::PieChart('NetRevenue_highestNet')
                     ->setOptions(array(
                         'datatable' => $sales,
-                        'title' => 'Top 10 Highest Net Revenue per Item ($)'
+                        'title' => 'Top 10 Highest Net Revenue per Item ($)',
+                        'height' => 700
                     ));
             
         
@@ -74,7 +75,8 @@ class johnsonController extends Controller {
             $piechart_lowestNet = \Lava::PieChart('NetRevenue_lowestNet')
                     ->setOptions(array(
                         'datatable' => $sales_lowestNet,
-                        'title' => 'Top 10 Lowest Net Revenue per Item ($)'
+                        'title' => 'Top 10 Lowest Net Revenue per Item ($)',
+                        'height' => 700
                     ));
             
         
@@ -106,7 +108,7 @@ class johnsonController extends Controller {
                       'title' => 'Ordered Quantity',
                       'titleTextStyle' => \Lava::TextStyle(array(
                         'color' => '#eb6b2c',
-                        'fontSize' => 14
+                        'fontSize' => 12
                       ))
                     ));
             
@@ -115,7 +117,7 @@ class johnsonController extends Controller {
             $top_priced_items = DB::select( DB::raw("SELECT DISTINCT item_name, item_price
                 FROM items
                 GROUP BY item_price
-                ORDER BY item_price DESC limit 5") );
+                ORDER BY item_price DESC") );
         
         //column chart for item quantity ordered
             $top_priced_item_dt = \Lava::DataTable();
@@ -133,7 +135,8 @@ class johnsonController extends Controller {
             $donutchart = \Lava::DonutChart('DonutChart')
                    ->setOptions(array(
                      'datatable' => $top_priced_item_dt,
-                     'title' => 'Top 5 most expensive items'
+                     'title' => 'Most expensive items',
+                       'height' => 700
                    ));
             
             
