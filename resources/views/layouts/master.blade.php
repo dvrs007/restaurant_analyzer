@@ -62,8 +62,6 @@
                                         <div class="row">
 
                                             <div class="container-fluid">
-                                                <h2 class="main-title">@yield('maintitle')</h2>
-
                                                 @yield('content')
                                             </div>
                                         </div>

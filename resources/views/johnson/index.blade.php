@@ -7,13 +7,11 @@ Item Analysis
 @section('maintitle')
 Item Statistics - Restaurant Analyzer
 @stop
-
-@section('sidebar')
-    
-@stop
     
 @section('content')
 
+<div class="row">
+    <div class="col-lg-10 center-block">
         <div class="main-graph-title">
             <h2>General Item Statistics</h2>
         </div>
@@ -25,6 +23,8 @@ Item Statistics - Restaurant Analyzer
             <li><h3 style="color:red;">Oh no! {{ $low_gross_item }} is not doing well!</h3></li>
         </ul>
         <hr />
+        
+        
         
         <div id="chart-div"></div>
         <?php echo Lava::render('DonutChart', 'DonutChart', 'chart-div') ?>
@@ -43,5 +43,6 @@ Item Statistics - Restaurant Analyzer
 
         <div id="perf_div"></div>
         <?php echo Lava::render('ColumnChart', 'OrderedQuantity', 'perf_div') ?>
-    
+    </div>
+</div>
 @stop

@@ -13,8 +13,10 @@ Server Statistics - Restaurant Analyzer
 @stop
 
 @section('content')
-<div id="guyContainer">
-    
+
+<div class="row">
+    <div class="col-lg-10 center-block">
+        <div id="guyContainer">
             <div class="main-graph-title">
                 <h2>General Server Statistics</h2>
             </div>
@@ -46,24 +48,25 @@ Server Statistics - Restaurant Analyzer
             ?>
 
     
-    <div class="main-graph-title">
-    <h2>Data Analysis by Table</h2>
-    </div>
-    <div class="col-md-12">
-    
-    <div class="graph-title">
-        <h3>Sales Performance by Table</h3>
-    </div>
+            <div class="main-graph-title">
+            <h2>Data Analysis by Table</h2>
+            </div>
+            <div class="col-md-12">
 
-    <!--chart code -->
-    <div id="tablezChart"></div>
-    
-    <?php 
-    // Example #1, output into a div you already created
-    echo Lava::render('PieChart', 'tablesPieChart', 'tablezChart'); 
-    ?>
+            <div class="graph-title">
+                <h3>Sales Performance by Table</h3>
+            </div>
+
+            <!--chart code -->
+            <div id="tablezChart"></div>
+
+            <?php 
+            // Example #1, output into a div you already created
+            echo Lava::render('PieChart', 'tablesPieChart', 'tablezChart'); 
+            ?>
+            </div>
+        </div>
     </div>
 </div>
-            
 
 @stop
