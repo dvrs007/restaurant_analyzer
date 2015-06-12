@@ -18,6 +18,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+        
+        <!-- jQuery -->
+        <script src="../public/js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../public/js/bootstrap.min.js"></script>
 
         <!-- jQuery -->
         <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
@@ -85,11 +90,5 @@
                                         </div>
                                     </div>
                                     <!--</div>-->
-
-                                    <!-- jQuery -->
-                                    <script src="../public/js/jquery.js"></script>
-
-                                    <!-- Bootstrap Core JavaScript -->
-                                    <script src="../public/js/bootstrap.min.js"></script>
                                     </body>
                                     </html>

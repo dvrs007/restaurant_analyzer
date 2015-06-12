@@ -202,6 +202,10 @@ html, body {
   color: #FFFBD3;
 }
 
+.icon-bar{
+    border: 1px solid #fff;
+}
+
 .dropdown-menu > li > a {
   display: block;
   padding: 3px 20px;
