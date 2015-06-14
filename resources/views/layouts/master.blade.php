@@ -19,6 +19,9 @@
         <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
         
+        <!-- D3js -->
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        
         <!-- jQuery -->
         <script src="../public/js/jquery.js"></script>
         <!-- Bootstrap Core JavaScript -->
