@@ -18,8 +18,9 @@ Add a New Item
 @foreach($errors ->all() as $error)
 <li>{{ $error }}</li>
 @endforeach
-@endif
 <hr/>
+@endif
+
 
 {{--!! Form:: open( ['url' => 'menus' ]) !!--}} 
 {!! Form::open(array('url'=>'menus','method'=>'POST', 'files'=>true)) !!}

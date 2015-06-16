@@ -16,13 +16,12 @@ Menu List
 
 @section('maintitle')
 Menu
+
+<div style="float:right;"><a href="{{ url('menus/create') }}">Create</a></div>
+<div style="clear:both;"></div>
 @stop
 
 @section('content')
-
-<a href="{{ url('menus/create')  }}">Create</a>
-
-<hr/>
 
 <table id="menuTable" class="display table table-bordered table-condensed table-hover table-responsive table-striped">
     <thead>

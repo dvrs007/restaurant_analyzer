@@ -6,29 +6,41 @@ Menu Update
 
 
 @section('maintitle')
-Edit/Update {{ $item->item_name}}
+@if(  $item->id  === 1)
+|
+@else
+<a href="{{ URL::to('/menus')}}/{{$item->id -1 }}/edit"> &lt;&lt; </a>
+@endif
+
+<a href="{{ URL::to('/menus')}}/{{$item->id}}">{{ $item->item_name}}</a>
+
+@if( ($item->id +1) === null || ($item->id +1)== "" )
+|
+@else
+<a href="{{ URL::to('/menus')}}/{{$item->id +1 }}/edit"> &gt;&gt; </a>
+@endif
+
+<div style="float:right;"><a href="{{ url('menus/create') }}">Create</a></div>
+<div style="clear:both;"></div>
+
 @stop
 
 @section('content')
-<a href="{{ url('menus') }}">List of Menus</a>
-|
-<a href="{{ url('menus/create') }}">Create</a>
-
-<br/>
 
 @if($errors->any())
 @foreach($errors ->all() as $error)
 <li>{{ $error }}</li>
 @endforeach
-@endif
 <hr/>
+@endif
+
 <figure style='float:left;width:35%'>
 
-    <img src="{{ url($item->img_path) }}" alt="{{ $item->item_name}}" />
+    <img src="{{ url($item->img_path) }}" alt="{{ $item->item_name}}" class="img-thumbnail"/>
 
 </figure>
 
-<div style="float:left;">
+<div style="float:left;margin-left:4%;">
     
 {{--!! Form:: open( ['url' => 'menusUpdate' ]) !!--}} 
 {!! Form::open(array('url'=>'menusUpdate','method'=>'POST', 'files'=>true)) !!}

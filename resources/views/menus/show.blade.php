@@ -5,7 +5,18 @@
 
 
 @section('maintitle')
+
+@if(  $item->id  === 1)
+|
+@else
+<a href="{{ URL::to('/menus')}}/{{$item->id -1 }}"> &lt;&lt; </a>
+@endif
 <a href="{{ URL::to('/menus')}}/{{$item->id}}/edit">{{ $item->item_name }}</a>
+<a href="{{ URL::to('/menus')}}/{{$item->id +1 }}"> &gt;&gt; </a>
+
+
+<div style="float:right;"><a href="{{ url('menus/create') }}">Create</a></div>
+<div style="clear:both;"></div>
 @stop
 
 @section('content')
@@ -14,10 +25,10 @@
 
 <figure style='float:left;width:35%'>
 
-    <img src="{{ url($item->img_path) }}" alt="{{ $item->item_name}}" />
+    <img src="{{ url($item->img_path) }}" alt="{{ $item->item_name}}" class="img-thumbnail" />
 
 </figure>
-<div style="float:left;">
+<div style="float:left;margin-left:4%;">
     <h4>description</h4>
 
     Price: {{ $item-> item_price }} <br/>
