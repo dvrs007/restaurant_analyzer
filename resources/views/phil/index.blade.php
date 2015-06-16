@@ -4,11 +4,8 @@
 Server Analysis
 @stop
 
-@section('maintitle')
-Server Statistics
-@stop
-
 @section('content')
+<div class="main-title"><h2>Server &amp; Table Statistics</h2></div>
 <div id="guyContainer">
     <script type="text/javascript">
     jQuery(document).ready(function() {
@@ -94,6 +91,7 @@ Server Statistics
                 <h2>Data Analysis by Table</h2>
             </div>
             <div class="col-md-6">
+                <div class="main-title">Best &amp; Worst Tables</div>
             <h4>Highest Grossing Table: 
                 
                     @foreach($highesttable as $t)
@@ -106,7 +104,11 @@ Server Statistics
                     Table #<span class="blue">{{$t->tbl_number}}</span> with $<span class="blue">{{$t->subtotal}}</span> in total sales.
                 @endforeach
             </h4>
-                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="main-title">Some other stats</div>
+                <h4>blah blah blah</h4>
+            </div>
             <div class="clearfix"></div>
                 <div class="graph-title">
                     <h3>Sales Performance by Table</h3>
