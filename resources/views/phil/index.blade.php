@@ -84,13 +84,9 @@ Server Statistics
                 
                 <div class="main-graph-title">
                     <h2>Current Servers:</h2>
-                    <?php 
-        
-                    foreach($allservers as $server){
-            
-                        echo '<div class="col-md-4"><h3>' . $server->server . '</h3></div>';   
-                } 
-                    ?>
+                    @foreach($allservers as $server)
+                    <div class="col-md-12">{{ $server->server }}</div>
+                    @endforeach
                 </div>
         </div>
  
@@ -104,7 +100,7 @@ Server Statistics
                 </div>
 
                 <!--chart code -->
-                <div id="tablezChart" style="width:100%;"></div>
+                <div id="tablezChart"></div>
     
                 <?php 
                 // Example #1, output into a div you already created
