@@ -202,6 +202,8 @@ class philController extends Controller {
             //get all current servers to populate the dropdown list
             $allservers = DB::select( DB::raw("SELECT DISTINCT server FROM orders"));
             
+            
+            
             //************************SEND DATA TO THE VIEW*****************************************//
             
             return view('phil.index')
@@ -224,6 +226,8 @@ class philController extends Controller {
             
             //get all current servers to populate the dropdown list
             $allservers = DB::select( DB::raw("SELECT DISTINCT server FROM orders"));
+            
+            
             
             
             

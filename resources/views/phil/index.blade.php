@@ -80,6 +80,8 @@ Server Statistics
                 </select>
                 <input type="submit" value="View Stats">
             </form>
+                
+                
                 <div class="main-graph-title">
                     <h2>Current Servers:</h2>
                     <?php 
