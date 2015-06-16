@@ -1,10 +1,17 @@
 @extends('layouts.master')
 
+@section('title')
+Menu Create
+@stop
+
+
+@section('maintitle')
+Add a New Item
+@stop
+
 @section('content')
-<hr/><h1>Add a New Menu</h1>
 <a href="{{ url('menus')  }}">List of Menus</a>
-|
-<a href="{{ url('/')}}">Home</a>
+
 <br/>
 <br/>
 @if($errors->any())

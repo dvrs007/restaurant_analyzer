@@ -23,17 +23,6 @@ class jeesooController extends Controller {
         //$this->middleware('auth');
     }
 
-    public function orderlist() {
-        $items = Order::all();
-        $orders = Order::all();
-        //dd($orders);
-        //return "orders";
-        //dd($items);
-        //return "items";
-
-        return view('jeesoo.orderlist')->with("orders", $orders);
-    }
-
     public function index() {
 
 
@@ -479,6 +468,7 @@ class jeesooController extends Controller {
         ;
     }
 
+    
     public function example() {
         //creating a new datatable
         $stocksTable = \Lava::DataTable();

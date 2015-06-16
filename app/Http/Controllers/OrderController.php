@@ -26,8 +26,8 @@ class OrderController extends Controller {
 //return "items";
 
         return view('orders.index')->with("orders", $orders);
-    }
-
+    }   
+    
     public function show($orderID) {
 //get a single detail
         $order = Order::find($orderID); //helper method to find recipe with id

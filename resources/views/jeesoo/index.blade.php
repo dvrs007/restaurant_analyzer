@@ -39,6 +39,9 @@ Trends Analysis of Total Sales ($) over the years 2000-2014
             <div id='chart_year_cnt'></div>
             @areachart('TotalNumberY','chart_year_cnt')
 
+            <!--div id='chart_year_cnt'></div-->
+            {{--@columnchart('TotalNumberY','chart_year_cnt')--}}
+
 
         </div><!-- /#year-->
 

@@ -85,8 +85,7 @@ Route::get('orders/{id}','OrderController@show');
 
 //Analysis-------------------------------------
 Route::get('totalSales', 'jeesooController@index');
-Route::get('jeesoo/ex','jeesooController@example');
-Route::get('jeesoo/list', 'jeesooController@orderlist');
+//Route::get('jeesoo/ex','jeesooController@example');  //view page: chartExample
 
 /**************************************************************************
  END JS'S ROUTES
