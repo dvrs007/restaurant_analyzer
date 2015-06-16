@@ -17,29 +17,33 @@ Menu List
 @section('maintitle')
 Menu
 
-<div style="float:right;"><a href="{{ url('menus/create') }}">Create</a></div>
-<div style="clear:both;"></div>
-@stop
+<div class="row">
+    <div class="col-lg-10 center-block">
+        <div style="float:right;"><a href="{{ url('menus/create') }}">Create</a></div>
+        <div style="clear:both;"></div>
+        @stop
 
-@section('content')
+        @section('content')
 
-<table id="menuTable" class="display table table-bordered table-condensed table-hover table-responsive table-striped">
-    <thead>
-        <tr>            
-            <th>Menu</th>
-            <th>Price</th>
+        <table id="menuTable" class="display table table-bordered table-condensed table-hover table-responsive table-striped">
+            <thead>
+                <tr>            
+                    <th>Menu</th>
+                    <th>Price</th>
 
-    </thead>   
-    <tbody>
-        @foreach($items as $item)
-        <tr>           
-            <td><a href="{{ url('/menus', $item->id) }}">{{ $item->item_name}}</td>
-            <td>{{ $item->item_price}}</td>
-        </tr>
-        @endforeach
+            </thead>   
+            <tbody>
+                @foreach($items as $item)
+                <tr>           
+                    <td><a href="{{ url('/menus', $item->id) }}">{{ $item->item_name}}</td>
+                    <td>{{ $item->item_price}}</td>
+                </tr>
+                @endforeach
 
-    </tbody>
-</table>
+            </tbody>
+        </table>
+    </div>
+</div>
 <script>
 $(document).ready(function () {
     $('#menuTable').dataTable();

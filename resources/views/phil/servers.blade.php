@@ -13,6 +13,9 @@ Server Statistics - Restaurant Analyzer
 @stop
 
 @section('content')
+
+<div class="row">
+    <div class="col-lg-10 center-block">
 <div id="guyContainer">
     
             <div class="main-graph-title">
@@ -43,6 +46,9 @@ Server Statistics - Restaurant Analyzer
                     } 
                 ?>
             </div>
+</div>
+    </div>
+</div>
             
             <div class="arrow-container">
                 <div class="arrow-up"></div>
