@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}">
+        <link href='http://fonts.googleapis.com/css?family=Allan:400,700' rel='stylesheet' type='text/css'>
         
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -53,8 +54,6 @@
                                         <div class="row">
 
                                             <div class="container-fluid">
-                                                <h2 class="main-title">@yield('maintitle')</h2>
-
                                                 @yield('content')
                                             </div>
                                         </div>
