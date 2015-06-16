@@ -7,6 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}">
+        <link href='http://fonts.googleapis.com/css?family=Allan:400,700' rel='stylesheet' type='text/css'>
 
         
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
