@@ -64,6 +64,14 @@ Server Analysis
             <div class="main-graph-title">
                 <h2>Individual Server Statistics</h2>
             </div>
+            <div class="col-md-6">
+                <div class="main-title">
+                    <h4>Current Servers</h4>
+                </div>
+                @foreach($allservers as $server)
+                    <h4>{{ $server->server }}</h4>
+                @endforeach
+            </div>
             <form action="" method="post">
                 <label for="servers">Select a Server: </label>
                 <select id="servers">
@@ -77,13 +85,6 @@ Server Analysis
                 </select>
                 <input type="submit" value="View Stats">
             </form>
-                
-                <div class="main-graph-title">
-                    <h2>Current Servers:</h2>
-                    @foreach($allservers as $server)
-                    <div class="col-md-12">{{ $server->server }}</div>
-                    @endforeach
-                </div>
         </div>
  
         <div id="tab3" class="tab">
@@ -91,7 +92,7 @@ Server Analysis
                 <h2>Data Analysis by Table</h2>
             </div>
             <div class="col-md-6">
-                <div class="main-title">Best &amp; Worst Tables</div>
+                <div class="main-title"><h4>Best &amp; Worst Tables</h4></div>
             <h4>Highest Grossing Table: 
                 
                     @foreach($highesttable as $t)
@@ -106,7 +107,7 @@ Server Analysis
             </h4>
             </div>
             <div class="col-md-6">
-                <div class="main-title">Some other stats</div>
+                <div class="main-title"><h4>Some other stats</h4></div>
                 <h4>blah blah blah</h4>
             </div>
             <div class="clearfix"></div>

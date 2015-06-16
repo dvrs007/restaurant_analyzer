@@ -129,8 +129,6 @@ class philController extends Controller {
             
             $lowesttable = DB::select( DB::raw("SELECT DISTINCT tbl_number, SUM(subtotal) as subtotal FROM orders GROUP BY tbl_number ORDER BY subtotal ASC LIMIT 1") ); 
             
-            var_dump($lowesttable);
-            
             $tablezTable = \Lava::DataTable();
             $tablezTable->addStringColumn('Table Number')
         ->addNumberColumn('Percent');
