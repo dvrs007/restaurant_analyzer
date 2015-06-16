@@ -9,21 +9,35 @@ Item Statistics - Restaurant Analyzer
 @stop
     
 @section('content')
-
+<div class="main-title"><h2>Item Statistics</h2></div>
 <div class="row">
     <div class="col-lg-10 center-block">
         <div class="main-graph-title">
-            <h2>General Item Statistics</h2>
+            <h2>General Product Statistics</h2>
         </div>
-        <ul>
-            <li>Statistics on the sales of <span style="color:#0000C2;">{{ $itemcount }}</span> items</li>
-            <li>Total items ordered: <span style="color:#0000C2;">{{ $itemOrders }}</span></li>
-            <li>Total made: <span style="color:#0000C2;"> ${{ $totalGen }} </span></li>
-            <li><h3 style="color:green;">The highest grossing item is {{ $high_gross_item }}</h3></li>
-            <li id="warning" class="animated infinite shake"><h3 style="color:red;">Oh no! {{ $low_gross_item }} is not doing well!</h3></li>
-        </ul>
-        <hr />
         
+        <div class="col-md-6">
+            <div class="main-title"><h4>Best &amp; Worst Tables</h4></div>
+            <h4>Information: </h4>
+            <ul>
+                <li>Statistics on the sales of <span style="color:#0000C2;">{{ $itemcount }}</span> items</li>
+                <li>Total items ordered: <span style="color:#0000C2;">{{ $itemOrders }}</span></li>
+                <li>Total made: <span style="color:#0000C2;"> ${{ $totalGen }} </span></li>
+                <li><h3 style="color:green;">The highest grossing item is {{ $high_gross_item }}</h3></li>
+                <li id="warning" class="animated infinite shake"><h3 style="color:red;">Oh no! {{ $low_gross_item }} is not doing well!</h3></li>
+            </ul>
+        </div>       
+        <div class="col-md-6">
+            <div class="main-title"><h4>Best &amp; Worst Tables</h4></div>
+            <h4>Information: </h4>
+            <ul>
+                <li>Statistics on the sales of <span style="color:#0000C2;">{{ $itemcount }}</span> items</li>
+                <li>Total items ordered: <span style="color:#0000C2;">{{ $itemOrders }}</span></li>
+                <li>Total made: <span style="color:#0000C2;"> ${{ $totalGen }} </span></li>
+                <li><h3 style="color:green;">The highest grossing item is {{ $high_gross_item }}</h3></li>
+                <li id="warning" class="animated infinite shake"><h3 style="color:red;">Oh no! {{ $low_gross_item }} is not doing well!</h3></li>
+            </ul>
+        </div> 
         
         
         <div id="chart-div"></div>

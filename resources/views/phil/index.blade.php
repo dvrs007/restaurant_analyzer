@@ -7,21 +7,6 @@ Server Analysis
 @section('content')
 <div class="main-title"><h2>Server &amp; Table Statistics</h2></div>
 <div id="guyContainer">
-    <script type="text/javascript">
-    jQuery(document).ready(function() {
-    jQuery('.tabs .tab-links a').on('click', function(e)  {
-        var currentAttrValue = jQuery(this).attr('href');
- 
-        // Show/Hide Tabs
-        jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
- 
-        // Change/remove current tab to active
-        jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
- 
-        e.preventDefault();
-    });
-});
-    </script>
     <div class="tabs">
     <ul class="tab-links">
         <li class="active"><a href="#tab1">General Server Statistics</a></li>
