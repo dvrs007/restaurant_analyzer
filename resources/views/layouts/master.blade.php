@@ -8,21 +8,11 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 
-        <!-- DataTables CSS -->
-        <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
-
-
+        
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
-
-        <!-- jQuery -->
-        <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
-
-        <!-- DataTables -->
-        <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-        
         
     </head>
     <body>
@@ -85,7 +75,7 @@
                                                 <h4 class="footer-title">Statistics</h4>
                                                 <p><a href="{{ url('item-sales') }}">Menu Items</a></p>
                                                 <p><a href="{{url('server-stats')}}">Servers &amp; Tables</a></p>
-                                                <p><a href="{{url('jeesoo')}}">Total Sales</a></p>
+                                                <p><a href="{{url('totalSales')}}">Total Sales</a></p>
                                             </div>
                                         </div>
                                     </div>

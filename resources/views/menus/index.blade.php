@@ -1,4 +1,12 @@
 @extends('layouts.master')
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+  
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
 
 @section('content')
 <hr/>
@@ -10,7 +18,7 @@
 <br/>
 <hr/>
 
-<table class="table table-bordered table-condensed table-hover table-responsive table-striped">
+<table id="menuTable" class="display table table-bordered table-condensed table-hover table-responsive table-striped">
     <thead>
         <tr>
             <th>Menu</th>
@@ -27,4 +35,9 @@
       
     </tbody>
 </table>
+<script>
+    $(document).ready(function () {
+        $('#menuTable').dataTable();
+    });
+</script>
 @stop

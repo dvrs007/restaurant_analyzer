@@ -1,12 +1,19 @@
 @extends('layouts.master')
 
+@section('title')
+Order Create
+@stop
+
+@section('maintitle')
+Add a New Order
+@stop
+
 @section('content')
-<hr/><h1>Add a New Order</h1>
 <a href="{{ url('orders')  }}">List of Orders</a>
-|
-<a href="{{ url('orders/create')  }}">Create</a>
-|
-<a href="{{ url('/')}}">Home</a>
+
+<!--a href="{{-- url('orders/create')  --}}">Create</a>
+
+<a href="{{-- url('/') --}}">Home</a-->
 <br/>
 
 @if($errors->any())
