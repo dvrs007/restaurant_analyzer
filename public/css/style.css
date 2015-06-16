@@ -110,7 +110,7 @@ html, body {
 
 #main {
     overflow:auto;
-    padding:0 0 150 0; /* this needs to be bigger than footer height*/
+    padding:0 0 150 0; /* this needs tdo be bigger than footer height*/
 }
 
 .center-block {
