@@ -26,14 +26,14 @@ Menu
 
 <table id="menuTable" class="display table table-bordered table-condensed table-hover table-responsive table-striped">
     <thead>
-        <tr>
+        <tr>            
             <th>Menu</th>
             <th>Price</th>
 
     </thead>   
     <tbody>
         @foreach($items as $item)
-        <tr>
+        <tr>           
             <td><a href="{{ url('/menus', $item->id) }}">{{ $item->item_name}}</td>
             <td>{{ $item->item_price}}</td>
         </tr>

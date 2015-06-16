@@ -1,12 +1,19 @@
 @extends('layouts.master')
 
+@section('title')
+Menu Update
+@stop
+
+
+@section('maintitle')
+Edit/Update {{ $item->item_name}}
+@stop
+
 @section('content')
-<hr/><h1>Edit/Update {{ $item->item_name}}</h1>
-<a href="{{ url('menus')  }}">List of Menus</a>
+<a href="{{ url('menus') }}">List of Menus</a>
 |
-<a href="{{ url('menus/create')  }}">Create</a>
-|
-<a href="{{ url('/')}}">Home</a>
+<a href="{{ url('menus/create') }}">Create</a>
+
 <br/>
 
 @if($errors->any())
@@ -15,8 +22,16 @@
 @endforeach
 @endif
 <hr/>
+<figure style='float:left;width:35%'>
 
-{!! Form:: open( ['url' => 'menusUpdate' ]) !!} 
+    <img src="{{ url($item->img_path) }}" alt="{{ $item->item_name}}" />
+
+</figure>
+
+<div style="float:left;">
+    
+{{--!! Form:: open( ['url' => 'menusUpdate' ]) !!--}} 
+{!! Form::open(array('url'=>'menusUpdate','method'=>'POST', 'files'=>true)) !!}
 {!! Form::hidden('id',  $item->id  ) !!}
 
 <div class="form-group">
@@ -35,12 +50,19 @@
     {!! Form::text('item_cost',$item->item_cost, ['class' => 'form-control']) !!}
 </div>
 
-<br/>
-<div class="form-group">    
-    {!! Form::submit('Update', ['class ' => 'btn btn-primary form-control']) !!}
+<div class="form-group">
+    {!! Form::label('img_path', 'Image File: ') !!}
+    {!! Form::file('image') !!}
+    <p class="errors">{!!$errors->first('image')!!}</p>
+    @if(Session::has('error'))
+    <p class="errors">{!! Session::get('error') !!}</p>
+    @endif
 </div>
 <br/>
-<br/>
+<div class="form-group">  
+    <!-- submit button -->
+    {!! Form::submit('Update', ['class ' => 'btn btn-primary form-control']) !!}
+</div>
 {!! Form:: close() !!}
 
 {!! Form:: open( ['url' => 'menuDelete']) !!}
@@ -49,4 +71,5 @@
     <div>{!! Form::submit('Delete', ['class ' => 'btn btn-primary form-control']) !!}</div>
 </div>
 {!! Form:: close() !!} 
+</div>
 @stop
