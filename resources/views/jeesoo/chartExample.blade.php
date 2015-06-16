@@ -8,9 +8,13 @@ Restaurant Analyzer
 @stop
 
 @section('content')
-<hr/>
-<div id='stocks-div'></div>
-<?php //echo Lava::render('LineChart','Stocks','stocks-div'); ?>
 
-@linechart('Stocks','stocks-div')
+<div class="row">
+    <div class="col-lg-10 center-block">
+        <div id='stocks-div'></div>
+        <?php //echo Lava::render('LineChart','Stocks','stocks-div'); ?>
+
+        @linechart('Stocks','stocks-div')
+    </div>
+</div>
 @stop

@@ -9,6 +9,9 @@ Server Statistics
 @stop
 
 @section('content')
+
+<div class="row">
+    <div class="col-lg-10 center-block">
 <div id="guyContainer">
     <script type="text/javascript">
     jQuery(document).ready(function() {
@@ -112,6 +115,8 @@ Server Statistics
                 ?>
         </div>
     </div>
+</div>
+</div>
 </div>
     
 </div>

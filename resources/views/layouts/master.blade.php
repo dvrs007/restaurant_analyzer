@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-
+        <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}">
         
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -29,7 +29,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="{{ url('/') }}">Order.Analyze.Repeat.</a>
+                            <a class="navbar-brand animated slideInDown" href="{{ url('/') }}">Order.Analyze.Repeat.</a>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->

@@ -46,7 +46,8 @@ class johnsonController extends Controller {
             $piechart = \Lava::PieChart('NetRevenue_highestNet')
                     ->setOptions(array(
                         'datatable' => $sales,
-                        'title' => 'Top 10 Highest Net Revenue per Item ($)'
+                        'title' => 'Top 10 Highest Net Revenue per Item ($)',
+                        'height' => 700
                     ));
             
         
@@ -74,7 +75,8 @@ class johnsonController extends Controller {
             $piechart_lowestNet = \Lava::PieChart('NetRevenue_lowestNet')
                     ->setOptions(array(
                         'datatable' => $sales_lowestNet,
-                        'title' => 'Top 10 Lowest Net Revenue per Item ($)'
+                        'title' => 'Top 10 Lowest Net Revenue per Item ($)',
+                        'height' => 700
                     ));
             
         
@@ -84,7 +86,7 @@ class johnsonController extends Controller {
                 INNER JOIN lineitems ON items.id = lineitems.item_id
                 INNER JOIN orders ON lineitems.order_id = orders.id
                 GROUP BY item_name
-                ORDER BY orderedQuantity DESC limit 10") );
+                ORDER BY orderedQuantity DESC limit 20") );
         
         //column chart for item quantity ordered
             $items_orderedQuantity = \Lava::DataTable();
@@ -106,9 +108,36 @@ class johnsonController extends Controller {
                       'title' => 'Ordered Quantity',
                       'titleTextStyle' => \Lava::TextStyle(array(
                         'color' => '#eb6b2c',
-                        'fontSize' => 14
+                        'fontSize' => 12
                       ))
                     ));
+            
+            
+            //query with raw mysql for top 5 most expensive 
+            $top_priced_items = DB::select( DB::raw("SELECT DISTINCT item_name, item_price
+                FROM items
+                GROUP BY item_price
+                ORDER BY item_price DESC") );
+        
+        //column chart for item quantity ordered
+            $top_priced_item_dt = \Lava::DataTable();
+            
+            $top_priced_item_dt->addStringColumn('Item Name')
+                                    ->addNumberColumn('Price');
+            foreach($top_priced_items as $value)
+            {
+                //convert datatype to string for this column
+                $convert = floatval($value->item_price);
+                $rowData = array($value->item_name, $convert);
+                $top_priced_item_dt->addRow($rowData);
+            }
+            
+            $donutchart = \Lava::DonutChart('DonutChart')
+                   ->setOptions(array(
+                     'datatable' => $top_priced_item_dt,
+                     'title' => 'Most expensive items',
+                       'height' => 700
+                   ));
             
             
             //query highest grossing item
@@ -144,6 +173,10 @@ class johnsonController extends Controller {
                 //convert datatype to string for this column
                 $low_gross_item = ($key->item_name);
             }
+            
+            
+            
+            
         
             
         /////////////// VARIABLE COUNTS //////////////////////////////////////////////////
@@ -176,7 +209,8 @@ class johnsonController extends Controller {
                     ->with('piechart_lowestNet',$piechart_lowestNet)
                     ->with('columnchart', $columnchart)
                     ->with('high_gross_item', $high_gross_item)
-                    ->with('low_gross_item', $low_gross_item);
+                    ->with('low_gross_item', $low_gross_item)
+                    ->with('donutchart', $donutchart);
             
 	}
     }
