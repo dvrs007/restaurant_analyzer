@@ -125,6 +125,9 @@ class philController extends Controller {
             
             //query with raw mysql to get all servers and their total sales
             $tablez = DB::select( DB::raw("SELECT DISTINCT tbl_number, SUM(subtotal) as subtotal FROM orders GROUP BY tbl_number") );
+            $highesttable = DB::select( DB::raw("SELECT DISTINCT tbl_number, SUM(subtotal) as subtotal FROM orders GROUP BY tbl_number ORDER BY subtotal DESC LIMIT 1") );
+            
+            $lowesttable = DB::select( DB::raw("SELECT DISTINCT tbl_number, SUM(subtotal) as subtotal FROM orders GROUP BY tbl_number ORDER BY subtotal ASC LIMIT 1") );
             
             $tablezTable = \Lava::DataTable();
             $tablezTable->addStringColumn('Table Number')
@@ -213,7 +216,9 @@ class philController extends Controller {
                     ->with("chart",$chart)
                     ->with("tablez",$tablezchart)
                     ->with("quantitiezTable", $quantitiezTable)
-                    ->with("allservers", $allservers);;
+                    ->with("allservers", $allservers)
+                    ->with("highesttable", $highesttable)
+                    ->with("lowesttable", $lowesttable);
             
             //************************END SEND DATA TO THE VIEW********************//
             //-------------------------------------------------------------------------------------
