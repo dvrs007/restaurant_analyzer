@@ -34,6 +34,10 @@ table {
 
 /*--------------- MAIN STYLING ------------------*/
 
+.center-block {
+    float: none !important;
+}
+
 html, body {
     padding:0;
     margin:0;
@@ -442,6 +446,7 @@ img{
 }
 
 
+
 #positive_charts, #negative_charts{
     display:none;
 }
@@ -454,6 +459,12 @@ img{
 .body-content img{
     margin: auto;
     width:250px;
+}
+
+#warning {
+  animation-duration: 5s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
 }
 
 
