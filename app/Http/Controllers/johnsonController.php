@@ -153,7 +153,7 @@ class johnsonController extends Controller {
                                                         LIMIT 1") );
             foreach($highest_gross_item as $key)
             {
-                //convert datatype to string for this column
+                //convert the datatype to string for this column
                 $high_gross_item = ($key->item_name);
             }
             
@@ -174,10 +174,6 @@ class johnsonController extends Controller {
                 $low_gross_item = ($key->item_name);
             }
             
-            
-            
-            
-        
             
         /////////////// VARIABLE COUNTS //////////////////////////////////////////////////
         //get the count of current servers
