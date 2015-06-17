@@ -34,11 +34,28 @@ class WelcomeController extends Controller {
 	public function index()
 	{
             //query with raw mysql for highest net revenue
-            $itemRand = Item::orderBy(\DB::raw('RAND()'))->first();
+            //query highest grossing item
+            $highest_gross_item = DB::select( DB::raw("SELECT DISTINCT item_name, img_path, (
+                                                        item_price - item_cost
+                                                        ) * SUM( ordered_quantity ) AS net_revenue
+                                                        FROM items
+                                                        INNER JOIN lineitems ON items.id = lineitems.item_id
+                                                        INNER JOIN orders ON lineitems.order_id = orders.id
+                                                        GROUP BY item_name
+                                                        ORDER BY net_revenue
+                                                        DESC
+                                                        LIMIT 1") );
+            foreach($highest_gross_item as $key)
+            {
+                //convert the datatype to string for this column
+                $high_gross_item = ($key->item_name);
+                $high_gross_item_img = ($key->img_path);
+            }
             
             
 		return view('welcome')
-                        ->with('itemRand', $itemRand);
+                        ->with('high_gross_item', $high_gross_item)
+                        ->with('high_gross_item_img', $high_gross_item_img);
 	}
 
 }
