@@ -19,6 +19,7 @@ use Illuminate\Http\Request;  //changed it after adding validation
  * @author SuzieQ
  */
 class OrderController extends Controller {
+
     public function index() {
         $orders = DB::table('orders')->orderBy('id', 'desc')->get();
 //$orders = Order::all();
@@ -26,12 +27,12 @@ class OrderController extends Controller {
 //return "items";
 
         return view('orders.index')->with("orders", $orders);
-    }   
+    }
+
     
     public function show($orderID) {
 //get a single detail
         $order = Order::find($orderID); //helper method to find recipe with id
-//$recipe=Recipe::where('dish_name' , '=', 'sausage');
         $lineitems = Lineitem::where('order_id', '=', $orderID);
 
         $results = DB::table('orders')
@@ -39,9 +40,6 @@ class OrderController extends Controller {
                 ->join('items', 'lineitems.item_id', '=', 'items.id')
                 ->where('orders.id', '=', $orderID)
                 ->get();
-
-
-
         return view('orders.show')->with('order', $order)
                         ->with('lineitems', $lineitems)
                         ->with('results', $results);
@@ -54,7 +52,8 @@ class OrderController extends Controller {
     public function store(Request $request) {
         $this->validate($request, [
             'tbl_number' => 'required|Integer',
-            'server' => 'required'
+            'server' => 'required',
+            'order_date' => 'required|date_format:"Y-m-d"'
                 ]
         );
 
@@ -94,7 +93,7 @@ class OrderController extends Controller {
                         ->with("order", $order)
                         ->with("lineitems", $lineitems)
                         ->with("results", $results);
-    }
+    }    
 
     public function itemStore(Request $request) {
 //this function is to insert lineitems per an order into lineitems table
@@ -141,11 +140,10 @@ class OrderController extends Controller {
                         ->with("results", $results);
     }
 
-    public function itemsAdd(){
+    public function itemsAdd() {
         //to store/insert line items into lineitems table for an order
-        
     }
-    
+
     /*
       public function deleteLink($id) {
       Item::where('id', $id)->delete();

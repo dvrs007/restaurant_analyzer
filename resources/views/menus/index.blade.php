@@ -13,18 +13,14 @@
 Menu List
 @stop
 
-
-@section('maintitle')
-Menu
-
+@section('content')
+<div class="main-title">
+    <h2>Menu
+        <div class="create_link"><a href="{{ url('menus/create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></div>        
+    </h2>            
+</div><!--/.main-title-->
 <div class="row">
     <div class="col-lg-10 center-block">
-        <div style="float:right;"><a href="{{ url('menus/create') }}">Create</a></div>
-        <div style="clear:both;"></div>
-        @stop
-
-        @section('content')
-
         <table id="menuTable" class="display table table-bordered table-condensed table-hover table-responsive table-striped">
             <thead>
                 <tr>            
@@ -42,8 +38,8 @@ Menu
 
             </tbody>
         </table>
-    </div>
-</div>
+    </div><!-- /.col-lg-10 center-block-->
+</div><!--/ .row-->
 <script>
 $(document).ready(function () {
     $('#menuTable').dataTable();

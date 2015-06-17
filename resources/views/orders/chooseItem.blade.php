@@ -1,26 +1,20 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="main-title">
+    <h2>Choose Items for Order#{{$order->id}} at Table#{{ $order->tbl_number}} by {{$order->server}}
+    <div class="create_link"><a href="{{ url('orders')  }}"><span class="glyphicon glyphicon-list-alt"></span></a></div>
+    </h2>
+</div>
 <div class="row">
     <div class="col-lg-10 center-block">
-        <h1>Choose Items</h1>
-        <a href="{{ url('orders')  }}">List of Orders</a>
-        |
-        <a href="{{ url('orders/create')  }}">Create</a>
-        |
-        <a href="{{ url('/')}}">Home</a>
-        <br/>
-
         @if($errors->any())
         @foreach($errors ->all() as $error)
         <li>{{ $error }}</li>
         @endforeach
+        <hr/>
         @endif
-        <hr/>
-        <h2>Order#: {{ $order->id }}</h2>
-        Table#:{{ $order->tbl_number}}<br/>
-        Server:{{$order->server}}
-        <hr/>
+
 
         {!! Form:: open( ['url' => 'AddLineItems']) !!} 
         {!! Form::hidden('order_id',  $order->id  ) !!}
@@ -44,7 +38,8 @@
             {!! Form::Label('order_complete','Order Complete? Check if YES') !!}
             {!! Form::radio('order_complete', 1 , false, ['class' => 'field'] ) !!}
         </div>
-
+        
+                
         <div id="totalprice">
             <h3>The total before tax: <span class="price"></span></h3>
         </div>
@@ -63,6 +58,6 @@
             {!! Form::submit('Complete Order', ['class' => 'btn btn-primary form-control']) !!}
         </div>
         {!! Form:: close() !!}
-    </div>
-</div>
+    </div><!-- /.col-lg-10 center-block-->
+</div><!--/ .row-->
 @stop

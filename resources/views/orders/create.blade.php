@@ -9,22 +9,21 @@ Add a New Order
 @stop
 
 @section('content')
+<div class="main-title">
+    <h2>Add a New Order
+        <div class="create_link"><a href="{{ url('orders')  }}"><span class="glyphicon glyphicon-list-alt"></span></a></div>
+    </h2>
+</div>
 
 <div class="row">
     <div class="col-lg-10 center-block">
-        <a href="{{ url('orders')  }}">List of Orders</a>
-
-        <!--a href="{{-- url('orders/create')  --}}">Create</a>
-
-        <a href="{{-- url('/') --}}">Home</a-->
-        <br/>
-
         @if($errors->any())
         @foreach($errors ->all() as $error)
         <li>{{ $error }}</li>
         @endforeach
-        @endif
         <hr/>
+        @endif
+
 
         {!! Form:: open( ['url' => 'orders' ]) !!} 
         <div class="form-group">
@@ -55,6 +54,6 @@ Add a New Order
             {!! Form::submit('Go to the next', ['class ' => 'btn btn-primary form-control']) !!}
         </div>
         {!! Form:: close() !!}
-    </div>
-</div>
+    </div><!-- /.col-lg-10 center-block-->
+</div><!--/ .row-->
 @stop

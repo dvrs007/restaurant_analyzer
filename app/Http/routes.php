@@ -55,6 +55,7 @@ Route::post('menusUpdate', 'MenuController@update');
 //Delete
 Route::post('menuDelete','MenuController@deleteButton');
 Route::get('menus/{id}/delete', 'MenuController@deleteLink');
+
 //Orders----------------------------------------
 Route::get('orders', 'OrderController@index');
 

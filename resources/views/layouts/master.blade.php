@@ -9,13 +9,13 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}">
         <link href='http://fonts.googleapis.com/css?family=Allan:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-        
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
-        
+
     </head>
     <body>
         <div id="wrap">
@@ -50,7 +50,7 @@
                                     </div><!-- /.container-fluid -->
                                     </nav>
                                     </header>
-            
+
                                     <div id="main">
                                         <div class="row">
 
@@ -80,46 +80,45 @@
                                         </div>
                                     </div>
                                     <!--</div>-->
-<div class="arrow-container">
-                <div class="arrow-up"></div>
-            </div>
-            
-            <script type="text/javascript">
-            //ARROW SCROLLER
-            // show arrow if user has scrolled down, or hide if at top
-            $(window).scroll(function() {
-                
+                                    <div class="arrow-container">
+                                        <div class="arrow-up"></div>
+                                    </div>
 
-                var height = $(window).scrollTop();
-                
-                if(height > 0)
-                {
-                    $( ".arrow-container" ).fadeIn( 700, function() {
-                    // Animation complete
-                    });
-                }
-                else
-                {
-                    $( ".arrow-container" ).fadeOut( 700, function() {
-                    // Animation complete
-                    });
-                }
-            });
-            
-            
-            //scroll to top of page if arrow clicked
-            $(".arrow-container").click(function () {
-            
-                $('html,body').animate({
-                    
-                scrollTop: $("html,body").offset().top
-                });
-            
-            });
-            //END ARROW SCROLLER
-           
-            </script>
-            
+                                    <script type="text/javascript">
+                        //ARROW SCROLLER
+                        // show arrow if user has scrolled down, or hide if at top
+                        $(window).scroll(function () {
+
+
+                            var height = $(window).scrollTop();
+
+                            if (height > 0)
+                            {
+                                $(".arrow-container").fadeIn(700, function () {
+                                    // Animation complete
+                                });
+                            }
+                            else
+                            {
+                                $(".arrow-container").fadeOut(700, function () {
+                                    // Animation complete
+                                });
+                            }
+                        });
+
+
+                        //scroll to top of page if arrow clicked
+                        $(".arrow-container").click(function () {
+
+                            $('html,body').animate({
+                                scrollTop: $("html,body").offset().top
+                            });
+
+                        });
+                        //END ARROW SCROLLER
+
+                                    </script>
+
                                     <!-- jQuery -->
                                     <script src="../public/js/jquery.js"></script>
 

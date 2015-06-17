@@ -14,13 +14,15 @@ List of Orders
 @stop
 
 @section('content')
+<div class="main-title">
+    <h2>List of Orders
+        <div class="create_link"><a href="{{ url('orders/create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a></div>   
+    </h2>
+</div>
+
 
 <div class="row">
     <div class="col-lg-10 center-block">
-        <!--a href="{{-- url('orders')  --}}">List of Orders</a-->
-        <a href="{{ url('orders/create')  }}">Create</a>
-
-        <hr/>
         <div class="table-responsive">
             <table id="orderlist" class="display table table-striped table-hover dt-responsive">
 
@@ -29,7 +31,7 @@ List of Orders
                     @foreach($orders as $order)
                     <tr>
                         <td>@if ( $order->order_complete === 1)
-                            Yes                                
+                            <span class="glyphicon glyphicon-ok"></span>                            
                             @endif
                         </td>
                         <!--td><a href="{{-- url('/orders', $order->id) --}}">{{-- $order->id --}}</a></td-->            
@@ -41,21 +43,21 @@ List of Orders
                         <td>{{ $order->tax}}</td>
                         <td>{{ $order->total}}</td>
                         <td>@if(  $order->order_complete != 1) 
-                            <a href="{{ URL::to('/orders') }}/{{ $order->id }}/chooseItem">Choose Items</a>
+                            <a href="{{ URL::to('/orders') }}/{{ $order->id }}/chooseItem">Choose Items</a>                            
                             <!--a href="{{-- URL::to('/orders')--}}/{{--$order->id--}}/items">Choose Items</a-->
                             @elseif( $order->subtotal == 0.00)
 
                             @else
-                            Order Complete: <a href="{{ url('/orders', $order->id) }}">List of Items</a>
+                            Order Complete: <a href="{{ url('/orders', $order->id) }}">Details</a>
                             @endif
                         </td>
                     </tr> 
                     @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
-</div>
+        </div><!--/.table-responsive -->
+    </div><!-- /.col-lg-10 center-block-->
+</div><!--/ .row-->
 <script>
 $(document).ready(function () {
     $('#orderlist').dataTable({

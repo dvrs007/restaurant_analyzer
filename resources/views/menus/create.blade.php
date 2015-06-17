@@ -4,19 +4,14 @@
 Menu Create
 @stop
 
-
-@section('maintitle')
-Add a New Item
-@stop
-
 @section('content')
-
+<div class="main-title">
+    <h2>Add a New Item
+        <div class="create_link"><a href="{{ url('menus')  }}"><span class="glyphicon glyphicon-list-alt"></span></a></div>
+    </h2>
+</div><!--/.main-title-->
 <div class="row">
     <div class="col-lg-10 center-block">
-        <a href="{{ url('menus')  }}">List of Menus</a>
-
-        <br/>
-        <br/>
         @if($errors->any())
         @foreach($errors ->all() as $error)
         <li>{{ $error }}</li>
@@ -58,6 +53,7 @@ Add a New Item
         <div class="form-group">    
             <!-- submit button -->
             {!! Form::submit('Add a new Menu', ['class ' => 'btn btn-primary form-control']) !!}
+
         </div><br/>
 
         <div class="form-group">    
@@ -65,6 +61,6 @@ Add a New Item
             {!! Form::reset('Reset', ['class ' => 'btn btn-primary form-control']) !!}
         </div><br/>
         {!! Form:: close() !!}
-    </div>
-</div>
+    </div><!--/.col-lg-10 center-block-->
+</div><!--/.row-->
 @stop

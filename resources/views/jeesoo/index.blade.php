@@ -9,7 +9,7 @@ Trends Analysis of Total Sales ($) over the years 2000-2014
 @stop
 
 @section('content')
-
+<div class="main-title"><h2>Trends Analysis of Total Sales ($) over the years 2000-2014</h2></div>
 <div class="row">
     <div class="col-lg-10 center-block">
         <div role="tabpanel">

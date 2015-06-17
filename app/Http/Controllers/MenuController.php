@@ -98,15 +98,17 @@ class MenuController extends Controller {
     public function show($id) {
         //get a single detail
         $item = Item::find($id); //helper method to find item with id
+        $cnt_item = $item->count();
 
-        return view('menus.show')->with('item', $item);
+        return view('menus.show')->with('item', $item)
+                        ->with('cnt_item', $cnt_item);
     }
 
     //UPDATE
     public function edit($id) {
         $item = Item::find($id);
         //$item = Item::where('id' , '=', $id);
-
+        
         return view('menus.edit')->with('item', $item);
     }
 
@@ -161,7 +163,7 @@ class MenuController extends Controller {
                     //Recipe::find($request['dish_id'])->update($inputs);
                     Item::where('id', $request['id'])->update($inputs);
                     //helper method to find recipe with id
-                    return Redirect::to('menus/'.$request['id'].'/edit');
+                    return Redirect::to('menus/' . $request['id'] . '/edit');
                     //***************************************************/ 
                 } else {
                     // sending back with error message.
@@ -174,12 +176,11 @@ class MenuController extends Controller {
                 'item_name' => $request['item_name'],
                 'item_price' => $request['item_price'],
                 'item_cost' => $request['item_cost']
-                
             );
 
             Item::where('id', $request['id'])->update($inputs);
             //helper method to find recipe with id
-            return Redirect::to('menus/'.$request['id'].'/edit');
+            return Redirect::to('menus/' . $request['id'] . '/edit');
         }
     }
 

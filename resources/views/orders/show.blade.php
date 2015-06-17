@@ -4,13 +4,12 @@
 Order#{{ $order->id}}
 @stop
 
-  
-@section('maintitle')
-List of Items for Order# {{ $order->id}}
-@stop
-
 @section('content')
-
+<div class="main-title">
+    <h2>Details of Order# {{ $order->id}}    
+        <div class="create_link"><a href="{{ url('orders')  }}"><span class="glyphicon glyphicon-list-alt"></span></a></div>       
+    </h2>
+</div>
 <div class="row">
     <div class="col-lg-10 center-block">
         <h3><a href="{{ URL::to('/orders')}}/{{$order->id}}/items"></a></h3>
@@ -18,8 +17,7 @@ List of Items for Order# {{ $order->id}}
         Server:{{ $order->server}}<br/>
         Ordered at:{{ $order->order_date}} {{ $order->order_time}}
         <br/><br/>
-        <a href="{{ url('orders')  }}">Back to the list of orders</a>
-        <br/><br/>
+        
         <div>
             <!!- for each loop thru items for this order-->
 
@@ -46,9 +44,7 @@ List of Items for Order# {{ $order->id}}
                     <tr style="background-color:#8aaae8;text-align:right;"><td colspan="3">Total</td><td style="font-weight:bolder;color:white">$ {{ $result->total }}</td></tr>
                 </tbody>
             </table>
-        </div>
-        <br>
-        <a href="{{ url('orders')  }}">Back to the list of orders</a>
-    </div>
-</div>
+        </div>       
+     </div><!--/.col-lg-10 center-block-->
+</div><!--/.row-->
 @stop

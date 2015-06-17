@@ -6,30 +6,30 @@
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+    display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;
 }
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
 blockquote, q {
-	quotes: none;
+    quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+    content: '';
+    content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 } 
 
 * {
-  border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
 }
 
 /*--------------- MAIN STYLING ------------------*/
@@ -112,9 +112,9 @@ html, body {
     color:#fff;
     padding: 15px 0;
     border: none;
-/*    -webkit-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
-    box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);*/
+    /*    -webkit-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
+        box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);*/
     background: #ff3019; /* Old browsers */
     background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404)); /* Chrome,Safari4+ */
@@ -179,8 +179,8 @@ html, body {
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  background-color: transparent;
-  color: #FFFBD3;
+    background-color: transparent;
+    color: #FFFBD3;
 }
 
 .nav li ul li:hover{
@@ -200,17 +200,17 @@ html, body {
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-  color: #FFFBD3;
+    color: #FFFBD3;
 }
 
 .dropdown-menu > li > a {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: normal;
-  line-height: 1.42857143;
-  color: #FFFBD3;
-  white-space: nowrap;
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #FFFBD3;
+    white-space: nowrap;
 }
 
 .dropdown-menu > li > a:hover {
@@ -310,57 +310,57 @@ img{
     width:100%;
     display:inline-block;
 }
- 
-    /*----- Tab Links -----*/
-    /* Clearfix */
-    .tab-links:after {
-        display:block;
-        clear:both;
-        content:'';
-    }
- 
-    .tab-links li {
-        margin:0px 5px;
-        float:left;
-        list-style:none;
-    }
- 
-        .tab-links a {
-            padding:9px 15px;
-            display:inline-block;
-            border-radius:3px 3px 0px 0px;
-            background:#7FB5DA;
-            font-size:16px;
-            font-weight:600;
-            color:#4c4c4c;
-            transition:all linear 0.15s;
-        }
- 
-        .tab-links a:hover {
-            background:#a7cce5;
-            text-decoration:none;
-        }
- 
-    li.active a, li.active a:hover {
-        background:#fff;
-        color:#4c4c4c;
-    }
- 
-    /*----- Content of Tabs -----*/
-    .tab-content {
-        padding:15px;
-        border-radius:3px;
-        box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
-        background:#fff;
-    }
- 
-        .tab {
-            display:none;
-        }
- 
-        .tab.active {
-            display:block;
-        }
+
+/*----- Tab Links -----*/
+/* Clearfix */
+.tab-links:after {
+    display:block;
+    clear:both;
+    content:'';
+}
+
+.tab-links li {
+    margin:0px 5px;
+    float:left;
+    list-style:none;
+}
+
+.tab-links a {
+    padding:9px 15px;
+    display:inline-block;
+    border-radius:3px 3px 0px 0px;
+    background:#7FB5DA;
+    font-size:16px;
+    font-weight:600;
+    color:#4c4c4c;
+    transition:all linear 0.15s;
+}
+
+.tab-links a:hover {
+    background:#a7cce5;
+    text-decoration:none;
+}
+
+li.active a, li.active a:hover {
+    background:#fff;
+    color:#4c4c4c;
+}
+
+/*----- Content of Tabs -----*/
+.tab-content {
+    padding:15px;
+    border-radius:3px;
+    box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+    background:#fff;
+}
+
+.tab {
+    display:none;
+}
+
+.tab.active {
+    display:block;
+}
 
 
 /*--------------- GRAPH TITLE STYLING ------------------*/
@@ -394,14 +394,14 @@ img{
 }
 
 .arrow-up {
-	width: 0; 
-	height: 0; 
-	border-left: 25px solid transparent;
-	border-right: 25px solid transparent;
-	border-bottom: 25px solid #ff3019;
-        position:fixed;
-        bottom: 30px;
-        right: 30px;
+    width: 0; 
+    height: 0; 
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 25px solid #ff3019;
+    position:fixed;
+    bottom: 30px;
+    right: 30px;
 }
 
 .arrow-up:hover{
@@ -414,33 +414,33 @@ img{
 /*--------------- MEDIA QUERIES ------------------*/
 
 @media screen and (max-width: 768px) {
-    
+
     .hero .container p {
         width: 80%;
         font-size: 1.25em;
     }
-    
+
     .hero .container a {
-    font-size: 1.25em;
+        font-size: 1.25em;
     }
 }
 
 @media screen and (max-width: 648px) {
     .hero .container {
-    padding: 15px 0;
+        padding: 15px 0;
     }
-    
+
     .hero .container h1 {
-    font-size: 2em;
+        font-size: 2em;
     }
 
     .hero .container p {
         width: 80%;
         font-size: 1.25em;
     }
-    
+
     .hero .container a {
-    font-size: 1.25em;
+        font-size: 1.25em;
     }
 }
 
@@ -448,7 +448,7 @@ img{
 @media screen and (max-width: 480px) {
 
     .hero .container h1 {
-    font-size: 2.5em;
+        font-size: 2.5em;
     }
 
     .hero .container p {
@@ -473,13 +473,19 @@ img{
 }
 
 #warning {
-  animation-duration: 5s;
-  animation-delay: 2s;
-  animation-iteration-count: infinite;
+    animation-duration: 5s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
 }
 
 
 /* Custom Bootstrap TAB*/
+
+.nav-pills li a:link {
+    background:#fff;
+    color:#4c4c4c;
+}
+
 /* //Ref:  http://jonpolygon.com/bootstrap-tabs-100-percent-width-charts/*/
 .tab-content > .tab-pane,
 .pill-content > .pill-pane {
@@ -492,3 +498,19 @@ img{
 .pill-content > .active {
     height: auto;       
 } 
+
+.create_link{
+    float:right;
+    clear:both;
+}
+
+.item_img{
+    float:left;
+    width:35%;
+    margin-left:10%;
+}
+
+.item_edit_form{
+    float:left;
+    margin-left:5%;
+}
