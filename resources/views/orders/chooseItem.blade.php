@@ -36,7 +36,7 @@
 
         <div class='form-group'>
             {!! Form::Label('order_complete','Order Complete? Check if YES') !!}
-            {!! Form::radio('order_complete', 1 , false, ['class' => 'field'] ) !!}
+            {!! Form::checkbox('order_complete', 1 , false, ['class' => 'field'] ) !!}
         </div>
         
                 
