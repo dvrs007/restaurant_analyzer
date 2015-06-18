@@ -141,7 +141,7 @@ class johnsonController extends Controller {
             
             
             //query highest grossing item
-            $highest_gross_item = DB::select( DB::raw("SELECT DISTINCT item_name, (
+            $highest_gross_item = DB::select( DB::raw("SELECT DISTINCT item_name, img_path, (
                                                         item_price - item_cost
                                                         ) * SUM( ordered_quantity ) AS net_revenue
                                                         FROM items
@@ -153,12 +153,13 @@ class johnsonController extends Controller {
                                                         LIMIT 1") );
             foreach($highest_gross_item as $key)
             {
-                //convert datatype to string for this column
+                //convert the datatype to string for this column
                 $high_gross_item = ($key->item_name);
+                $high_gross_item_img = ($key->img_path);
             }
             
             //query lowest grossing item
-            $lowest_gross_item = DB::select( DB::raw("SELECT DISTINCT item_name, (
+            $lowest_gross_item = DB::select( DB::raw("SELECT DISTINCT item_name, img_path, (
                                                         item_price - item_cost
                                                         ) * SUM( ordered_quantity ) AS net_revenue
                                                         FROM items
@@ -172,12 +173,9 @@ class johnsonController extends Controller {
             {
                 //convert datatype to string for this column
                 $low_gross_item = ($key->item_name);
+                $low_gross_item_img = ($key->img_path);
             }
             
-            
-            
-            
-        
             
         /////////////// VARIABLE COUNTS //////////////////////////////////////////////////
         //get the count of current servers
@@ -209,7 +207,9 @@ class johnsonController extends Controller {
                     ->with('piechart_lowestNet',$piechart_lowestNet)
                     ->with('columnchart', $columnchart)
                     ->with('high_gross_item', $high_gross_item)
+                    ->with('high_gross_item_img', $high_gross_item_img)
                     ->with('low_gross_item', $low_gross_item)
+                    ->with('low_gross_item_img', $low_gross_item_img)
                     ->with('donutchart', $donutchart);
             
 	}
