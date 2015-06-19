@@ -28,7 +28,7 @@ List of Orders
 
                 <thead><tr><th>Complete</th><th>Order#</th><th>Table#</th><th>Server</th><th>Ordered at</th><th>Subtotal$</th><th>Tax$</th><th>Total$</th><th>AddItems</th></tr></thead>
                 <tbody>
-                    @foreach($orders as $order)
+                    @foreach($results as $order)
                     <tr>
                         <td>@if ( $order->order_complete === 1)
                             <span class="glyphicon glyphicon-ok"></span>                            
@@ -36,8 +36,8 @@ List of Orders
                         </td>
                         <!--td><a href="{{-- url('/orders', $order->id) --}}">{{-- $order->id --}}</a></td-->            
                         <td>{{ $order->id }}</td>
-                        <td>{{$order->tbl_number }}</td>
-                        <td>{{$order->server }}</td>
+                        <td>{{ $order->tbl_number }}</td>
+                        <td>{{ $order-> server_firstname }}</td>
                         <td>{{ $order->order_date}} {{ $order->order_time }}</td>
                         <td>{{ $order->subtotal}}</td>
                         <td>{{ $order->tax}}</td>

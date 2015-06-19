@@ -69,9 +69,9 @@ Menu Update
 
             {!! Form:: open( ['url' => 'menuDelete']) !!}
             {!! Form::hidden('id',  $item->id  ) !!}
-            <div class="form-group">    
-                <div>{!! Form::submit('Delete', ['class ' => 'btn btn-primary form-control']) !!}</div>
-            </div>
+            <!--div class="form-group">    
+                <div>{{--!! Form::submit('Delete', ['class ' => 'btn btn-primary form-control']) !!--}}</div>
+            </div-->
             {!! Form:: close() !!} 
         </div><!--/.item_edit_form-->
     </div><!-- /.col-lg-10 center-block-->   

@@ -6,8 +6,10 @@
 @section('content')
 <div class="main-title">
     <h2> 
-        @if(  $item->id  === 1)
-        <a href="{{ URL::to('/menus')}}/{{$cnt_item-1 }}"><span class="glyphicon glyphicon-circle-arrow-left"></span></a>
+        {{$cnt_item}}
+        @if(  $item->id  === 1 )
+                <a href="{{ URL::to('/menus')}}/{{$cnt_item-1 }}"><span class="glyphicon glyphicon-circle-arrow-left"></span></a>
+        
         @else
         <a href="{{ URL::to('/menus')}}/{{$item->id -1 }}"><span class="glyphicon glyphicon-circle-arrow-left"></span></a>
         @endif
@@ -16,7 +18,8 @@
         <a href="{{ URL::to('/menus')}}/{{$item->id}}/edit">{{ $item->item_name }}</a> 
         <span class="glyphicon glyphicon-cutlery"></span>
 
-        @if( $item->id === $cnt_item -1 )
+        
+        @if( $item->id === $cnt_item -1)              
         <a href="{{ URL::to('/menus/1')}}"><span class="glyphicon glyphicon-circle-arrow-right"></span></a>
         @else
         <a href="{{ URL::to('/menus')}}/{{$item->id +1 }}"><span class="glyphicon glyphicon-circle-arrow-right"></span></a>
@@ -41,7 +44,7 @@
             Price: {{ $item-> item_price }} <br/>
             Cost: {{ $item -> item_cost }} <br/><br/>
             <h1><a href="{{ URL::to('/menus')}}/{{$item->id}}/edit"><i class="fa fa-pencil-square-o"></i></a>
-                <a href="{{ URL::to('/menus')}}/{{$item->id}}/delete"><i class="fa fa-trash" onclick="return confirm('Are you sure to delete?')"></i></a></h1>
+                <!--a href="{{-- URL::to('/menus')--}}/{{--$item->id--}}/delete"><i class="fa fa-trash" onclick="return confirm('Are you sure to delete?')"></i></a--></h1>
 
         </div><!--/.item_edit_form-->
     </div><!--/.col-lg-10 center-block-->

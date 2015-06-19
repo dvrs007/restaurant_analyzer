@@ -22,11 +22,17 @@ class OrderController extends Controller {
 
     public function index() {
         $orders = DB::table('orders')->orderBy('id', 'desc')->get();
+        $results=DB::table('orders')
+                ->join('servers', 'orders.server','=','servers.id')
+                ->orderBy('orders.id','desc')
+                ->get();
+        
 //$orders = Order::all();
 //dd($items);
 //return "items";
 
-        return view('orders.index')->with("orders", $orders);
+        return view('orders.index')->with("orders", $orders)
+            ->with('results',$results);
     }
 
     
