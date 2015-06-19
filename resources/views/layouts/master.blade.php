@@ -10,11 +10,11 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}">
         <link href='http://fonts.googleapis.com/css?family=Allan:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
+        
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
-        <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/main.js')}}"></script>     
 
     </head>
     <body>

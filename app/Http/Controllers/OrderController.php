@@ -151,6 +151,21 @@ class OrderController extends Controller {
 
     public function itemsAdd() {
         //to store/insert line items into lineitems table for an order
+
+        if (isset($_POST["item_id"])) {
+
+            $capture_field_vals1 = "";
+            $capture_field_vals2 = "";
+            foreach ($_POST["item_id"] as $key => $field1) {
+                $capture_field_vals1 .= $field1 . ", ";
+            }
+            foreach ($_POST["ordered_quantity"] as $key => $field2) {
+                $capture_field_vals2 .= $field2 . ";;;";
+            }
+
+            echo $capture_field_vals1;
+            echo $capture_field_vals2;
+        }
     }
 
     /*
