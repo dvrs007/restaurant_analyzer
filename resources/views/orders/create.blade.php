@@ -24,8 +24,7 @@ Add a New Order
         <hr/>
         @endif
 
-
-        {!! Form:: open( ['url' => 'orders' ]) !!} 
+        {!! Form:: open( ['url' => 'orders' ] ) !!} 
         <div class="form-group">
             {!! Form::label('tbl_number', 'Table #: ') !!}
             {!! Form::selectRange('tbl_number',1,15) !!}        

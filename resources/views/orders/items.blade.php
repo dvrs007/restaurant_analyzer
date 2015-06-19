@@ -1,24 +1,19 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="main-title">
+    <h2>Choose Items for Order#{{$order->order_id}} at Table#{{ $order->tbl_number}} by {{$server->server_firstname}}
+    <div class="create_link"><a href="{{ url('orders')  }}"><span class="glyphicon glyphicon-list-alt"></span></a></div>
+    </h2>
+</div>
 <div class="row">
-    <div class="col-lg-10 center-block">
-        <h1>Choose Items</h1>
-        <a href="{{ url('orders')  }}">List of Orders</a>
-        |
-        <a href="{{ url('/')}}">Home</a>
-        <br/>
-
+    <div class="col-lg-10 center-block">        
         @if($errors->any())
         @foreach($errors ->all() as $error)
         <li>{{ $error }}</li>
         @endforeach
-        @endif
         <hr/>
-        <h2>Order#: {{ $order->order_id }}</h2>
-        Table#:{{ $order->tbl_number}}<br/>
-        Server:{{$server->server_firstname}}
-        <hr/>
+        @endif        
 
         {!! Form:: open( ['url' => 'itemsAdd' ]) !!} 
         {!! Form::hidden('order_id',  $order->order_id  ) !!}
@@ -41,13 +36,7 @@
                 </select>    
             </div> 
         </div><!-- End of #order -->
-
-
-        <div class='form-group'>
-            {!! Form::Label('order_complete','Order Complete? Check if YES') !!}
-            {!! Form::checkbox('order_complete', 1 , false, ['class' => 'field'] ) !!}
-        </div>
-
+     
         <div class="form-group">    
             {!! Form::submit('Complete Order', ['class' => 'btn btn-primary form-control']) !!}
         </div>

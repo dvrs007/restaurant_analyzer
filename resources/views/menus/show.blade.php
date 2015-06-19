@@ -6,7 +6,7 @@
 @section('content')
 <div class="main-title">
     <h2> 
-        {{$cnt_item}}
+        {{--$cnt_item--}}
         @if(  $item->id  === 1 )
                 <a href="{{ URL::to('/menus')}}/{{$cnt_item-1 }}"><span class="glyphicon glyphicon-circle-arrow-left"></span></a>
         

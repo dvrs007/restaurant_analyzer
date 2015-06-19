@@ -13,11 +13,12 @@ Order#{{ $order->id}}
 <div class="row">
     <div class="col-lg-10 center-block">
         <h3><a href="{{ URL::to('/orders')}}/{{$order->order_id}}/items"></a></h3>
-        Table#:{{ $order->tbl_number}}<br/>
+        Order#:{{ $order->order_id }}<br/>
+        Table#:{{ $order->tbl_number }}<br/>
         Server:{{ $server->server_firstname }}<br/>
         Ordered at:{{ $order->order_date}} {{ $order->order_time}}
         <br/><br/>
-        
+
         <div>
             <!!- for each loop thru items for this order-->
 
@@ -45,6 +46,6 @@ Order#{{ $order->id}}
                 </tbody>
             </table>
         </div>       
-     </div><!--/.col-lg-10 center-block-->
+    </div><!--/.col-lg-10 center-block-->
 </div><!--/.row-->
 @stop

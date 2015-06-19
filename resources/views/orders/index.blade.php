@@ -60,7 +60,7 @@ List of Orders
 </div><!--/ .row-->
 <script>
 $(document).ready(function () {
-    $('#orderlist').dataTable({
+    $('#orderlist').DataTable({
         responsive: true,
         "pagingType": "scrolling"
     });

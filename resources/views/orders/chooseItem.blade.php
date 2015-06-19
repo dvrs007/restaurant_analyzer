@@ -8,6 +8,12 @@
 </div>
 <div class="row">
     <div class="col-lg-10 center-block">
+        <h1>Choose Items</h1>
+        <a href="{{ url('orders')  }}">List of Orders</a>
+        |
+        <a href="{{ url('/')}}">Home</a>
+        <br/>
+        
         @if($errors->any())
         @foreach($errors ->all() as $error)
         <li>{{ $error }}</li>
