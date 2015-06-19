@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\Item;
 use App\Lineitem;
+use App\Server;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;  //changed it after adding validation
@@ -21,38 +22,37 @@ use Illuminate\Http\Request;  //changed it after adding validation
 class OrderController extends Controller {
 
     public function index() {
-        $orders = DB::table('orders')->orderBy('id', 'desc')->get();
-        $results=DB::table('orders')
-                ->join('servers', 'orders.server','=','servers.id')
-                ->orderBy('orders.id','desc')
+        $orders = DB::table('orders')->orderBy('order_id', 'desc')->get();
+        $results = DB::table('orders')
+                ->join('servers', 'orders.server', '=', 'servers.id')
+                ->orderBy('orders.order_id', 'desc')
                 ->get();
-        
 //$orders = Order::all();
-//dd($items);
-//return "items";
 
         return view('orders.index')->with("orders", $orders)
-            ->with('results',$results);
+                        ->with('results', $results);
     }
 
-    
     public function show($orderID) {
 //get a single detail
         $order = Order::find($orderID); //helper method to find recipe with id
+        $server = Server::find($order->server);
         $lineitems = Lineitem::where('order_id', '=', $orderID);
 
         $results = DB::table('orders')
-                ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+                ->join('lineitems', 'orders.order_id', '=', 'lineitems.order_id')
                 ->join('items', 'lineitems.item_id', '=', 'items.id')
-                ->where('orders.id', '=', $orderID)
+                ->where('orders.order_id', '=', $orderID)
                 ->get();
         return view('orders.show')->with('order', $order)
                         ->with('lineitems', $lineitems)
+                        ->with('server', $server)
                         ->with('results', $results);
     }
 
     public function create() {
-        return view('orders.create');
+        $servers = Server::lists('server_firstname', 'id');
+        return view('orders.create')->with('servers', $servers);
     }
 
     public function store(Request $request) {
@@ -87,19 +87,21 @@ class OrderController extends Controller {
     public function chooseItem($orderID) {
 //parameter: orderid
         $order = Order::find($orderID);
+        $server = Server::find($order->server);
         $items = Item::all();
         $lineitems = Lineitem::all();
         $results = DB::table('orders')
-                ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+                ->join('lineitems', 'orders.order_id', '=', 'lineitems.order_id')
                 ->join('items', 'lineitems.item_id', '=', 'items.id')
-                ->where('orders.id', '=', $orderID)
+                ->where('orders.order_id', '=', $orderID)
                 ->get();
 
         return view('orders.chooseItem')->with("items", $items)
                         ->with("order", $order)
+                        ->with('server', $server)
                         ->with("lineitems", $lineitems)
                         ->with("results", $results);
-    }    
+    }
 
     public function itemStore(Request $request) {
 //this function is to insert lineitems per an order into lineitems table
@@ -111,14 +113,14 @@ class OrderController extends Controller {
         $lineitem->ordered_quantity = $request['ordered_quantity'];
         $lineitem->save();
 
-        DB::update('UPDATE orders o SET o.expenses= 1.13*(SELECT SUM( i.item_cost * l.ordered_quantity) FROM lineitems l JOIN items i ON i.id=l.item_id WHERE o.id=l.order_id GROUP BY o.id)');
-        DB::update('UPDATE orders o SET o.subtotal = (SELECT SUM( i.item_price * l.ordered_quantity) FROM lineitems l JOIN items i ON i.id=l.item_id WHERE o.id=l.order_id GROUP BY o.id)');
+        DB::update('UPDATE orders o SET o.expenses= 1.13*(SELECT SUM( i.item_cost * l.ordered_quantity) FROM lineitems l JOIN items i ON i.id=l.item_id WHERE o.order_id=l.order_id GROUP BY o.order_id)');
+        DB::update('UPDATE orders o SET o.subtotal = (SELECT SUM( i.item_price * l.ordered_quantity) FROM lineitems l JOIN items i ON i.id=l.item_id WHERE o.order_id=l.order_id GROUP BY o.order_id)');
         DB::update('UPDATE orders SET tax=subtotal*0.13, total=subtotal+tax');
         /*         * ******************************************* */
         $order_complete = $request['order_complete'];
 
         DB::table('orders')
-                ->where('id', $request['order_id'])
+                ->where('order_id', $request['order_id'])
                 ->update(array('order_complete' => $order_complete));
 
         return Redirect('orders');
@@ -126,21 +128,22 @@ class OrderController extends Controller {
 
 //Ver.2: adding/inserting lineitems per an order
 //Files for this controller : items.blade.php
-//
     public function addItems($orderID) {
         //parameter: orderid
         $order = Order::find($orderID);
+        $server = Server::find($order->server);
         $items = Item::all();
         $lineitems = Lineitem::all();
         $results = DB::table('orders')
-                ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+                ->join('lineitems', 'orders.order_id', '=', 'lineitems.order_id')
                 ->join('items', 'lineitems.item_id', '=', 'items.id')
-                ->where('orders.id', '=', $orderID)
+                ->where('orders.order_id', '=', $orderID)
                 ->get();
 
 
 
         return view('orders.items')->with("items", $items)
+                        ->with("server", $server)
                         ->with("order", $order)
                         ->with("lineitems", $lineitems)
                         ->with("results", $results);

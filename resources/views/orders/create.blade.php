@@ -33,7 +33,7 @@ Add a New Order
 
         <div class="form-group" >
             {!! Form::label('server', 'Server: ') !!}
-            {!! Form::select('server', array('Jeesoo' => 'Jeesoo', 'Johnson'=>'Johnson', 'Phil'=>'Phil')) !!}        
+            {!! Form::select('server', $servers) !!}        
         </div>
 
 

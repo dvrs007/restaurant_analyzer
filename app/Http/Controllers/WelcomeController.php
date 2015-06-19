@@ -40,7 +40,7 @@ class WelcomeController extends Controller {
                                                         ) * SUM( ordered_quantity ) AS net_revenue
                                                         FROM items
                                                         INNER JOIN lineitems ON items.id = lineitems.item_id
-                                                        INNER JOIN orders ON lineitems.order_id = orders.id
+                                                        INNER JOIN orders ON lineitems.order_id = orders.order_id
                                                         GROUP BY item_name
                                                         ORDER BY net_revenue
                                                         DESC

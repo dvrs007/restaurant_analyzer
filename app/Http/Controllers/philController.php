@@ -37,7 +37,7 @@ class philController extends Controller {
     public function index() {
         //get the tables, joined, all the orders, items, and item quantities
         $results = DB::table('orders')
-                ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+                ->join('lineitems', 'orders.order_id', '=', 'lineitems.order_id')
                 ->join('items', 'lineitems.item_id', '=', 'items.id')                
                 ->groupBy('lineitems.order_id')
                 ->get();
@@ -47,7 +47,7 @@ class philController extends Controller {
         //-------------------------------------------------------------------------------------
         //************************ANALYZE SERVER ITEM QUANTITIES SOLD**************************************//
         //query with raw mysql to get all servers and their total sales
-        $quantitiez = DB::select(DB::raw("SELECT SUM( lineitems.ordered_quantity ) as subtotal , orders.server FROM orders JOIN lineitems ON orders.id = lineitems.order_id GROUP BY server"));
+        $quantitiez = DB::select(DB::raw("SELECT SUM( lineitems.ordered_quantity ) as subtotal , orders.server FROM orders JOIN lineitems ON orders.order_id = lineitems.order_id GROUP BY server"));
 
         //var_dump($quantitiez);
         //set the data columns for the chart

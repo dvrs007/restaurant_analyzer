@@ -67,18 +67,18 @@ Route::post('orders','OrderController@store');
 
 
 //ADD ITEM(S)
-Route::get('orders/{id}/chooseItem','OrderController@chooseItem');
+Route::get('orders/{order_id}/chooseItem','OrderController@chooseItem');
 //INSERT ITEMs into lineitems table
 Route::post('AddLineItems', 'OrderController@itemStore');
 
 
 //Ver.2. Add items: items.blade.php
-Route::get('orders/{id}/items','OrderController@addItems');
+Route::get('orders/{order_id}/items','OrderController@addItems');
 Route::post('itemsAdd','OrderController@itemsAdd');
 
 
 //SHOW
-Route::get('orders/{id}','OrderController@show');
+Route::get('orders/{order_id}','OrderController@show');
 
 //Route::get('orders/choose','OrderController@choose');
 //Route::post('orders','OrderController@itemStore');

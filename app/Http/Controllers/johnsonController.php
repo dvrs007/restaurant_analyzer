@@ -17,7 +17,7 @@ class johnsonController extends Controller {
             
         //get the tables, joined, all the orders, items, and item quantitiess
             $results = DB::table('orders')
-            ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+            ->join('lineitems', 'orders.order_id', '=', 'lineitems.order_id')
             ->join('items', 'lineitems.item_id', '=', 'items.id')
             ->groupBy('lineitems.order_id')
             ->distinct('items.item_name')->get();
@@ -26,7 +26,7 @@ class johnsonController extends Controller {
             $net_revenue1 = DB::select( DB::raw("SELECT DISTINCT item_name, order_date, SUM( ordered_quantity ) AS orderedQuantity, (item_price-item_cost)*SUM(ordered_quantity) as net_revenue
                 FROM items
                 INNER JOIN lineitems ON items.id = lineitems.item_id
-                INNER JOIN orders ON lineitems.order_id = orders.id
+                INNER JOIN orders ON lineitems.order_id = orders.order_id
                 GROUP BY item_name
                 ORDER BY net_revenue DESC limit 10") );
         
@@ -55,7 +55,7 @@ class johnsonController extends Controller {
             $net_revenue2 = DB::select( DB::raw("SELECT DISTINCT item_name, order_date, SUM( ordered_quantity ) AS orderedQuantity, (item_price-item_cost)*SUM(ordered_quantity) as net_revenue
                 FROM items
                 INNER JOIN lineitems ON items.id = lineitems.item_id
-                INNER JOIN orders ON lineitems.order_id = orders.id
+                INNER JOIN orders ON lineitems.order_id = orders.order_id
                 GROUP BY item_name
                 ORDER BY net_revenue limit 10"));
             
@@ -84,7 +84,7 @@ class johnsonController extends Controller {
             $orderedQuantity = DB::select( DB::raw("SELECT DISTINCT item_name, order_date, SUM( ordered_quantity ) AS orderedQuantity
                 FROM items
                 INNER JOIN lineitems ON items.id = lineitems.item_id
-                INNER JOIN orders ON lineitems.order_id = orders.id
+                INNER JOIN orders ON lineitems.order_id = orders.order_id
                 GROUP BY item_name
                 ORDER BY orderedQuantity DESC limit 20") );
         
@@ -146,7 +146,7 @@ class johnsonController extends Controller {
                                                         ) * SUM( ordered_quantity ) AS net_revenue
                                                         FROM items
                                                         INNER JOIN lineitems ON items.id = lineitems.item_id
-                                                        INNER JOIN orders ON lineitems.order_id = orders.id
+                                                        INNER JOIN orders ON lineitems.order_id = orders.order_id
                                                         GROUP BY item_name
                                                         ORDER BY net_revenue
                                                         DESC
@@ -164,7 +164,7 @@ class johnsonController extends Controller {
                                                         ) * SUM( ordered_quantity ) AS net_revenue
                                                         FROM items
                                                         INNER JOIN lineitems ON items.id = lineitems.item_id
-                                                        INNER JOIN orders ON lineitems.order_id = orders.id
+                                                        INNER JOIN orders ON lineitems.order_id = orders.order_id
                                                         GROUP BY item_name
                                                         ORDER BY net_revenue
                                                         ASC

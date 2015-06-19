@@ -6,15 +6,15 @@ Order#{{ $order->id}}
 
 @section('content')
 <div class="main-title">
-    <h2>Details of Order# {{ $order->id}}    
+    <h2>Details of Order# {{ $order->order_id}}    
         <div class="create_link"><a href="{{ url('orders')  }}"><span class="glyphicon glyphicon-list-alt"></span></a></div>       
     </h2>
 </div>
 <div class="row">
     <div class="col-lg-10 center-block">
-        <h3><a href="{{ URL::to('/orders')}}/{{$order->id}}/items"></a></h3>
+        <h3><a href="{{ URL::to('/orders')}}/{{$order->order_id}}/items"></a></h3>
         Table#:{{ $order->tbl_number}}<br/>
-        Server:{{ $order->server}}<br/>
+        Server:{{ $server->server_firstname }}<br/>
         Ordered at:{{ $order->order_date}} {{ $order->order_time}}
         <br/><br/>
         

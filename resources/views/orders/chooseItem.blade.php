@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="main-title">
-    <h2>Choose Items for Order#{{$order->id}} at Table#{{ $order->tbl_number}} by {{$order->server}}
+    <h2>Choose Items for Order#{{$order->order_id}} at Table#{{ $order->tbl_number}} by {{$server->server_firstname}}
     <div class="create_link"><a href="{{ url('orders')  }}"><span class="glyphicon glyphicon-list-alt"></span></a></div>
     </h2>
 </div>
@@ -17,7 +17,7 @@
 
 
         {!! Form:: open( ['url' => 'AddLineItems']) !!} 
-        {!! Form::hidden('order_id',  $order->id  ) !!}
+        {!! Form::hidden('order_id',  $order->order_id  ) !!}
 
 
         <div class='form-group'>

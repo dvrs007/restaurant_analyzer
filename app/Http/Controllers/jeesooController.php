@@ -34,7 +34,7 @@ class jeesooController extends Controller {
 
         /*
           $results = DB::table('orders')
-          ->join('lineitems', 'orders.id', '=', 'lineitems.order_id')
+          ->join('lineitems', 'orders.order_id', '=', 'lineitems.order_id')
           ->join('items', 'lineitems.item_id', '=', 'items.id')
           ->groupBy('lineitems.order_id')
           ->get();
@@ -73,7 +73,7 @@ class jeesooController extends Controller {
          * ********************************************************* */
 
 
-        //$results = DB::select('select SUM(total) AS sum ,count(id) AS no,YEAR(order_date) AS year from orders group by YEAR(order_date)');
+        //$results = DB::select('select SUM(total) AS sum ,count(order_id) AS no,YEAR(order_date) AS year from orders group by YEAR(order_date)');
         //$results =DB::table('orders')   ->get();
         /*
           foreach ($results as $result) {
@@ -97,9 +97,9 @@ class jeesooController extends Controller {
           . 'JOIN items i ON i.id=l.item_id '
           . 'WHERE o.id=l.order_id '
           . 'GROUP BY o.id)'); */
-        $yearlySales = DB::select('select count(id) AS cnt, SUM(total) as sales , SUM(expenses) as cost, YEAR(order_date) AS year from orders group by YEAR(order_date)');
+        $yearlySales = DB::select('select count(order_id) AS cnt, SUM(total) as sales , SUM(expenses) as cost, YEAR(order_date) AS year from orders group by YEAR(order_date)');
 
-        $yearlySales_avg = DB::select('select AVG(total) AS average ,count(id) AS cnt,YEAR(order_date) AS year from orders group by YEAR(order_date)');
+        $yearlySales_avg = DB::select('select AVG(total) AS average ,count(order_id) AS cnt,YEAR(order_date) AS year from orders group by YEAR(order_date)');
 
 
 
@@ -154,7 +154,7 @@ class jeesooController extends Controller {
 
 
         /*         * ********** 2. Monthly Analysis ******* */
-        $monthlySales = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders GROUP BY MONTH(order_date)');
+        $monthlySales = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders GROUP BY MONTH(order_date)');
         $mSales_amt = \Lava::DataTable();
         $mSales_amt->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -183,7 +183,7 @@ class jeesooController extends Controller {
 
         /* 2-2 */
         /* YEAR2000 */
-        $monthlySales2000 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2000 GROUP BY MONTH(order_date)');
+        $monthlySales2000 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2000 GROUP BY MONTH(order_date)');
         $mSales_amt_2000 = \Lava::DataTable();
         $mSales_amt_2000->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -213,7 +213,7 @@ class jeesooController extends Controller {
 
         /*         * ** Average Sales on each month in each YEAR  *** */
         /* 2001 */
-        $monthlySales2001 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2001 GROUP BY MONTH(order_date)');
+        $monthlySales2001 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2001 GROUP BY MONTH(order_date)');
         $mSales_amt_2001 = \Lava::DataTable();
         $mSales_amt_2001->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -228,7 +228,7 @@ class jeesooController extends Controller {
         ));
 
         /* 2002 */
-        $monthlySales2002 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2002 GROUP BY MONTH(order_date)');
+        $monthlySales2002 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2002 GROUP BY MONTH(order_date)');
         $mSales_amt_2002 = \Lava::DataTable();
         $mSales_amt_2002->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -242,7 +242,7 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per month during the year of 2002'
         ));
         /* 2003 */
-        $monthlySales2003 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2003 GROUP BY MONTH(order_date)');
+        $monthlySales2003 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2003 GROUP BY MONTH(order_date)');
         $mSales_amt_2003 = \Lava::DataTable();
         $mSales_amt_2003->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -256,7 +256,7 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per month during the year of 2003'
         ));
         /* 2004 */
-        $monthlySales2004 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2004 GROUP BY MONTH(order_date)');
+        $monthlySales2004 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2004 GROUP BY MONTH(order_date)');
         $mSales_amt_2004 = \Lava::DataTable();
         $mSales_amt_2004->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -270,7 +270,7 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per month during the year of 2004'
         ));
         /* 2005 */
-        $monthlySales2005 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2005 GROUP BY MONTH(order_date)');
+        $monthlySales2005 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2005 GROUP BY MONTH(order_date)');
         $mSales_amt_2005 = \Lava::DataTable();
         $mSales_amt_2005->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -284,7 +284,7 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per month during the year of 2005'
         ));
         /* 2006 */
-        $monthlySales2006 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2006 GROUP BY MONTH(order_date)');
+        $monthlySales2006 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2006 GROUP BY MONTH(order_date)');
         $mSales_amt_2006 = \Lava::DataTable();
         $mSales_amt_2006->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -298,7 +298,7 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per month during the year of 2006'
         ));
         /* 2007 */
-        $monthlySales2007 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2007 GROUP BY MONTH(order_date)');
+        $monthlySales2007 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2007 GROUP BY MONTH(order_date)');
         $mSales_amt_2007 = \Lava::DataTable();
         $mSales_amt_2007->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -312,7 +312,7 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per month during the year of 2007'
         ));
         /* 2008 */
-        $monthlySales2008 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2008 GROUP BY MONTH(order_date)');
+        $monthlySales2008 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2008 GROUP BY MONTH(order_date)');
         $mSales_amt_2008 = \Lava::DataTable();
         $mSales_amt_2008->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -326,7 +326,7 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per month during the year of 2008'
         ));
         /* 2009 */
-        $monthlySales2009 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2009 GROUP BY MONTH(order_date)');
+        $monthlySales2009 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2009 GROUP BY MONTH(order_date)');
         $mSales_amt_2009 = \Lava::DataTable();
         $mSales_amt_2009->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -340,7 +340,7 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per month during the year of 2009'
         ));
         /* 2010 */
-        $monthlySales2010 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2010 GROUP BY MONTH(order_date)');
+        $monthlySales2010 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2010 GROUP BY MONTH(order_date)');
         $mSales_amt_2010 = \Lava::DataTable();
         $mSales_amt_2010->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -354,7 +354,7 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per month during the year of 2010'
         ));
         /* 2011 */
-        $monthlySales2011 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2011 GROUP BY MONTH(order_date)');
+        $monthlySales2011 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2011 GROUP BY MONTH(order_date)');
         $mSales_amt_2011 = \Lava::DataTable();
         $mSales_amt_2011->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -368,7 +368,7 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per month during the year of 2011'
         ));
         /* 2012 */
-        $monthlySales2012 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2012 GROUP BY MONTH(order_date)');
+        $monthlySales2012 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2012 GROUP BY MONTH(order_date)');
         $mSales_amt_2012 = \Lava::DataTable();
         $mSales_amt_2012->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -382,7 +382,7 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per month during the year of 2012'
         ));
         /* 2013 */
-        $monthlySales2013 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2013 GROUP BY MONTH(order_date)');
+        $monthlySales2013 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2013 GROUP BY MONTH(order_date)');
         $mSales_amt_2013 = \Lava::DataTable();
         $mSales_amt_2013->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -396,7 +396,7 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per month during the year of 2013'
         ));
         /* 2014 */
-        $monthlySales2014 = DB::select('select SUM(total) As sum, count(id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2014 GROUP BY MONTH(order_date)');
+        $monthlySales2014 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2014 GROUP BY MONTH(order_date)');
         $mSales_amt_2014 = \Lava::DataTable();
         $mSales_amt_2014->addStringColumn('Month')
                 ->addNumberColumn('Sales');
@@ -417,7 +417,7 @@ class jeesooController extends Controller {
         /* 3. time of a day */
 
 
-        $dailySales = DB::select('select SUM(total) As sum, count(id) AS cnt, DAY(order_date) AS day from orders GROUP BY DAY(order_date)');
+        $dailySales = DB::select('select SUM(total) As sum, count(order_id) AS cnt, DAY(order_date) AS day from orders GROUP BY DAY(order_date)');
         $dSales_amt = \Lava::DataTable();
         $dSales_amt->addStringColumn('Day')
                 ->addNumberColumn('Sales');

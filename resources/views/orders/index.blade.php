@@ -34,21 +34,21 @@ List of Orders
                             <span class="glyphicon glyphicon-ok"></span>                            
                             @endif
                         </td>
-                        <!--td><a href="{{-- url('/orders', $order->id) --}}">{{-- $order->id --}}</a></td-->            
-                        <td>{{ $order->id }}</td>
-                        <td>{{ $order->tbl_number }}</td>
+                        <!--td><a href="{{-- url('/orders', $order->order_id) --}}">{{-- $order->order_id --}}</a></td-->            
+                        <td>{{ $order-> order_id }}</td>
+                        <td>{{ $order-> tbl_number }}</td>
                         <td>{{ $order-> server_firstname }}</td>
-                        <td>{{ $order->order_date}} {{ $order->order_time }}</td>
-                        <td>{{ $order->subtotal}}</td>
-                        <td>{{ $order->tax}}</td>
-                        <td>{{ $order->total}}</td>
+                        <td>{{ $order-> order_date}} {{ $order->order_time }}</td>
+                        <td>{{ $order-> subtotal}}</td>
+                        <td>{{ $order-> tax}}</td>
+                        <td>{{ $order-> total}}</td>
                         <td>@if(  $order->order_complete != 1) 
-                            <a href="{{ URL::to('/orders') }}/{{ $order->id }}/chooseItem">Choose Items</a>                            
-                            <!--a href="{{-- URL::to('/orders')--}}/{{--$order->id--}}/items">Choose Items</a-->
+                            <!--a href="{{-- URL::to('/orders') --}}/{{-- $order->order_id --}}/chooseItem">Choose Items</a-->                            
+                            <a href="{{ URL::to('/orders') }}/{{ $order->order_id }}/items">Choose Items</a>
                             @elseif( $order->subtotal == 0.00)
 
                             @else
-                            Order Complete: <a href="{{ url('/orders', $order->id) }}">Details</a>
+                            Order Complete: <a href="{{ url('/orders', $order->order_id) }}">Details</a>
                             @endif
                         </td>
                     </tr> 
