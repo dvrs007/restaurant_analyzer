@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Item;
+use App\server;
 use DB;
 
 class WelcomeController extends Controller {
@@ -52,10 +53,14 @@ class WelcomeController extends Controller {
                 $high_gross_item_img = ($key->img_path);
             }
             
+            //query servers
+            $servers = server::all();
+            
             
 		return view('welcome')
                         ->with('high_gross_item', $high_gross_item)
-                        ->with('high_gross_item_img', $high_gross_item_img);
+                        ->with('high_gross_item_img', $high_gross_item_img)
+                        ->with('servers', $servers);
 	}
 
 }

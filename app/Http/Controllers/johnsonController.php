@@ -181,16 +181,19 @@ class johnsonController extends Controller {
         //get the count of current servers
             $itemcount = DB::table('items')
                     ->distinct()
-                    ->count('item_name');
+                    ->count('id');
         //get the count of total items ordered
-            $itemOrders = DB::table('lineitems')
+            $itemOrders = DB::table('orders')
                     ->distinct()
-                    ->sum('lineitems.ordered_quantity');
+                    ->count('orders.order_id');
         //get the total $ generated
             $totalGen = DB::table('orders')
                     ->distinct()
                     ->sum('orders.total');
-        //get the minimum value
+        //get the total expenses
+            $totalExp = DB::table('orders')
+                    ->distinct()
+                    ->sum('expenses');
             
             
         ////////////////// END VARIABLE COUNTS ////////////////////////
@@ -203,6 +206,7 @@ class johnsonController extends Controller {
                     ->with('itemcount', $itemcount)
                     ->with('itemOrders', $itemOrders)
                     ->with('totalGen', $totalGen)
+                    ->with('totalExp', $totalExp)
                     ->with('piechart',$piechart)
                     ->with('piechart_lowestNet',$piechart_lowestNet)
                     ->with('columnchart', $columnchart)

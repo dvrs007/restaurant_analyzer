@@ -25,19 +25,23 @@ Item Statistics - Restaurant Analyzer
         <div class="tab-content">
             <div id="tab1" class="tab active">
                 <div class="col-md-6">
-                    <h3 style="color:green;">The highest grossing item is {{ $high_gross_item }}</h3><img style="width:300px; border:8px solid #222;" src="{{$high_gross_item_img}}" />
+                    <h3 style="color:green;">The highest grossing item is {{ $high_gross_item }}</h3><img style="width:300px; border:8px solid #222;" src="../{{$high_gross_item_img}}" />
                 </div>
                     <div class="col-md-6 animated infinite shake" id="warning" >
-                        <h3 style="color:red;">OH NO! {{ $low_gross_item }} is not doing well!</h3><img style="width:300px; border:8px solid #222;" src="{{$low_gross_item_img}}" />
+                        <h3 style="color:red;">OH NO! {{ $low_gross_item }} is not doing well!</h3><img style="width:300px; border:8px solid #222;" src="../{{$low_gross_item_img}}" />
                     </div> 
             </div>
             
         <div id="tab2" class="tab">
             Statistics on the sales of <span style="color:#0000C2;">{{ $itemcount }}</span> items
             <br />
-            Total items ordered: <span style="color:#0000C2;">{{ $itemOrders }}</span>
+            Total orders made: <span style="color:#0000C2;">{{ $itemOrders }}</span>
             <br />
-            Total made: <span style="color:#0000C2;"> ${{ $totalGen }} </span>
+            Total made before expenses: <span style="color:#0000C2;"> ${{ $totalGen }} </span>
+            <br />
+            Total expenses: <span style="color:red;"> ${{ $totalExp }} </span>
+            <br />
+            <p style="font-size: 1.5em;">Total profits: <span style="color:green;"> ${{ $totalGen - $totalExp }} </span></p>
             <div id="chart-div"></div>
             <?php echo Lava::render('DonutChart', 'DonutChart', 'chart-div') ?>
 

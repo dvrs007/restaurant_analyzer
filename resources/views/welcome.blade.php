@@ -9,7 +9,7 @@
     </section>
 </section>
     <div class="body-content center-block">
-        <div style="background-color:#222;" class="row">
+        <div class="row">
             <div class="instructions col-md-4">
                 <h2>EASY ONLINE ORDERING</h2>
                 <ol>
@@ -19,8 +19,17 @@
                     <li>Enter today's date</li>
                 </ol>
             </div>
-            <div class="col-md-4">
-                <h3 style="font-size: 1.125em; color:green;">Guess what? {{ $high_gross_item }} is our most popular dish!</h3><img style="width:200px; border:8px solid #ffffff;" src="{{$high_gross_item_img}}" />
+            <div class="instructions col-md-4">
+                <h2 style="text-align:center;">Guess what? {{ $high_gross_item }} is our most popular dish!</h2>
+                <img src="{{$high_gross_item_img}}" />
+            </div>
+            <div class="instructions col-md-4">
+                <h2>Your servers today</h2>
+                <ol class="servers">
+                    @foreach($servers as $list)
+                    <li><img src="./{{ $list->server_pic }}" />{{ $list->server_firstname }} {{ $list->server_lastname }}</li>
+                    @endforeach
+                </ol>
             </div>
         </div><!--food list-->
     </div><!--/body-content-->

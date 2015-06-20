@@ -34,6 +34,7 @@ table {
 
 /*--------------- MAIN STYLING ------------------*/
 
+
 .center-block {
     float: none !important;
 }
@@ -77,17 +78,21 @@ html, body {
     padding:0;
 }
 
+.tabs{
+    margin-bottom:30px;
+}
+
 #main {
     overflow:auto;
 }
 
 .body-content{
+    background-color:#222;
     margin: 0;
 }
 
 .body-content .instructions{
     border: 15px solid #222;
-    padding-left: 50px;
     background-color:#EEE;
     font-family: 'Allan', cursive;
 }
@@ -103,14 +108,33 @@ html, body {
     font-size: 1.65em;
 }
 
+.body-content .servers{
+    padding:0!important;
+}
+
+.body-content .servers li img{
+    margin-right: 20px;
+    width: 120px;
+}
+
+.body-content .servers li{
+    list-style: none;
+}
+
+.body-content .instructions img{
+    margin:auto;
+    width:100%; 
+    border:8px solid #ffffff;
+}
+
 /*  footer */
 #footer{
     bottom:0;
     margin-bottom: 0;
     width:100%;
-    height:150px;   /* Height of the footer */
+    height:50px;   /* Height of the footer */
     color:#fff;
-    padding: 15px 0;
+    padding: 15px 30px;
     border: none;
     /*    -webkit-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);
         -moz-box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.75);

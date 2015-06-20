@@ -22,7 +22,7 @@
             <!--<div class="container">-->
             <header>
                 <nav class="navbar navbar-default">
-                    <div class="container-fluid">
+                    <div class="container-fluid animated bounceInDown">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -61,22 +61,7 @@
                                     </div>
                                     <div id="footer">
                                         <div class="container-fluid">
-                                            <div class="col-sm-4">
-                                                <h4 class="footer-title">Orders</h4>
-                                                <p><a href="{{ url('orders') }}">View All</a></p>
-                                                <p><a href="{{url('orders/create')}}">Add New</a></p>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <h4 class="footer-title">Menu</h4>
-                                                <p><a href="{{ url('menus') }}">Current Menu</a></p>
-                                                <p><a href="{{url('menus/create')}}">Add Item</a></p>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <h4 class="footer-title">Statistics</h4>
-                                                <p><a href="{{ url('item-sales') }}">Menu Items</a></p>
-                                                <p><a href="{{url('server-stats')}}">Servers &amp; Tables</a></p>
-                                                <p><a href="{{url('totalSales')}}">Total Sales</a></p>
-                                            </div>
+                                            <p>Copyright &copy; <?php echo date("Y"); ?> Order.Analyze.Repeat.</p>
                                         </div>
                                     </div>
                                     <!--</div>-->
@@ -119,8 +104,6 @@
 
                                     </script>
 
-                                    <!-- jQuery -->
-                                    <script src="../public/js/jquery.js"></script>
 
                                     <!-- Bootstrap Core JavaScript -->
                                     <script src="../public/js/bootstrap.min.js"></script>
