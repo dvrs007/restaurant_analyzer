@@ -29,7 +29,7 @@
 
         <div class="create_link">
             <a href="{{ url('menus/create') }}"><span class="glyphicon glyphicon-plus-sign"></span></a>
-            <a href="{{ url('menus')  }}"><span class="glyphicon glyphicon-list-alt"></span></a>
+            <a href="{{ url('menus/list')  }}"><span class="glyphicon glyphicon-list-alt"></span></a>
         </div>
     </h2>
 </div><!--/.main-title-->

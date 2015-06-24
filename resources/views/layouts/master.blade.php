@@ -5,16 +5,30 @@
         <title>@yield('title')</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}">
         <link href='http://fonts.googleapis.com/css?family=Allan:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-        
+
+
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
-        <script type="text/javascript" src="{{asset('js/main.js')}}"></script>     
+        <script type="text/javascript" src="{{asset('js/main.js')}}"></script>  
+
+
+
+        <!-- The following is for Image Gallery -->                    
+        <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css" />
+        <!-- Bootstrap JS is not required, but included for the responsive demo navigation and button states -->                    
+        <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+        <script src="http://blueimp.github.io/Gallery/js/blueimp-gallery.min.js"></script>
+        <!-- Image Gallery CDN-->
+
+
+
 
     </head>
     <body>
@@ -70,37 +84,37 @@
                                     </div>
 
                                     <script type="text/javascript">
-                        //ARROW SCROLLER
-                        // show arrow if user has scrolled down, or hide if at top
-                        $(window).scroll(function () {
+//ARROW SCROLLER
+// show arrow if user has scrolled down, or hide if at top
+$(window).scroll(function () {
 
 
-                            var height = $(window).scrollTop();
+    var height = $(window).scrollTop();
 
-                            if (height > 0)
-                            {
-                                $(".arrow-container").fadeIn(700, function () {
-                                    // Animation complete
-                                });
-                            }
-                            else
-                            {
-                                $(".arrow-container").fadeOut(700, function () {
-                                    // Animation complete
-                                });
-                            }
-                        });
+    if (height > 0)
+    {
+        $(".arrow-container").fadeIn(700, function () {
+            // Animation complete
+        });
+    }
+    else
+    {
+        $(".arrow-container").fadeOut(700, function () {
+            // Animation complete
+        });
+    }
+});
 
 
-                        //scroll to top of page if arrow clicked
-                        $(".arrow-container").click(function () {
+//scroll to top of page if arrow clicked
+$(".arrow-container").click(function () {
 
-                            $('html,body').animate({
-                                scrollTop: $("html,body").offset().top
-                            });
+    $('html,body').animate({
+        scrollTop: $("html,body").offset().top
+    });
 
-                        });
-                        //END ARROW SCROLLER
+});
+//END ARROW SCROLLER
 
                                     </script>
 

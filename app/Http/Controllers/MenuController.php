@@ -26,6 +26,10 @@ class MenuController extends Controller {
         return view('menus.index')->with("items", $items);
     }
 
+    public function indexAdmin() {
+        $items = Item::all();
+        return view('menus.index_admin')->with("items", $items);
+    }
     //INSERT
     public function create() {
         return view('menus.create');

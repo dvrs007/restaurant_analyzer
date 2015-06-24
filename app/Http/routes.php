@@ -15,10 +15,10 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('/index','WelcomeController@index');
 
-//Route::controllers([
-//	'auth' => 'Auth\AuthController',
-//	'password' => 'Auth\PasswordController',
-//]);
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
 
 /**************************************************************************
  PHIL'S ROUTES
@@ -38,6 +38,7 @@ Route::get('server-stats-individual', 'philController@server');
  *************************************************************************/
 //Menus----------------------------------------
 Route::get('menus', 'MenuController@index');
+Route::get('menus/list','MenuController@indexAdmin');
 
 //CREATE
 Route::get('menus/create','MenuController@create');

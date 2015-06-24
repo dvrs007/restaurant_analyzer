@@ -7,7 +7,7 @@ Menu Create
 @section('content')
 <div class="main-title">
     <h2>Add a New Item
-        <div class="create_link"><a href="{{ url('menus')  }}"><span class="glyphicon glyphicon-list-alt"></span></a></div>
+        <div class="create_link"><a href="{{ url('menus/list')  }}"><span class="glyphicon glyphicon-list-alt"></span></a></div>
     </h2>
 </div><!--/.main-title-->
 <div class="row">
