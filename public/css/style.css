@@ -83,7 +83,7 @@ html, body {
 }
 
 #main {
-    overflow:auto;
+
 }
 
 .body-content{
@@ -278,6 +278,7 @@ html, body {
 
 .server-image{
     width:100%;
+    max-width:400px;
     height:auto;
     overflow:hidden;
     margin: 20px 0px;
