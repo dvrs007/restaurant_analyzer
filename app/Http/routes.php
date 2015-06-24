@@ -28,6 +28,8 @@ Route::get('server-stats', 'philController@index');
 
 Route::get('server-stats-individual', 'philController@server');
 
+Route::post('serverResults', 'philController@viewServer');
+
 
 /**************************************************************************
  END PHIL'S ROUTES
