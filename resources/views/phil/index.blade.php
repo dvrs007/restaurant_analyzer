@@ -5,7 +5,7 @@ Server Analysis
 @stop
 
 @section('content')
-<div class="main-title"><h2>Server &amp; Table Statistics</h2></div>
+<div class="main-title"><h2><img class="server-icon" src="{{asset('images/people.png')}}">Server &amp; Table Statistics</h2></div>
 <div id="guyContainer">
     <div class="tabs">
     <ul class="tab-links">
@@ -49,27 +49,31 @@ Server Analysis
             <div class="main-graph-title">
                 <h2>Individual Server Statistics</h2>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="main-title">
-                    <h4>Current Servers</h4>
+                    <h2>Current Servers</h2>
                 </div>
                 @foreach($allservers as $server)
-                    <h4>{{ $server->server }}</h4>
+                <div class="col-md-4">
+                    
+                    <h2>{{ $server->server_firstname }} {{$server->server_lastname }}</h2>
+                    
+                    <img class="server-image" src="{{ $server->server_pic }}" alt="server">
+                    </div>
                 @endforeach
             </div>
-            <form action="" method="post">
-                <label for="servers">Select a Server: </label>
-                <select id="servers">
-                    <?php 
-                    foreach($allservers as $server){
-                        
-                        echo "<option>" . $server->server . "</option>";
-                        
-                    }
-                    ?>
-                </select>
-                <input type="submit" value="View Stats">
-            </form>
+            <div class="col-md-12">
+                <h2 class="main-title">Select a server to view his/her stats: </h2>
+            {!! Form:: open( ['url' => 'serverResults']) !!} 
+            <select class="server-select" name="server_select">
+                @foreach($allservers as $s)
+                <option id="" value="{{ $s->id }}">{{ $s->server_firstname }} {{ $s->server_lastname }}</option>
+                @endforeach
+            </select>  
+            {!! Form::submit('View Stats', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form:: close() !!}
+                
+            </div>
         </div>
  
         <div id="tab3" class="tab">
@@ -78,18 +82,25 @@ Server Analysis
             </div>
             <div class="col-md-6">
                 <div class="main-title"><h4>Best &amp; Worst Tables</h4></div>
-            <h4>Highest Grossing Table: 
-                
+                <div class="col-md-6">
+                <h4 class="green">Highest Grossing Table:</h4> <br>
+                <img src="{{asset('images/table.png')}}" class="server-icon" alt="table icon">
+                <h4>
                     @foreach($highesttable as $t)
-                    Table #<span class="blue">{{$t->tbl_number}}</span> with $<span class="blue">{{$t->subtotal}}</span> in total sales.
+                    Table #<span class="blue">{{$t->tbl_number}}</span> <br> $<span class="blue">{{$t->subtotal}}</span> in total sales.
                     @endforeach
                     
             </h4>
-            <h4>Lowest Grossing Table:
+            </div>
+                <div class="col-md-6">
+                <h4 class="red">Lowest Grossing Table:</h4><br>
+                <img src="{{asset('images/table.png')}}" class="server-icon" alt="table icon">
+                <h4>
                 @foreach($lowesttable as $t)
-                    Table #<span class="blue">{{$t->tbl_number}}</span> with $<span class="blue">{{$t->subtotal}}</span> in total sales.
+                Table #<span class="blue">{{$t->tbl_number}}</span> <br> $<span class="blue">{{$t->subtotal}}</span> in total sales.
                 @endforeach
             </h4>
+            </div>
             </div>
             <div class="col-md-6">
                 <div class="main-title"><h4>Some other stats</h4></div>
