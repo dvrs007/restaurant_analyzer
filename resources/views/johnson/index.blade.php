@@ -25,10 +25,10 @@ Item Statistics - Restaurant Analyzer
         <div class="tab-content">
             <div id="tab1" class="tab active">
                 <div class="col-md-6">
-                    <h3 style="color:green;">The highest grossing item is {{ $high_gross_item }}</h3><img style="width:300px; border:8px solid #222;" src="../{{$high_gross_item_img}}" />
+                    <h3 style="color:green;">The highest grossing item is {{ $high_gross_item }}</h3><img style="width:300px; border:8px solid #222;" src="{{url($high_gross_item_img)}}" />
                 </div>
                     <div class="col-md-6 animated infinite shake" id="warning" >
-                        <h3 style="color:red;">OH NO! {{ $low_gross_item }} is not doing well!</h3><img style="width:300px; border:8px solid #222;" src="../{{$low_gross_item_img}}" />
+                        <h3 style="color:red;">OH NO! {{ $low_gross_item }} is not doing well!</h3><img style="width:300px; border:8px solid #222;" src="{{url($low_gross_item_img)}}" />
                     </div> 
             </div>
             
