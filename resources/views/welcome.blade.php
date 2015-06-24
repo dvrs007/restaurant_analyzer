@@ -27,7 +27,7 @@
                 <h2>Your servers today</h2>
                 <ol class="servers">
                     @foreach($servers as $list)
-                    <li><img src="./{{ $list->server_pic }}" />{{ $list->server_firstname }} {{ $list->server_lastname }}</li>
+                        <li><img src="./{{ $list->server_pic }}" />{{ $list->server_firstname }} {{ $list->server_lastname }}</li>
                     @endforeach
                 </ol>
             </div>
