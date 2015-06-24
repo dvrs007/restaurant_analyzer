@@ -251,6 +251,42 @@ html, body {
     color:#FFFBD3;
 }
 
+.server-select{
+    width:100%;
+    font-size: 20px;
+    padding:10px;
+    margin:10px;
+}
+
+.server-icon{
+    max-width:50px;
+    margin-right: 10px;
+}
+
+.server-items{
+    max-height: 300px;
+    overflow:auto;
+}
+
+.green{
+    color:green;
+}
+
+.red{
+    color:red;
+}
+
+.server-image{
+    width:100%;
+    height:auto;
+    overflow:hidden;
+    margin: 20px 0px;
+}
+
+#individual-container{
+    margin: 20px;
+}
+
 
 
 .row{
