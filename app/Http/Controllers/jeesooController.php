@@ -99,7 +99,7 @@ class jeesooController extends Controller {
           . 'GROUP BY o.id)'); */
         $yearlySales = DB::select('select count(order_id) AS cnt, SUM(total) as sales , SUM(expenses) as cost, YEAR(order_date) AS year from orders group by YEAR(order_date)');
 
-        $yearlySales_avg = DB::select('select AVG(total) AS average ,count(order_id) AS cnt,YEAR(order_date) AS year from orders group by YEAR(order_date)');
+        $yearlySales_avg = DB::select('select (SUM(total)/count(order_id)) AS average ,count(order_id) AS cnt,YEAR(order_date) AS year from orders group by YEAR(order_date)');
 
 
 
@@ -131,7 +131,7 @@ class jeesooController extends Controller {
         $combo_year_amt = \Lava::ComboChart('TotalSalesY')
                 ->setOptions(array(
             'datatable' => $ySales_amt,
-            'title' => 'Total Actual Sales $ over the years 2000-2014',
+            'title' => 'Gross Sales $ over the years 2000-2014',
             'seriesType' => 'bars',
             'series' => array(
                 2 => \Lava::Series(array(
@@ -142,13 +142,13 @@ class jeesooController extends Controller {
         $areachart_year_cnt = \Lava::AreaChart('TotalNumberY')
                 ->setOptions(array(
             'datatable' => $ySales_cnt,
-            'title' => 'Total Number of Actual Sales Orders over the years 2000-2014'
+            'title' => 'Total Number of Sales Orders over the years 2000-2014'
         ));
 
         $columnchart_year_avg = \Lava::ColumnChart('AverageSalesY')
                 ->setOptions(array(
             'datatable' => $ySales_avg,
-            'title' => 'Average Actual Sales $ over the years 2000-2014'
+            'title' => 'Average Sales $ per Order over the years 2000-2014'
         ));
         //Outputs in View page: Rendering the charts
 
@@ -200,7 +200,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2000 = \Lava::ColumnChart('TotalSalesM2000')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2000,
-            'title' => 'Total Actual Sales $ per month during the year of 2000'
+            'title' => 'Gross Sales $ per month during the year of 2000'
         ));
 
         $columnchart_month_cnt_2000 = \Lava::ColumnChart('TotalCountM2000')
@@ -224,7 +224,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2001 = \Lava::ColumnChart('TotalSalesM2001')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2001,
-            'title' => 'Total Actual Sales $ per month during the year of 2001'
+            'title' => 'Gross Sales $ per month during the year of 2001'
         ));
 
         /* 2002 */
@@ -239,7 +239,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2002 = \Lava::ColumnChart('TotalSalesM2002')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2002,
-            'title' => 'Total Actual Sales $ per month during the year of 2002'
+            'title' => 'Gross Sales $ per month during the year of 2002'
         ));
         /* 2003 */
         $monthlySales2003 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2003 GROUP BY MONTH(order_date)');
@@ -253,7 +253,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2003 = \Lava::ColumnChart('TotalSalesM2003')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2003,
-            'title' => 'Total Actual Sales $ per month during the year of 2003'
+            'title' => 'Gross Sales $ per month during the year of 2003'
         ));
         /* 2004 */
         $monthlySales2004 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2004 GROUP BY MONTH(order_date)');
@@ -267,7 +267,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2004 = \Lava::ColumnChart('TotalSalesM2004')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2004,
-            'title' => 'Total Actual Sales $ per month during the year of 2004'
+            'title' => 'Gross Sales $ per month during the year of 2004'
         ));
         /* 2005 */
         $monthlySales2005 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2005 GROUP BY MONTH(order_date)');
@@ -281,7 +281,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2005 = \Lava::ColumnChart('TotalSalesM2005')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2005,
-            'title' => 'Total Actual Sales $ per month during the year of 2005'
+            'title' => 'Gross Sales $ per month during the year of 2005'
         ));
         /* 2006 */
         $monthlySales2006 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2006 GROUP BY MONTH(order_date)');
@@ -295,7 +295,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2006 = \Lava::ColumnChart('TotalSalesM2006')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2006,
-            'title' => 'Total Actual Sales $ per month during the year of 2006'
+            'title' => 'Gross Sales $ per month during the year of 2006'
         ));
         /* 2007 */
         $monthlySales2007 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2007 GROUP BY MONTH(order_date)');
@@ -309,7 +309,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2007 = \Lava::ColumnChart('TotalSalesM2007')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2007,
-            'title' => 'Total Actual Sales $ per month during the year of 2007'
+            'title' => 'Gross Sales $ per month during the year of 2007'
         ));
         /* 2008 */
         $monthlySales2008 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2008 GROUP BY MONTH(order_date)');
@@ -323,7 +323,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2008 = \Lava::ColumnChart('TotalSalesM2008')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2008,
-            'title' => 'Total Actual Sales $ per month during the year of 2008'
+            'title' => 'Gross Sales $ per month during the year of 2008'
         ));
         /* 2009 */
         $monthlySales2009 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2009 GROUP BY MONTH(order_date)');
@@ -337,7 +337,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2009 = \Lava::ColumnChart('TotalSalesM2009')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2009,
-            'title' => 'Total Actual Sales $ per month during the year of 2009'
+            'title' => 'Gross Sales $ per month during the year of 2009'
         ));
         /* 2010 */
         $monthlySales2010 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2010 GROUP BY MONTH(order_date)');
@@ -351,7 +351,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2010 = \Lava::ColumnChart('TotalSalesM2010')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2010,
-            'title' => 'Total Actual Sales $ per month during the year of 2010'
+            'title' => 'Gross Sales $ per month during the year of 2010'
         ));
         /* 2011 */
         $monthlySales2011 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2011 GROUP BY MONTH(order_date)');
@@ -365,7 +365,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2011 = \Lava::ColumnChart('TotalSalesM2011')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2011,
-            'title' => 'Total Actual Sales $ per month during the year of 2011'
+            'title' => 'Gross Sales $ per month during the year of 2011'
         ));
         /* 2012 */
         $monthlySales2012 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2012 GROUP BY MONTH(order_date)');
@@ -379,7 +379,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2012 = \Lava::ColumnChart('TotalSalesM2012')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2012,
-            'title' => 'Total Actual Sales $ per month during the year of 2012'
+            'title' => 'Gross Sales $ per month during the year of 2012'
         ));
         /* 2013 */
         $monthlySales2013 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2013 GROUP BY MONTH(order_date)');
@@ -393,7 +393,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2013 = \Lava::ColumnChart('TotalSalesM2013')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2013,
-            'title' => 'Total Actual Sales $ per month during the year of 2013'
+            'title' => 'Gross Sales $ per month during the year of 2013'
         ));
         /* 2014 */
         $monthlySales2014 = DB::select('select SUM(total) As sum, count(order_id) AS cnt, MONTH(order_date) AS month from orders WHERE YEAR(order_date)=2014 GROUP BY MONTH(order_date)');
@@ -407,7 +407,7 @@ class jeesooController extends Controller {
         $columnchart_month_amt_2014 = \Lava::ColumnChart('TotalSalesM2014')
                 ->setOptions(array(
             'datatable' => $mSales_amt_2014,
-            'title' => 'Total Actual Sales $ per month during the year of 2014'
+            'title' => 'Gross Sales $ per month during the year of 2014'
         ));
 
 
@@ -430,7 +430,7 @@ class jeesooController extends Controller {
         $columnchart_day_amt = \Lava::ColumnChart('TotalSalesD')
                 ->setOptions(array(
             'datatable' => $dSales_amt,
-            'title' => 'Total Actual Sales $ per day of the month over the years 2000-2014'
+            'title' => 'Gross Sales $ per Day of the month over the years 2000-2014'
         ));
 
 
