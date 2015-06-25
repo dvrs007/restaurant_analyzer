@@ -25,16 +25,16 @@ Trends Analysis of Total Sales ($) over the years 2000-2014
                 <div role="tabpanel" class="tab-pane fade in active" id="year">
 
                     <!-- *********** YEAR *************** -->
-                    <h2>Total Sales ($) in each year </h2>
+                    <h2>Total Sales ($) Performance in each year </h2>
                     <div id="chart_year_amt"></div>
                     @combochart('TotalSalesY','chart_year_amt')
 
                     <div style='border:thin dashed 2px;'></div>
 
-                    <div id="chart_year_avg"></div>
-                    @columnchart('AverageSalesY','chart_year_avg')
+                    <!--div id="chart_year_avg"></div>
+                    {{-- @columnchart('AverageSalesY','chart_year_avg') --}}
 
-                    <div style='border:thin dashed 2px;'></div>
+                    <div style='border:thin dashed 2px;'></div-->
 
 
                     <div id='chart_year_cnt'></div>
@@ -49,7 +49,7 @@ Trends Analysis of Total Sales ($) over the years 2000-2014
 
                 <div role="tabpanel" class="tab-pane fade" id="month">           
                     <!--*********** MONTH ***************** -->
-                    <h2>Total Sales Performance ($) in each month</h2>
+                    <h2>Total Sales ($) Performance in each month</h2>
 
                     <div id='chart_month_amt' style="width:100%;"></div>
                     @columnchart('TotalSalesM','chart_month_amt')
@@ -239,7 +239,7 @@ Trends Analysis of Total Sales ($) over the years 2000-2014
 
                 <div role="tabpanel" class="tab-pane fade" id="day">
                     <!-- DAY-->
-                    <h2>Total Sales Performance ($) in each day</h2>
+                    <h2>Total Sales ($) Performance in each day</h2>
 
                     <div id="chart_day_amt" style="width:100%;"></div>
                     @columnchart('TotalSalesD','chart_day_amt')

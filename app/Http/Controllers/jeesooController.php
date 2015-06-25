@@ -418,6 +418,7 @@ class jeesooController extends Controller {
 
 
         $dailySales = DB::select('select SUM(total) As sum, count(order_id) AS cnt, DAY(order_date) AS day from orders GROUP BY DAY(order_date)');
+               
         $dSales_amt = \Lava::DataTable();
         $dSales_amt->addStringColumn('Day')
                 ->addNumberColumn('Sales');
@@ -432,8 +433,6 @@ class jeesooController extends Controller {
             'title' => 'Total Actual Sales $ per day of the month over the years 2000-2014'
         ));
 
-
-        /*         * ******* */
 
         /*         * ******* */
 
