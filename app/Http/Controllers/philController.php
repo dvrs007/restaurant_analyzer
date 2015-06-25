@@ -183,6 +183,13 @@ class philController extends Controller {
                 //))
         ));
 
+         $avgtable = DB::select(DB::raw("SELECT AVG( subtotal ) as average FROM orders"));
+         
+         $tblitems = DB::select(DB::raw("SELECT tbl_number, SUM( ordered_quantity ) as quantity
+FROM orders
+JOIN lineitems ON orders.order_id = lineitems.order_id
+GROUP BY tbl_number
+ORDER BY ordered_quantity DESC"));
 
 
         ////************************END TABLE PERFORMANCE***************************************//
@@ -203,7 +210,9 @@ class philController extends Controller {
                         ->with("quantitiezTable", $quantitiezTable)
                         ->with("allservers", $allservers)
                         ->with("highesttable", $highesttable)
-                        ->with("lowesttable", $lowesttable);
+                        ->with("lowesttable", $lowesttable)
+                        ->with("avgtable", $avgtable)
+                        ->with("tblitems", $tblitems);
 
         //************************END SEND DATA TO THE VIEW********************//
         //-------------------------------------------------------------------------------------

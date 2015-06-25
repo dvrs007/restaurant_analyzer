@@ -83,7 +83,7 @@ Server Analysis
             <div class="col-md-6">
                 <div class="main-title"><h4>Best &amp; Worst Tables</h4></div>
                 <div class="col-md-6">
-                <h4 class="green">Highest Grossing Table:</h4> <br>
+                <h2 class="green">Highest Grossing Table:</h2> <br>
                 <img src="{{asset('images/table.png')}}" class="server-icon" alt="table icon">
                 <h4>
                     @foreach($highesttable as $t)
@@ -93,18 +93,38 @@ Server Analysis
             </h4>
             </div>
                 <div class="col-md-6">
-                <h4 class="red">Lowest Grossing Table:</h4><br>
+                <h2 class="red">Lowest Grossing Table:</h2><br>
                 <img src="{{asset('images/table.png')}}" class="server-icon" alt="table icon">
                 <h4>
                 @foreach($lowesttable as $t)
                 Table #<span class="blue">{{$t->tbl_number}}</span> <br> $<span class="blue">{{$t->subtotal}}</span> in total sales.
                 @endforeach
             </h4>
+                
             </div>
+                <div class="col-md-12">
+                    <h2>Average  Gross Income Per Table Order:</h2>
+                <img src="{{asset('images/table.png')}}" class="server-icon" alt="table icon">
+                <h2>$ <?php foreach($avgtable as $a){ echo number_format($a->average, 2); } ?></h2>
+                </div>
             </div>
             <div class="col-md-6">
-                <div class="main-title"><h4>Some other stats</h4></div>
-                <h4>blah blah blah</h4>
+                <div class="main-title"><h4>Tables By Items</h4></div>
+                <div class="table-responsive server-items sortable">
+                    <table class="table table-striped">
+    <tr>
+        <th>Table Number</th>
+        <th>Quantity of Items Sold</th>
+    </tr>
+
+<?php
+foreach($tblitems as $b){
+    echo '<tr><td>' . $b->tbl_number . '</td>';
+    echo '<td>' . $b->quantity . '</td></tr>';
+}
+?>
+</table>
+                </div>
             </div>
             <div class="clearfix"></div>
                 <div class="graph-title">
