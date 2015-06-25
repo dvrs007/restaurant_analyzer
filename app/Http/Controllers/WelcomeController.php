@@ -32,6 +32,8 @@ class WelcomeController extends Controller {
 	 *
 	 * @return Response
 	 */
+        
+        
 	public function index()
 	{
             //query with raw mysql for highest net revenue

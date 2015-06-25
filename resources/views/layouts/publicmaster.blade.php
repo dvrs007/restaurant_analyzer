@@ -1,5 +1,4 @@
 <!-- Stored in app/views/layouts/master.blade.php -->
-
 <html>
     <head>
         <title>@yield('title')</title>
@@ -49,14 +48,14 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li><a href="{{ url('menus/list') }}">Menu</a></li>                              
-                                <li><a href="{{ url('orders') }}">Orders</a></li>
+                                <li><a href="{{ url('menus') }}">Menu</a></li>                              
+                                <li onclick="alert('Please Login!')"><a href="">Orders(after login)</a></li>
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Statistics <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ url('item-sales') }}">Item</a></li>
-                                        <li><a href="{{url('server-stats')}}">Servers</a></li>
-                                        <li><a href="{{url('totalSales')}}">Total Sales</a></li>
+                                        <li onclick="alert('Please Login!')"><a href="">Item</a></li>
+                                        <li onclick="alert('Please Login!')"><a href="">Servers</a></li>
+                                        <li onclick="alert('Please Login!')"><a href="">Total Sales</a></li>
                                     </ul>
                                 </li>
                             </ul>
